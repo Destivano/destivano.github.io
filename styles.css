@@ -539,13 +539,6 @@ section {
     color: white;
 }
 
-.projects-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
 .project-card.hidden {
     display: none;
 }
