@@ -267,17 +267,21 @@ if (yearElement) {
 // ========== Toggle Details Function ==========
 function toggleDetails(button) {
     const detailsDiv = button.nextElementSibling;
+    const isHidden = detailsDiv.style.display === 'none' || detailsDiv.style.display === '';
     
-    if (detailsDiv.style.display === 'none' || detailsDiv.style.display === '') {
+    if (isHidden) {
         detailsDiv.style.display = 'block';
         button.textContent = 'Show Less ▲';
-        // Add smooth reveal animation
-        detailsDiv.style.animation = 'fadeIn 0.3s ease';
+        button.style.background = 'linear-gradient(135deg, #764ba2, #667eea)';
     } else {
         detailsDiv.style.display = 'none';
         button.textContent = 'Show More ▼';
+        button.style.background = 'linear-gradient(135deg, #667eea, #764ba2)';
     }
 }
+
+// Make function globally available
+window.toggleDetails = toggleDetails;
 
 // ========== Console Message ==========
 console.log('%c👋 Hello Developer!', 'color: #667eea; font-size: 20px; font-weight: bold;');
