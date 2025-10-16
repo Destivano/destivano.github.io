@@ -12,13 +12,14 @@
     <nav id="navbar">
         <div class="nav-container">
             <div class="logo">
-                <a href="#home">MA AROUS</a>
+                <a href="#home">AROUS</a>
             </div>
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#volunteering" class="nav-link">Leadership</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <div class="hamburger">
@@ -56,7 +57,7 @@
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
                 <div class="about-image">
-                    <img src="https://via.placeholder.com/400x400" alt="Profile Picture">
+                    <img src="cropped_circle_image.png" alt="Profile Picture">
                 </div>
                 <div class="about-text">
                     <h3>AI Engineering Student & Researcher</h3>
@@ -147,117 +148,342 @@
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
+            <h2 class="section-title">Projects & Experience</h2>
             <div class="projects-filter">
                 <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="web">Web App</button>
-                <button class="filter-btn" data-filter="mobile">Mobile</button>
-                <button class="filter-btn" data-filter="design">Design</button>
+                <button class="filter-btn" data-filter="research">Research</button>
+                <button class="filter-btn" data-filter="industry">Industry</button>
+                <button class="filter-btn" data-filter="hackathon">Hackathon</button>
+                <button class="filter-btn" data-filter="academic">Academic</button>
             </div>
             <div class="projects-grid">
-                <div class="project-card" data-category="web">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/600x400/667eea/ffffff?text=Embodied+AI+VLA" alt="Embodied AI with VLAs">
-                        <div class="project-overlay">
-                            <a href="#" class="project-link">View Project →</a>
-                        </div>
+                <!-- Project 1: Embodied AI VLA - Oct 2025 Present -->
+                <div class="project-card" data-category="research">
+                    <div class="project-header">
+                        <h3>Embodied AI with Vision-Language-Action Models (VLAs)</h3>
+                        <span class="project-date">Oct 2025 – Present</span>
                     </div>
-                    <div class="project-info">
-                        <h3>Embodied AI with Vision-Language-Action Models</h3>
-                        <p>Developing a pipeline where VLA models guide robot navigation with natural language. Comparing VLAs vs traditional LVLMs for navigation accuracy.</p>
+                    <div class="project-brief">
+                        <p class="project-subtitle">Academic Project | Team of 5 | Supervised by Prof. Gianni FRANCHI</p>
+                    </div>
+                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="project-details" style="display: none;">
+                        <ul>
+                            <li>Develop a pipeline where a Vision-Language-Action Model (VLA) guides a robot's navigation and interaction with natural language.</li>
+                            <li>Compare the performance of VLAs against traditional LVLMs to measure improvements in navigation accuracy and task success.</li>
+                        </ul>
                         <div class="project-tags">
+                            <span class="tag">Python</span>
                             <span class="tag">PyBullet</span>
                             <span class="tag">MuJoCo</span>
+                            <span class="tag">Embodied AI</span>
                             <span class="tag">VLAs</span>
                             <span class="tag">LVLMs</span>
                         </div>
                     </div>
                 </div>
-                <div class="project-card" data-category="web">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/600x400/764ba2/ffffff?text=TTS+Research" alt="French TTS Research">
-                        <div class="project-overlay">
-                            <a href="#" class="project-link">View Research →</a>
-                        </div>
+
+                <!-- Project 2: TTS Research - May Sept 2025 -->
+                <div class="project-card" data-category="research">
+                    <div class="project-header">
+                        <h3>Research Internship – French Text-to-Speech Systems</h3>
+                        <span class="project-date">May – Sept 2025</span>
                     </div>
-                    <div class="project-info">
-                        <h3>French Text-to-Speech System Research</h3>
-                        <p>Research at CMAP Lab, École Polytechnique on improving French TTS: prosody control, multilingual adaptation, voice cloning. Published at ICNLSP 2025, ICASSP 2026 (under review).</p>
+                    <div class="project-brief">
+                        <p class="project-subtitle">CMAP Lab, École Polytechnique | Supervised by Prof. Eric Moulines | Palaiseau, France</p>
+                    </div>
+                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="project-details" style="display: none;">
+                        <ul>
+                            <li>Research on improving French Text-to-Speech (TTS) systems: prosody control, multilingual adaptation, voice conversion.</li>
+                            <li><strong>Publications:</strong>
+                                <ul>
+                                    <li>ICNLSP 2025 (accepted) – <a href="https://arxiv.org/abs/2508.17494" target="_blank">A french Text to Speech system for the France 2030 plan</a></li>
+                                    <li>ICASSP 2026 (under evaluation) – <a href="https://github.com/hi-paris/CosyVoice2-EU" target="_blank">Efficient adaptation method of a SOTA Voice Cloning model to European languages</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                         <div class="project-tags">
                             <span class="tag">Neural Networks</span>
                             <span class="tag">Transformers</span>
                             <span class="tag">TTS</span>
+                            <span class="tag">Data Processing</span>
                             <span class="tag">Voice Cloning</span>
                         </div>
                     </div>
                 </div>
-                <div class="project-card" data-category="mobile">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/600x400/f093fb/ffffff?text=STMicroelectronics+ML" alt="STMicro ML Project">
-                        <div class="project-overlay">
-                            <a href="#" class="project-link">View Project →</a>
-                        </div>
+
+                <!-- Project 3: STMicroelectronics - Oct 2024 May 2025 -->
+                <div class="project-card" data-category="industry">
+                    <div class="project-header">
+                        <h3>ML for Microelectronics Similarity – STMicroelectronics</h3>
+                        <span class="project-date">Oct 2024 – May 2025</span>
                     </div>
-                    <div class="project-info">
-                        <h3>ML for Microelectronics Similarity - STMicroelectronics</h3>
-                        <p>Applied machine learning to evaluate similarity between microelectronic components. Achieved 98% accuracy, surpassing company's internal solution.</p>
+                    <div class="project-brief">
+                        <p class="project-subtitle">Team Engineering Project | Applied ML for Component Evaluation</p>
+                    </div>
+                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="project-details" style="display: none;">
+                        <ul>
+                            <li>Team member responsible for developing and implementing the machine learning algorithms.</li>
+                            <li>The project delivered a custom AI model that reached <strong>98% accuracy</strong>, surpassing the performance of the company's internal solution.</li>
+                            <li>Applied machine learning methods to evaluate similarity between microelectronic components.</li>
+                        </ul>
                         <div class="project-tags">
-                            <span class="tag">PyTorch</span>
                             <span class="tag">Scikit-learn</span>
-                            <span class="tag">ML</span>
+                            <span class="tag">PyTorch</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">Pandas</span>
+                            <span class="tag">Numpy</span>
                         </div>
                     </div>
                 </div>
-                <div class="project-card" data-category="web">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/600x400/667eea/ffffff?text=Exoplanet+Detection" alt="NASA Space Apps">
-                        <div class="project-overlay">
-                            <a href="#" class="project-link">View Project →</a>
-                        </div>
+
+                <!-- Project 4: NASA Space Apps - 2025 -->
+                <div class="project-card" data-category="hackathon">
+                    <div class="project-header">
+                        <h3>NASA Space Apps Challenge – Hunting for Exoplanets with AI</h3>
+                        <span class="project-date">2025</span>
                     </div>
-                    <div class="project-info">
-                        <h3>Exoplanet Detection - NASA Space Apps Challenge</h3>
-                        <p>Built full-stack pipeline to identify exoplanets from light curve data. Achieved 94.3% accuracy using CNN, Autoencoder, and MLP models.</p>
+                    <div class="project-brief">
+                        <p class="project-subtitle">Team "Make Pluto Great Again" | Paris, France</p>
+                    </div>
+                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="project-details" style="display: none;">
+                        <ul>
+                            <li><a href="https://www.makeplutogreatagain.us" target="_blank">Built a full-stack data pipeline to identify exoplanets from light curve data</a>, achieving ~94.3% accuracy.</li>
+                            <li>Trained multiple models (CNN, Autoencoder, MLP) for exoplanet detection.</li>
+                        </ul>
                         <div class="project-tags">
+                            <span class="tag">Python</span>
                             <span class="tag">FastAPI</span>
-                            <span class="tag">CNN</span>
-                            <span class="tag">Google Cloud</span>
+                            <span class="tag">Flask</span>
+                            <span class="tag">Google Cloud Run</span>
+                            <span class="tag">CNNs</span>
+                            <span class="tag">Autoencoders</span>
                         </div>
                     </div>
                 </div>
-                <div class="project-card" data-category="design">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/600x400/764ba2/ffffff?text=AICRUIT" alt="AICRUIT System">
-                        <div class="project-overlay">
-                            <a href="#" class="project-link">View Project →</a>
-                        </div>
+
+                <!-- Project 5: AICRUIT - 2025 -->
+                <div class="project-card" data-category="hackathon">
+                    <div class="project-header">
+                        <h3>AI Smart Recruitment System – Veo Hackathon</h3>
+                        <span class="project-date">2025</span>
                     </div>
-                    <div class="project-info">
-                        <h3>AI Smart Recruitment System - AICRUIT</h3>
-                        <p>Developed AI agents for candidate body-language analysis during video interviews and automated resume SWOT evaluation. Veo Hackathon 2025.</p>
+                    <div class="project-brief">
+                        <p class="project-subtitle">Team of 6 | AICRUIT Website</p>
+                    </div>
+                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="project-details" style="display: none;">
+                        <ul>
+                            <li>Developed AI agents for candidate body-language analysis during video interviews and automated resume SWOT evaluation.</li>
+                            <li><a href="https://github.com/Destivano/AI_Smart_Recruitment_System" target="_blank">View on GitHub</a></li>
+                        </ul>
                         <div class="project-tags">
+                            <span class="tag">Python</span>
                             <span class="tag">MistralAI</span>
                             <span class="tag">CrewAI</span>
-                            <span class="tag">Python</span>
+                            <span class="tag">smtplib/ssl</span>
                         </div>
                     </div>
                 </div>
-                <div class="project-card" data-category="mobile">
-                    <div class="project-image">
-                        <img src="https://via.placeholder.com/600x400/f093fb/ffffff?text=Sentiment+Analysis" alt="Sentiment Analysis">
-                        <div class="project-overlay">
-                            <a href="#" class="project-link">View Project →</a>
-                        </div>
+
+                <!-- Project 6: Sentiment Analysis - 2025 -->
+                <div class="project-card" data-category="academic">
+                    <div class="project-header">
+                        <h3>Sentiment Analysis – LLM-based Text Classification</h3>
+                        <span class="project-date">2025</span>
                     </div>
-                    <div class="project-info">
-                        <h3>LLM-based Sentiment Analysis</h3>
-                        <p>Integrated dataset via representations from pre-trained LLM (BERT) and trained classical models on embeddings for text classification.</p>
+                    <div class="project-brief">
+                        <p class="project-subtitle">Academic Project MI201</p>
+                    </div>
+                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="project-details" style="display: none;">
+                        <ul>
+                            <li>Integrate a dataset via representations from a pre-trained LLM and train classical models on these embeddings.</li>
+                            <li><a href="https://github.com/Destivano/LLM-Sentiment-Analysis" target="_blank">View on GitHub</a></li>
+                        </ul>
                         <div class="project-tags">
-                            <span class="tag">BERT</span>
                             <span class="tag">PyTorch</span>
+                            <span class="tag">BERT</span>
                             <span class="tag">CUDA</span>
                         </div>
                     </div>
+                </div>
+
+                <!-- Project 7: Beevolution - 2024 -->
+                <div class="project-card" data-category="industry">
+                    <div class="project-header">
+                        <h3>Beevolution – Smart Beehive System</h3>
+                        <span class="project-date">2024</span>
+                    </div>
+                    <div class="project-brief">
+                        <p class="project-subtitle">INJAZ Tunisie | Deputy Technical Manager</p>
+                    </div>
+                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="project-details" style="display: none;">
+                        <ul>
+                            <li>Deputy Technical Manager for an entrepreneurship project.</li>
+                            <li>Développement d'un prototype d'une ruche intelligente pour aider les apiculteurs à améliorer leur production et la qualité du miel.</li>
+                            <li><a href="https://www.linkedin.com/posts/mohamed-amine-arous-ensta_injaz-entrepreneurship-beevolution-activity-7202433085861244929-pSe8" target="_blank">View LinkedIn Post</a></li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="tag">Arduino</span>
+                            <span class="tag">IoT</span>
+                            <span class="tag">Leadership</span>
+                            <span class="tag">Team Management</span>
+                            <span class="tag">Project Management</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 8: Distributed ML - 2024 -->
+                <div class="project-card" data-category="academic">
+                    <div class="project-header">
+                        <h3>PFA1 Exploring Distributed Machine Learning</h3>
+                        <span class="project-date">2024</span>
+                    </div>
+                    <div class="project-brief">
+                        <p class="project-subtitle">ENIT | Scientific Report Co-author</p>
+                    </div>
+                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="project-details" style="display: none;">
+                        <ul>
+                            <li>Co-auteur d'un rapport scientifique sur les méthodes d'apprentissage automatique et les approches distribuées.</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">LaTeX</span>
+                            <span class="tag">Distributed ML</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 9: Tunisie Telecom - 2024 -->
+                <div class="project-card" data-category="industry">
+                    <div class="project-header">
+                        <h3>Stage Opérateur – Tunisie Télécom</h3>
+                        <span class="project-date">2024</span>
+                    </div>
+                    <div class="project-brief">
+                        <p class="project-subtitle">Professional Immersion Internship</p>
+                    </div>
+                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="project-details" style="display: none;">
+                        <ul>
+                            <li>Stage d'un mois pour une immersion dans le milieu professionnel des infrastructures de télécommunications.</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="tag">Telecommunications</span>
+                            <span class="tag">Infrastructure</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteering & Leadership Section -->
+    <section id="volunteering" class="volunteering">
+        <div class="container">
+            <h2 class="section-title">Volunteering & Leadership</h2>
+            <div class="timeline">
+                <!-- Volunteering 1: Tutoring -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <h3>Tutor – #GENIUS Program</h3>
+                        <span class="timeline-date">Jan 2025 – May 2025</span>
+                    </div>
+                    <p class="timeline-subtitle">Equal Opportunities Center, École Polytechnique</p>
+                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="timeline-details" style="display: none;">
+                        <p>Weekly tutoring in pairs with high school students in science and mathematics.</p>
+                        <ul>
+                            <li>Weekly support aimed at strengthening knowledge and promoting equal opportunities.</li>
+                            <li>Reinforcement of basic scientific concepts and preparation for post-baccalaureate courses.</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="tag">Teaching</span>
+                            <span class="tag">Communication</span>
+                            <span class="tag">Mentoring</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Volunteering 2: G2FOSS -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <h3>Competitive Programming Manager – G²FOSS</h3>
+                        <span class="timeline-date">2023 – 2025</span>
+                    </div>
+                    <p class="timeline-subtitle">General and Geographic Free Open Source Software</p>
+                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="timeline-details" style="display: none;">
+                        <ul>
+                            <li>Organization of DSA courses to strengthen problem-solving skills.</li>
+                            <li>Promotion of national competitions and events.</li>
+                            <li>Improved global rank in IEEEXtreme from <strong>1370</strong> (<a href="https://ieeextreme.org/ieeextreme-17-0-ranking/" target="_blank">17.0</a>) to <strong>491</strong> (<a href="https://ieeextreme.org/ieeextreme-18-0-ranking/" target="_blank">18.0</a>) with team "DebuggingTrio".</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="tag">Algorithms</span>
+                            <span class="tag">Graph Theory</span>
+                            <span class="tag">C++</span>
+                            <span class="tag">Communication</span>
+                            <span class="tag">Leadership</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Volunteering 3: IEEE -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <h3>Senior Member – IEEE Computer Society & WIE</h3>
+                        <span class="timeline-date">2023 – Present</span>
+                    </div>
+                    <p class="timeline-subtitle">IEEE Computer Society & Women In Engineering Affinity Group</p>
+                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="timeline-details" style="display: none;">
+                        <ul>
+                            <li>Participation à des ateliers d'initiation aux nouvelles technologies pour les étudiants ingénieurs.</li>
+                            <li>IEEEXtreme 17.0 & 18.0: <strong>Rang 1</strong> à l'ENIT deux années consécutives, et top 8% mondial lors de la dernière édition.</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="tag">Problem Solving</span>
+                            <span class="tag">C++</span>
+                            <span class="tag">Competitive Programming</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <div class="certs-grid">
+                <div class="cert-card">
+                    <div class="cert-icon">🎓</div>
+                    <h3>Generative AI Engineering</h3>
+                    <p class="cert-issuer">by IBM</p>
+                    <p class="cert-year">2025</p>
+                    <a href="https://credentials.edx.org/credentials/0801d631d980494a9a5eb36510d4ad43/" target="_blank" class="cert-link">View Certificate →</a>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">📊</div>
+                    <h3>Data Science</h3>
+                    <p class="cert-issuer">by IBM</p>
+                    <p class="cert-year">2025</p>
+                    <a href="https://credentials.edx.org/credentials/c040e8ca88c74fffbd8e2ad72cc7f9ea/" target="_blank" class="cert-link">View Certificate →</a>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-icon">🤖</div>
+                    <h3>Foundations of AI</h3>
+                    <p class="cert-issuer">by IBM</p>
+                    <p class="cert-year">2025</p>
+                    <a href="https://credentials.edx.org/credentials/70ea57c12b5245088891ebed28fb422f/" target="_blank" class="cert-link">View Certificate →</a>
                 </div>
             </div>
         </div>

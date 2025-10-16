@@ -264,6 +264,21 @@ if (yearElement) {
     yearElement.textContent = yearElement.textContent.replace('2025', currentYear);
 }
 
+// ========== Toggle Details Function ==========
+function toggleDetails(button) {
+    const detailsDiv = button.nextElementSibling;
+    
+    if (detailsDiv.style.display === 'none' || detailsDiv.style.display === '') {
+        detailsDiv.style.display = 'block';
+        button.textContent = 'Show Less ▲';
+        // Add smooth reveal animation
+        detailsDiv.style.animation = 'fadeIn 0.3s ease';
+    } else {
+        detailsDiv.style.display = 'none';
+        button.textContent = 'Show More ▼';
+    }
+}
+
 // ========== Console Message ==========
 console.log('%c👋 Hello Developer!', 'color: #667eea; font-size: 20px; font-weight: bold;');
 console.log('%cThanks for checking out the code!', 'color: #764ba2; font-size: 14px;');
