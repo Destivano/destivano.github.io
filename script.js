@@ -48,10 +48,10 @@ window.addEventListener('scroll', () => {
 // ========== Typewriter Effect ==========
 const typewriter = document.getElementById('typewriter');
 const phrases = [
-    'Full Stack Developer',
-    'Web Designer',
-    'Problem Solver',
-    'Creative Thinker'
+    'AI Engineering Student',
+    'Deep Learning Researcher',
+    'Trustworthy AI Enthusiast',
+    'Future PhD Candidate'
 ];
 
 let phraseIndex = 0;
