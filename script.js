@@ -15,15 +15,16 @@ navLinks.forEach(link => {
     });
 });
 
-// ========== News Timeline Navigation ==========
-let currentMilestone = 2; // Start with the latest (July 2025)
+// ========== Projects Timeline Navigation ==========
+let currentProject = 0; // Start with the first project (Embodied AI VLA)
 
-function selectMilestone(index) {
-    currentMilestone = index;
+function selectProject(index) {
+    currentProject = index;
     
     // Update milestone active states
     document.querySelectorAll('.milestone').forEach((milestone, i) => {
-        if (i === index) {
+        const projectIndex = parseInt(milestone.getAttribute('data-project'));
+        if (projectIndex === index) {
             milestone.classList.add('active');
         } else {
             milestone.classList.remove('active');
@@ -32,7 +33,8 @@ function selectMilestone(index) {
     
     // Update content active states
     document.querySelectorAll('.milestone-content').forEach((content, i) => {
-        if (i === index) {
+        const contentIndex = parseInt(content.getAttribute('data-content'));
+        if (contentIndex === index) {
             content.classList.add('active');
         } else {
             content.classList.remove('active');
@@ -40,26 +42,38 @@ function selectMilestone(index) {
     });
 }
 
-function scrollTimelineLeft() {
+function scrollProjectLeft() {
     const wrapper = document.querySelector('.timeline-wrapper');
     wrapper.scrollBy({
         left: -150,
         behavior: 'smooth'
     });
+    
+    // Navigate to previous project
+    if (currentProject > 0) {
+        selectProject(currentProject - 1);
+    }
 }
 
-function scrollTimelineRight() {
+function scrollProjectRight() {
     const wrapper = document.querySelector('.timeline-wrapper');
     wrapper.scrollBy({
         left: 150,
         behavior: 'smooth'
     });
+    
+    // Navigate to next project
+    const totalProjects = document.querySelectorAll('.milestone').length;
+    if (currentProject < totalProjects - 1) {
+        selectProject(currentProject + 1);
+    }
 }
 
 // Initialize timeline on page load
 document.addEventListener('DOMContentLoaded', () => {
-    selectMilestone(currentMilestone);
+    selectProject(currentProject);
 });
+
 
 
 // ========== Active Navigation on Scroll ==========
