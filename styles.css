@@ -540,9 +540,10 @@ section {
 }
 
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
+    margin-top: 2rem;
 }
 
 .project-card.hidden {
