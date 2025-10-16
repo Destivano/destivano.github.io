@@ -656,6 +656,186 @@ section {
     color: #721c24;
 }
 
+/* ========== News & Recognition Section ========== */
+.news-section {
+    background: white;
+    padding: 80px 0;
+}
+
+.timeline-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0 3rem;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.timeline-nav-btn {
+    background: white;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.timeline-nav-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.timeline-scroll {
+    flex: 1;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.timeline-scroll::-webkit-scrollbar {
+    height: 0;
+}
+
+.timeline-items-horizontal {
+    display: flex;
+    gap: 3rem;
+    padding: 1rem 0;
+    position: relative;
+    min-width: min-content;
+}
+
+.timeline-items-horizontal::before {
+    content: '';
+    position: absolute;
+    top: 35px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    z-index: 0;
+}
+
+.timeline-dot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.timeline-dot:hover {
+    transform: translateY(-5px);
+}
+
+.dot-icon {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border: 4px solid var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+    transition: var(--transition);
+}
+
+.timeline-dot.active .dot-icon,
+.timeline-dot:hover .dot-icon {
+    background: var(--primary-color);
+    border-color: var(--secondary-color);
+    transform: scale(1.1);
+}
+
+.dot-date {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.timeline-dot.active .dot-date {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.news-content {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    min-height: 250px;
+}
+
+.news-item {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.news-item.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.news-title {
+    font-size: 2rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.news-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+.news-description strong {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.news-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    font-size: 1.05rem;
+}
+
+.news-link:hover {
+    color: var(--secondary-color);
+    transform: translateX(5px);
+}
+
 /* ========== Volunteering & Leadership Section ========== */
 .volunteering {
     background: var(--bg-color);
