@@ -16,54 +16,50 @@ navLinks.forEach(link => {
 });
 
 // ========== News Timeline Navigation ==========
-let currentNewsIndex = 0;
-const timelineDots = document.querySelectorAll('.timeline-dot');
-const newsItems = document.querySelectorAll('.news-item');
+let currentMilestone = 2; // Start with the latest (July 2025)
 
-function showNews(index) {
-    currentNewsIndex = index;
+function selectMilestone(index) {
+    currentMilestone = index;
     
-    // Update active states
-    timelineDots.forEach((dot, i) => {
+    // Update milestone active states
+    document.querySelectorAll('.milestone').forEach((milestone, i) => {
         if (i === index) {
-            dot.classList.add('active');
+            milestone.classList.add('active');
         } else {
-            dot.classList.remove('active');
+            milestone.classList.remove('active');
         }
     });
     
-    newsItems.forEach((item, i) => {
+    // Update content active states
+    document.querySelectorAll('.milestone-content').forEach((content, i) => {
         if (i === index) {
-            item.classList.add('active');
+            content.classList.add('active');
         } else {
-            item.classList.remove('active');
+            content.classList.remove('active');
         }
     });
 }
 
-// Click handlers for timeline dots
-timelineDots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        showNews(index);
+function scrollTimelineLeft() {
+    const wrapper = document.querySelector('.timeline-wrapper');
+    wrapper.scrollBy({
+        left: -150,
+        behavior: 'smooth'
     });
+}
+
+function scrollTimelineRight() {
+    const wrapper = document.querySelector('.timeline-wrapper');
+    wrapper.scrollBy({
+        left: 150,
+        behavior: 'smooth'
+    });
+}
+
+// Initialize timeline on page load
+document.addEventListener('DOMContentLoaded', () => {
+    selectMilestone(currentMilestone);
 });
-
-// Set first item as active on load
-if (timelineDots.length > 0) {
-    showNews(0);
-}
-
-// Timeline scroll function
-function scrollTimeline(direction) {
-    const scrollContainer = document.querySelector('.timeline-scroll');
-    const scrollAmount = 200;
-    if (scrollContainer) {
-        scrollContainer.scrollBy({
-            left: direction * scrollAmount,
-            behavior: 'smooth'
-        });
-    }
-}
 
 
 // ========== Active Navigation on Scroll ==========

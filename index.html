@@ -422,58 +422,90 @@
         <div class="container">
             <h2 class="section-title">Recent News <span style="color: var(--text-light);">& Recognition</span></h2>
             
-            <!-- Timeline Navigation -->
-            <div class="timeline-nav">
-                <button class="timeline-nav-btn prev" onclick="scrollTimeline(-1)">‹</button>
-                <div class="timeline-scroll">
-                    <div class="timeline-items-horizontal">
-                        <div class="timeline-dot" data-date="July 2025" data-news="0">
-                            <div class="dot-icon">📄</div>
-                            <span class="dot-date">July 2025</span>
+            <!-- Timeline Container -->
+            <div class="timeline-container">
+                <button class="timeline-arrow left" onclick="scrollTimelineLeft()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                
+                <div class="timeline-wrapper">
+                    <div class="timeline-track">
+                        <!-- Milestone 1 -->
+                        <div class="milestone" data-milestone="0" onclick="selectMilestone(0)">
+                            <div class="milestone-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                            </div>
+                            <div class="milestone-date">Oct 2024</div>
                         </div>
-                        <div class="timeline-dot" data-date="May 2025" data-news="1">
-                            <div class="dot-icon">🎓</div>
-                            <span class="dot-date">May 2025</span>
+
+                        <!-- Milestone 2 -->
+                        <div class="milestone" data-milestone="1" onclick="selectMilestone(1)">
+                            <div class="milestone-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
+                                </svg>
+                            </div>
+                            <div class="milestone-date">May 2025</div>
                         </div>
-                        <div class="timeline-dot" data-date="Oct 2024" data-news="2">
-                            <div class="dot-icon">🏆</div>
-                            <span class="dot-date">Oct 2024</span>
+
+                        <!-- Milestone 3 -->
+                        <div class="milestone active" data-milestone="2" onclick="selectMilestone(2)">
+                            <div class="milestone-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+                                </svg>
+                            </div>
+                            <div class="milestone-date">July 2025</div>
                         </div>
                     </div>
                 </div>
-                <button class="timeline-nav-btn next" onclick="scrollTimeline(1)">›</button>
+                
+                <button class="timeline-arrow right" onclick="scrollTimelineRight()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
             </div>
 
-            <!-- News Content -->
-            <div class="news-content">
-                <div class="news-item active">
-                    <h3 class="news-title">Text-to-Speech Paper Accepted at ICNLSP 2025!</h3>
-                    <p class="news-description">
+            <!-- Description Panel -->
+            <div class="description-panel">
+                <div class="milestone-content" data-content="0">
+                    <h3 class="milestone-title">IEEEXtreme 18.0 Competition Success</h3>
+                    <p class="milestone-description">
+                        Achieved a significant improvement in IEEEXtreme global rankings, moving from rank <strong>1370</strong> 
+                        in version 17.0 to rank <strong>491</strong> in version 18.0 with team "DebuggingTrio". This 24-hour 
+                        programming competition tested our algorithmic problem-solving skills across algorithms, data structures, 
+                        and complex problem-solving challenges.
+                    </p>
+                    <a href="https://ieeextreme.org/ieeextreme-18-0-ranking/" target="_blank" class="milestone-link">
+                        View Rankings →
+                    </a>
+                </div>
+
+                <div class="milestone-content" data-content="1">
+                    <h3 class="milestone-title">Research Internship at École Polytechnique</h3>
+                    <p class="milestone-description">
+                        Started my research internship at CMAP Lab, École Polytechnique, working on French Text-to-Speech systems 
+                        under the supervision of Prof. Eric Moulines. Focus areas include prosody control, multilingual adaptation, 
+                        and voice conversion techniques using state-of-the-art deep learning methods.
+                    </p>
+                </div>
+
+                <div class="milestone-content active" data-content="2">
+                    <h3 class="milestone-title">Text-to-Speech Paper Accepted at ICNLSP 2025!</h3>
+                    <p class="milestone-description">
                         Our paper <strong>"Improving French Synthetic Speech Quality via SSML Prosody Control"</strong> has been accepted 
                         for publication at ICNLSP 2025. We present the first end-to-end system that adds prosody markup to 
                         French text using LLMs — improving pitch, rate, and volume control and boosting naturalness in 
                         synthetic speech.
                     </p>
-                    <a href="https://arxiv.org/abs/2508.17494" target="_blank" class="news-link">Read Paper →</a>
-                </div>
-
-                <div class="news-item">
-                    <h3 class="news-title">Research Internship at École Polytechnique</h3>
-                    <p class="news-description">
-                        Started my research internship at CMAP Lab, École Polytechnique, working on French Text-to-Speech systems 
-                        under the supervision of Prof. Eric Moulines. Focus areas include prosody control, multilingual adaptation, 
-                        and voice conversion techniques.
-                    </p>
-                </div>
-
-                <div class="news-item">
-                    <h3 class="news-title">IEEEXtreme 18.0 Competition Success</h3>
-                    <p class="news-description">
-                        Achieved a significant improvement in IEEEXtreme global rankings, moving from rank <strong>1370</strong> 
-                        in version 17.0 to rank <strong>491</strong> in version 18.0 with team "DebuggingTrio". This 24-hour 
-                        programming competition tested our algorithmic problem-solving skills.
-                    </p>
-                    <a href="https://ieeextreme.org/ieeextreme-18-0-ranking/" target="_blank" class="news-link">View Rankings →</a>
+                    <a href="https://arxiv.org/abs/2508.17494" target="_blank" class="milestone-link">
+                        Read Paper →
+                    </a>
                 </div>
             </div>
         </div>

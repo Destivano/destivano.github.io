@@ -658,139 +658,161 @@ section {
 
 /* ========== News & Recognition Section ========== */
 .news-section {
-    background: white;
+    background: #f8f9fa;
     padding: 80px 0;
 }
 
-.timeline-nav {
+/* Timeline Container */
+.timeline-container {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    margin: 2rem 0 3rem;
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 3rem auto;
+    max-width: 900px;
+    padding: 0 20px;
 }
 
-.timeline-nav-btn {
+.timeline-arrow {
     background: white;
-    border: 2px solid var(--border-color);
+    border: 2px solid #e0e0e0;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
-    color: var(--primary-color);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.3s ease;
     flex-shrink: 0;
+    color: #667eea;
 }
 
-.timeline-nav-btn:hover {
-    background: var(--primary-color);
+.timeline-arrow:hover {
+    background: #667eea;
+    border-color: #667eea;
     color: white;
-    border-color: var(--primary-color);
+    transform: scale(1.1);
 }
 
-.timeline-scroll {
+.timeline-arrow:active {
+    transform: scale(0.95);
+}
+
+.timeline-wrapper {
     flex: 1;
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-y: visible;
     scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-}
-
-.timeline-scroll::-webkit-scrollbar {
-    height: 0;
-}
-
-.timeline-items-horizontal {
-    display: flex;
-    gap: 3rem;
-    padding: 1rem 0;
+    padding: 20px 0;
     position: relative;
-    min-width: min-content;
 }
 
-.timeline-items-horizontal::before {
+.timeline-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.timeline-track {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 120px;
+    position: relative;
+    min-width: 100%;
+    padding: 10px 40px;
+}
+
+/* Connecting Line */
+.timeline-track::before {
     content: '';
     position: absolute;
-    top: 35px;
-    left: 0;
-    right: 0;
+    top: 45px;
+    left: 80px;
+    right: 80px;
     height: 3px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(90deg, #cbd5e0 0%, #667eea 50%, #764ba2 100%);
     z-index: 0;
 }
 
-.timeline-dot {
+/* Milestone */
+.milestone {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
+    gap: 12px;
     cursor: pointer;
     position: relative;
     z-index: 1;
-    transition: var(--transition);
-    flex-shrink: 0;
+    transition: all 0.3s ease;
 }
 
-.timeline-dot:hover {
-    transform: translateY(-5px);
+.milestone:hover {
+    transform: translateY(-8px);
 }
 
-.dot-icon {
-    width: 50px;
-    height: 50px;
+.milestone-icon {
+    width: 70px;
+    height: 70px;
     background: white;
-    border: 4px solid var(--primary-color);
+    border: 4px solid #cbd5e0;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
-    box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
-    transition: var(--transition);
+    color: #a0aec0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.timeline-dot.active .dot-icon,
-.timeline-dot:hover .dot-icon {
-    background: var(--primary-color);
-    border-color: var(--secondary-color);
-    transform: scale(1.1);
+.milestone.active .milestone-icon,
+.milestone:hover .milestone-icon {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-color: #764ba2;
+    color: white;
+    transform: scale(1.15);
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
 }
 
-.dot-date {
-    font-size: 0.85rem;
-    color: var(--text-light);
+.milestone-date {
+    font-size: 0.9rem;
     font-weight: 600;
+    color: #718096;
     white-space: nowrap;
+    transition: all 0.3s ease;
 }
 
-.timeline-dot.active .dot-date {
-    color: var(--primary-color);
+.milestone.active .milestone-date {
+    color: #667eea;
     font-weight: 700;
+    font-size: 0.95rem;
 }
 
-.news-content {
-    max-width: 900px;
-    margin: 0 auto;
+/* Description Panel */
+.description-panel {
+    max-width: 800px;
+    margin: 3rem auto 0;
+    padding: 0 20px;
     position: relative;
-    min-height: 250px;
+    min-height: 200px;
 }
 
-.news-item {
+.milestone-content {
     display: none;
-    animation: fadeIn 0.5s ease-in-out;
+    animation: slideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    background: white;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-.news-item.active {
+.milestone-content.active {
     display: block;
 }
 
-@keyframes fadeIn {
+@keyframes slideUp {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
     }
     to {
         opacity: 1;
@@ -798,42 +820,76 @@ section {
     }
 }
 
-.news-title {
-    font-size: 2rem;
-    color: var(--text-color);
+.milestone-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2d3748;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    line-height: 1.3;
 }
 
-.news-description {
-    font-size: 1.1rem;
+.milestone-description {
+    font-size: 1.05rem;
     line-height: 1.8;
-    color: var(--text-color);
+    color: #4a5568;
     margin-bottom: 1.5rem;
 }
 
-.news-description strong {
-    color: var(--primary-color);
+.milestone-description strong {
+    color: #667eea;
     font-weight: 600;
 }
 
-.news-link {
+.milestone-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    color: var(--primary-color);
+    gap: 8px;
+    color: #667eea;
     text-decoration: none;
     font-weight: 600;
-    transition: var(--transition);
     font-size: 1.05rem;
+    transition: all 0.3s ease;
+    padding: 8px 0;
 }
 
-.news-link:hover {
-    color: var(--secondary-color);
-    transform: translateX(5px);
+.milestone-link:hover {
+    color: #764ba2;
+    gap: 12px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .timeline-container {
+        gap: 1rem;
+    }
+    
+    .timeline-arrow {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .timeline-track {
+        gap: 80px;
+        padding: 10px 20px;
+    }
+    
+    .timeline-track::before {
+        left: 50px;
+        right: 50px;
+    }
+    
+    .milestone-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .milestone-title {
+        font-size: 1.5rem;
+    }
+    
+    .milestone-content {
+        padding: 1.5rem;
+    }
 }
 
 /* ========== Volunteering & Leadership Section ========== */
