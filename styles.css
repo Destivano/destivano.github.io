@@ -264,13 +264,16 @@ section {
 
 .about-image img {
     width: 100%;
-    border-radius: 20px;
+    border-radius: 50%;
     box-shadow: var(--shadow-lg);
     transition: var(--transition);
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
 }
 
 .about-image img:hover {
     transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
 }
 
 .about-text h3 {
@@ -445,7 +448,7 @@ section {
 }
 
 .project-subtitle {
-    color: var(--text-light);
+    color: #4a5568;
     font-size: 0.95rem;
     font-style: italic;
     margin: 0;
@@ -495,7 +498,7 @@ section {
 
 .project-details li {
     margin-bottom: 0.8rem;
-    color: var(--text-light);
+    color: #4a5568;
     line-height: 1.7;
 }
 
@@ -776,7 +779,7 @@ section {
 }
 
 .timeline-subtitle {
-    color: var(--text-light);
+    color: #4a5568;
     font-size: 0.95rem;
     font-style: italic;
     margin-bottom: 1rem;
@@ -790,7 +793,7 @@ section {
 }
 
 .timeline-details p {
-    color: var(--text-light);
+    color: #4a5568;
     margin-bottom: 1rem;
 }
 
@@ -801,7 +804,7 @@ section {
 
 .timeline-details li {
     margin-bottom: 0.5rem;
-    color: var(--text-light);
+    color: #4a5568;
     line-height: 1.6;
 }
 
