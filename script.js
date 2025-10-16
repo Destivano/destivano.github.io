@@ -15,6 +15,57 @@ navLinks.forEach(link => {
     });
 });
 
+// ========== News Timeline Navigation ==========
+let currentNewsIndex = 0;
+const timelineDots = document.querySelectorAll('.timeline-dot');
+const newsItems = document.querySelectorAll('.news-item');
+
+function showNews(index) {
+    currentNewsIndex = index;
+    
+    // Update active states
+    timelineDots.forEach((dot, i) => {
+        if (i === index) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+    
+    newsItems.forEach((item, i) => {
+        if (i === index) {
+            item.classList.add('active');
+        } else {
+            item.classList.remove('active');
+        }
+    });
+}
+
+// Click handlers for timeline dots
+timelineDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        showNews(index);
+    });
+});
+
+// Set first item as active on load
+if (timelineDots.length > 0) {
+    showNews(0);
+}
+
+// Timeline scroll function
+function scrollTimeline(direction) {
+    const scrollContainer = document.querySelector('.timeline-scroll');
+    const scrollAmount = 200;
+    if (scrollContainer) {
+        scrollContainer.scrollBy({
+            left: direction * scrollAmount,
+            behavior: 'smooth'
+        });
+    }
+}
+
+
 // ========== Active Navigation on Scroll ==========
 const sections = document.querySelectorAll('section');
 const navbar = document.getElementById('navbar');
