@@ -390,49 +390,58 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
-    margin: 2rem 0;
+    gap: 1.5rem;
+    margin: 3rem 0;
     position: relative;
+    padding: 1rem 0;
 }
 
 .nav-btn {
     background: white;
-    border: 2px solid #ddd;
+    border: 2px solid #e0e0e0;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
     justify-content: center;
     color: #666;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
     font-weight: bold;
     background: linear-gradient(135deg, #fff, #f9f9f9);
+    flex-shrink: 0;
 }
 
 .nav-btn:hover {
-    background: linear-gradient(135deg, #f0f0f0, #e9e9e9);
-    border-color: #bbb;
-    transform: scale(1.1);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    color: #2c3e50;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    border-color: transparent;
+    color: white;
+    transform: scale(1.15);
+    box-shadow: 0 6px 20px rgba(106, 17, 203, 0.3);
+}
+
+.nav-btn:active {
+    transform: scale(1.05);
 }
 
 /* Timeline Track */
 .timeline-track {
     display: flex;
     align-items: center;
-    gap: 2rem;
-    padding: 0 1rem;
+    gap: 3rem;
+    padding: 1.5rem 2rem;
     overflow-x: auto;
     scroll-behavior: smooth;
     scrollbar-width: none; /* Hide scrollbar for Firefox */
     -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
     max-width: 80vw;
     position: relative;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50px;
+    backdrop-filter: blur(10px);
 }
 
 .timeline-track::-webkit-scrollbar {
@@ -444,13 +453,15 @@ section {
     content: '';
     position: absolute;
     top: 50%;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #6a11cb, #2575fc);
-    z-index: -1;
+    left: 1rem;
+    right: 1rem;
+    height: 3px;
+    background: linear-gradient(90deg, #6a11cb 0%, #2575fc 50%, #6a11cb 100%);
+    z-index: 0;
     transform: translateY(-50%);
     pointer-events: none;
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(106, 17, 203, 0.3);
 }
 
 /* Milestone */
@@ -459,12 +470,13 @@ section {
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     min-width: 80px;
+    position: relative;
 }
 
 .milestone:hover {
-    transform: scale(1.1);
+    transform: translateY(-5px) scale(1.05);
 }
 
 .milestone .icon {
@@ -472,19 +484,24 @@ section {
     height: 60px;
     border-radius: 50%;
     background: #fff;
-    border: 2px solid #ddd;
+    border: 3px solid #e0e0e0;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    position: relative;
+    z-index: 2;
 }
 
 .milestone .year {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #666;
     margin-top: 0.25rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
 }
 
 /* Active State */
@@ -492,7 +509,8 @@ section {
     background: linear-gradient(135deg, #6a11cb, #2575fc);
     color: white;
     border-color: transparent;
-    box-shadow: 0 0 15px rgba(106, 17, 203, 0.4);
+    box-shadow: 0 0 20px rgba(106, 17, 203, 0.5), 0 4px 15px rgba(106, 17, 203, 0.3);
+    transform: scale(1.15);
 }
 
 .milestone.active .year {
@@ -503,32 +521,45 @@ section {
 /* Project Detail Panel */
 .project-detail {
     background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
     max-width: 800px;
-    margin: 2rem auto;
+    margin: 3rem auto;
     text-align: left;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(106, 17, 203, 0.1);
+}
+
+.project-detail:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
 }
 
 .project-detail h3 {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
     color: #2c3e50;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .project-detail #detail-meta {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: #777;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
     font-weight: 500;
+    line-height: 1.6;
 }
 
 .project-detail #detail-description {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.75rem;
     color: #555;
-    line-height: 1.6;
+    line-height: 1.8;
+    font-size: 1.05rem;
 }
 
 .project-detail #detail-description a {
@@ -544,31 +575,46 @@ section {
 .tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1rem;
+    gap: 0.65rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .tag {
     background: linear-gradient(135deg, #6a11cb, #2575fc);
     color: white;
-    padding: 0.4rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(106, 17, 203, 0.2);
+}
+
+.tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(106, 17, 203, 0.3);
 }
 
 .view-link {
     display: inline-block;
     color: #2575fc;
     text-decoration: none;
-    font-weight: 600;
-    margin-top: 1rem;
-    transition: color 0.2s;
+    font-weight: 700;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #2575fc;
+    border-radius: 30px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: transparent;
 }
 
 .view-link:hover {
-    text-decoration: underline;
-    color: #6a11cb;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(106, 17, 203, 0.3);
 }
 
 /* Responsive Design */
