@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         detailCompany.textContent = milestone.dataset.company || '';
         detailRole.textContent = milestone.dataset.role || '';
         detailDate.textContent = milestone.dataset.date || '';
-        detailDescription.textContent = milestone.dataset.description || '';
+        detailDescription.innerHTML = milestone.dataset.description || '';
 
         // Clear and rebuild tags
         detailTags.innerHTML = '';
