@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const detailTitle = document.getElementById('detail-title');
     const detailCompany = document.getElementById('detail-company');
     const detailRole = document.getElementById('detail-role');
-    const detailYear = document.getElementById('detail-year');
+    const detailDate = document.getElementById('detail-date');
     const detailDescription = document.getElementById('detail-description');
     const detailTags = document.getElementById('detail-tags');
 
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const title = milestone.dataset.title;
         const company = milestone.dataset.company;
         const role = milestone.dataset.role || "Role Not Specified";
-        const year = milestone.dataset.year;
+        const date = milestone.dataset.date;
         const description = milestone.dataset.description || "No description available.";
         const link = milestone.dataset.link;
         const tagsStr = milestone.dataset.tags || "";
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         detailTitle.textContent = title;
         detailCompany.textContent = company;
         detailRole.textContent = role;
-        detailYear.textContent = year;
+        detailDate.textContent = date;
         
         // Handle link in description
         if (link && link.trim() !== '') {
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update tags
         detailTags.innerHTML = '';
         if (tagsStr) {
-            const tags = tagsStr.split(',');
+            const tags = tagsStr.split(', ');
             tags.forEach(tag => {
                 const span = document.createElement('span');
                 span.className = 'tag';
