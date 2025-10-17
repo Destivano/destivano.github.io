@@ -18,7 +18,7 @@ navLinks.forEach(link => {
 // ========== Projects Timeline Navigation ==========
 document.addEventListener('DOMContentLoaded', () => {
     const track = document.querySelector('.timeline-track');
-    const milestones = document.querySelectorAll('.milestone');
+    const milestones = Array.from(document.querySelectorAll('.milestone')).reverse(); // ← INVERSE ORDER!
     const navLeft = document.querySelector('.nav-btn.left');
     const navRight = document.querySelector('.nav-btn.right');
     const detailTitle = document.getElementById('detail-title');
@@ -27,57 +27,59 @@ document.addEventListener('DOMContentLoaded', () => {
     const detailDate = document.getElementById('detail-date');
     const detailDescription = document.getElementById('detail-description');
     const detailTags = document.getElementById('detail-tags');
+    const detailLink = document.getElementById('detail-link');
 
-    // Update detail panel based on active milestone
+    let activeIndex = 0; // Start with newest (leftmost)
+
+    // Update detail panel based on milestone data
     function updateDetailPanel(milestone) {
-        const title = milestone.dataset.title;
-        const company = milestone.dataset.company;
-        const role = milestone.dataset.role || "Role Not Specified";
-        const date = milestone.dataset.date;
-        const description = milestone.dataset.description || "No description available.";
-        const link = milestone.dataset.link;
-        const tagsStr = milestone.dataset.tags || "";
+        detailTitle.textContent = milestone.dataset.title;
+        detailCompany.textContent = milestone.dataset.company;
+        detailRole.textContent = milestone.dataset.role;
+        detailDate.textContent = milestone.dataset.date;
+        detailDescription.textContent = milestone.dataset.description;
 
-        detailTitle.textContent = title;
-        detailCompany.textContent = company;
-        detailRole.textContent = role;
-        detailDate.textContent = date;
-        
-        // Handle link in description
-        if (link && link.trim() !== '') {
-            detailDescription.innerHTML = description + ` <a href="${link}" target="_blank">View Project</a>`;
-        } else {
-            detailDescription.innerHTML = description;
-        }
-
-        // Update tags
+        // Clear and rebuild tags
         detailTags.innerHTML = '';
-        if (tagsStr) {
-            const tags = tagsStr.split(', ');
-            tags.forEach(tag => {
-                const span = document.createElement('span');
-                span.className = 'tag';
-                span.textContent = tag.trim();
-                detailTags.appendChild(span);
-            });
+        const tags = milestone.dataset.tags.split(', ');
+        tags.forEach(tag => {
+            const span = document.createElement('span');
+            span.className = 'tag';
+            span.textContent = tag;
+            detailTags.appendChild(span);
+        });
+
+        // Set link text based on URL
+        const linkUrl = milestone.dataset.link;
+        if (linkUrl && linkUrl.trim() !== '' && linkUrl !== '#') {
+            detailLink.style.display = 'inline-block';
+            if (linkUrl.includes('linkedin.com')) {
+                detailLink.textContent = 'View LinkedIn Post';
+            } else if (linkUrl.includes('github.com')) {
+                detailLink.textContent = 'View on GitHub';
+            } else {
+                detailLink.textContent = 'View Project';
+            }
+            detailLink.href = linkUrl;
+        } else {
+            detailLink.style.display = 'none';
         }
+
+        // Remove active from all, add to current
+        milestones.forEach(m => m.classList.remove('active'));
+        milestone.classList.add('active');
     }
 
-    // Set initial active milestone
-    let activeIndex = Array.from(milestones).findIndex(el => el.classList.contains('active'));
-    if (activeIndex === -1) activeIndex = 0;
+    // Initialize with first milestone (newest)
+    updateDetailPanel(milestones[activeIndex]);
 
-    // Click handlers for milestones
+    // Click handler for milestones
     milestones.forEach((milestone, index) => {
         milestone.addEventListener('click', () => {
-            // Remove active class from all
-            milestones.forEach(m => m.classList.remove('active'));
-            // Add to clicked
-            milestone.classList.add('active');
             activeIndex = index;
             updateDetailPanel(milestone);
 
-            // Scroll to center the clicked milestone
+            // Smooth scroll to center this milestone
             const rect = milestone.getBoundingClientRect();
             const trackRect = track.getBoundingClientRect();
             const offset = rect.left - trackRect.left + rect.width / 2 - trackRect.width / 2;
@@ -85,31 +87,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Navigation buttons
+    // Left Button → Go to older project (right)
     navLeft.addEventListener('click', () => {
-        if (activeIndex > 0) {
-            activeIndex--;
-            const nextMilestone = milestones[activeIndex];
-            nextMilestone.click(); // Triggers update and scroll
-        }
-    });
-
-    navRight.addEventListener('click', () => {
         if (activeIndex < milestones.length - 1) {
             activeIndex++;
-            const nextMilestone = milestones[activeIndex];
-            nextMilestone.click(); // Triggers update and scroll
+            const milestone = milestones[activeIndex];
+            milestone.click(); // Triggers update + scroll
         }
     });
 
-    // Initialize with first milestone if no active one
-    if (!document.querySelector('.milestone.active')) {
-        milestones[0].click();
-    } else {
-        updateDetailPanel(document.querySelector('.milestone.active'));
-    }
+    // Right Button → Go to newer project (left)
+    navRight.addEventListener('click', () => {
+        if (activeIndex > 0) {
+            activeIndex--;
+            const milestone = milestones[activeIndex];
+            milestone.click(); // Triggers update + scroll
+        }
+    });
 
-    // Optional: Auto-scroll to active milestone on load
+    // Optional: Scroll to active milestone on load
     const activeMilestone = document.querySelector('.milestone.active');
     if (activeMilestone) {
         const rect = activeMilestone.getBoundingClientRect();
@@ -118,6 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
         track.scrollTo({ left: offset, behavior: 'smooth' });
     }
 });
+
+// ========== Typewriter Effect ==========
 
 
 
