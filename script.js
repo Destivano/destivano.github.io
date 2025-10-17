@@ -258,56 +258,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ========== Contact Form Handling ==========
-const contactForm = document.getElementById('contact-form');
-const formStatus = document.getElementById('form-status');
-
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    // Get form values
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const subject = document.getElementById('subject').value;
-    const message = document.getElementById('message').value;
-
-    // Simulate form submission (replace with actual backend logic)
-    formStatus.textContent = 'Sending message...';
-    formStatus.className = '';
-
-    // Simulate API call
-    setTimeout(() => {
-        // Success
-        formStatus.textContent = 'Message sent successfully! I\'ll get back to you soon.';
-        formStatus.className = 'success';
-        contactForm.reset();
-
-        // Clear status after 5 seconds
-        setTimeout(() => {
-            formStatus.textContent = '';
-            formStatus.className = '';
-        }, 5000);
-
-        // For actual implementation, you would use fetch or XMLHttpRequest
-        // Example:
-        // fetch('your-api-endpoint', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify({ name, email, subject, message })
-        // })
-        // .then(response => response.json())
-        // .then(data => {
-        //     formStatus.textContent = 'Message sent successfully!';
-        //     formStatus.className = 'success';
-        //     contactForm.reset();
-        // })
-        // .catch(error => {
-        //     formStatus.textContent = 'Error sending message. Please try again.';
-        //     formStatus.className = 'error';
-        // });
-    }, 1500);
-});
-
 // ========== Scroll Animations ==========
 const observerOptions = {
     threshold: 0.1,
