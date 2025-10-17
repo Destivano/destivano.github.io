@@ -167,9 +167,9 @@ window.addEventListener('scroll', () => {
 const typewriter = document.getElementById('typewriter');
 const phrases = [
     'AI Engineering Student',
-    'Deep Learning Researcher',
-    'Trustworthy AI Enthusiast',
-    'Future PhD Candidate'
+    'Passionate about Research and Innovation',
+    'Currently working on LVLMs, VLAs and Embodied AI',
+    'Under the supervision of Mr. Gianni FRANCHI'
 ];
 
 let phraseIndex = 0;
