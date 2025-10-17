@@ -15,117 +15,121 @@ navLinks.forEach(link => {
     });
 });
 
-// ========== Projects Timeline Navigation ==========
+// ============================================
+// Timeline Navigation & Detail Panel Logic
+// ============================================
 document.addEventListener('DOMContentLoaded', () => {
+    // Select all milestones in DOM order (left to right = newest to oldest)
+    const milestones = Array.from(document.querySelectorAll('.milestone'));
     const track = document.querySelector('.timeline-track');
-    const milestonesNodes = document.querySelectorAll('.milestone');
-    const navLeft = document.querySelector('.nav-btn.left');
-    const navRight = document.querySelector('.nav-btn.right');
-    const detailTitle = document.getElementById('detail-title');
-    const detailCompany = document.getElementById('detail-company');
-    const detailRole = document.getElementById('detail-role');
-    const detailDate = document.getElementById('detail-date');
-    const detailDescription = document.getElementById('detail-description');
-    const detailTags = document.getElementById('detail-tags');
-    const detailLink = document.getElementById('detail-link');
+    const leftBtn = document.querySelector('.nav-btn.left');
+    const rightBtn = document.querySelector('.nav-btn.right');
+    
+    let activeIndex = 0;
 
-    if (!track || milestonesNodes.length === 0) return;
-
-    let activeIndex = 0; // Start with first milestone (leftmost in HTML)
-
-    // Update detail panel based on milestone data
+    // ============================================
+    // Update Detail Panel Function
+    // ============================================
     function updateDetailPanel(milestone) {
-        detailTitle.textContent = milestone.dataset.title || '';
-        detailCompany.textContent = milestone.dataset.company || '';
-        detailRole.textContent = milestone.dataset.role || '';
-        detailDate.textContent = milestone.dataset.date || '';
-        detailDescription.innerHTML = milestone.dataset.description || '';
+        // Read data attributes
+        const title = milestone.getAttribute('data-title');
+        const company = milestone.getAttribute('data-company');
+        const role = milestone.getAttribute('data-role');
+        const date = milestone.getAttribute('data-date');
+        const description = milestone.getAttribute('data-description');
+        const tags = milestone.getAttribute('data-tags');
+        const link = milestone.getAttribute('data-link');
 
-        // Clear and rebuild tags
-        detailTags.innerHTML = '';
-        const tagsStr = milestone.dataset.tags || '';
-        if (tagsStr) {
-            const tags = tagsStr.split(',').map(t => t.trim()).filter(t => t);
-            tags.forEach(tag => {
-                const span = document.createElement('span');
-                span.className = 'tag';
-                span.textContent = tag;
-                detailTags.appendChild(span);
+        // Update detail panel elements
+        document.getElementById('detail-title').textContent = title;
+        document.getElementById('detail-company').textContent = company;
+        document.getElementById('detail-role').textContent = role;
+        document.getElementById('detail-date').textContent = date;
+        document.getElementById('detail-description').innerHTML = description;
+
+        // Create tags
+        const tagsContainer = document.getElementById('detail-tags');
+        tagsContainer.innerHTML = '';
+        if (tags) {
+            tags.split(',').forEach(tag => {
+                const tagSpan = document.createElement('span');
+                tagSpan.className = 'tag';
+                tagSpan.textContent = tag.trim();
+                tagsContainer.appendChild(tagSpan);
             });
         }
 
-        // Set link text based on URL
-        const linkUrl = milestone.dataset.link || '';
-        if (linkUrl && linkUrl.trim() !== '' && linkUrl !== '#') {
-            detailLink.style.display = 'inline-block';
-            if (linkUrl.includes('linkedin.com')) {
-                detailLink.textContent = 'View LinkedIn Post →';
-            } else if (linkUrl.includes('github.com')) {
-                detailLink.textContent = 'View on GitHub →';
-            } else if (linkUrl.includes('http')) {
-                detailLink.textContent = 'View Project →';
+        // Update link
+        const linkElement = document.getElementById('detail-link');
+        if (link && link.trim() !== '') {
+            linkElement.href = link;
+            linkElement.style.display = 'inline-flex';
+            
+            // Set link text based on URL
+            if (link.includes('linkedin.com')) {
+                linkElement.textContent = 'View LinkedIn Post';
             } else {
-                detailLink.style.display = 'none';
+                linkElement.textContent = 'View Project';
             }
-            detailLink.href = linkUrl;
-            detailLink.target = '_blank';
         } else {
-            detailLink.style.display = 'none';
+            linkElement.style.display = 'none';
         }
 
-        // Remove active from all, add to current
-        milestonesNodes.forEach(m => m.classList.remove('active'));
+        // Update active state
+        milestones.forEach(m => m.classList.remove('active'));
         milestone.classList.add('active');
     }
 
-    // Initialize with first milestone
-    if (milestonesNodes[activeIndex]) {
-        updateDetailPanel(milestonesNodes[activeIndex]);
+    // ============================================
+    // Smooth Scroll to Center Milestone
+    // ============================================
+    function scrollToMilestone(milestone) {
+        const rect = milestone.getBoundingClientRect();
+        const trackRect = track.getBoundingClientRect();
+        const offset = rect.left - trackRect.left + rect.width / 2 - trackRect.width / 2;
+        track.scrollBy({ left: offset, behavior: 'smooth' });
     }
 
-    // Click handler for milestones
-    milestonesNodes.forEach((milestone, index) => {
-        milestone.addEventListener('click', (e) => {
-            e.preventDefault();
+    // ============================================
+    // Milestone Click Handler
+    // ============================================
+    milestones.forEach((milestone, index) => {
+        milestone.addEventListener('click', () => {
             activeIndex = index;
             updateDetailPanel(milestone);
-
-            // Smooth scroll to center this milestone
-            setTimeout(() => {
-                const rect = milestone.getBoundingClientRect();
-                const trackRect = track.getBoundingClientRect();
-                const offset = rect.left - trackRect.left - trackRect.width / 2 + rect.width / 2;
-                track.scrollBy({ left: offset, behavior: 'smooth' });
-            }, 50);
+            scrollToMilestone(milestone);
         });
     });
 
-    // Left Button → Go to previous project
-    navLeft.addEventListener('click', () => {
+    // ============================================
+    // Left Button (Go to Older Project → Right)
+    // ============================================
+    leftBtn.addEventListener('click', () => {
+        if (activeIndex < milestones.length - 1) {
+            activeIndex++;
+            milestones[activeIndex].click();
+        }
+    });
+
+    // ============================================
+    // Right Button (Go to Newer Project ← Left)
+    // ============================================
+    rightBtn.addEventListener('click', () => {
         if (activeIndex > 0) {
             activeIndex--;
-            milestonesNodes[activeIndex].click();
+            milestones[activeIndex].click();
         }
     });
 
-    // Right Button → Go to next project
-    navRight.addEventListener('click', () => {
-        if (activeIndex < milestonesNodes.length - 1) {
-            activeIndex++;
-            milestonesNodes[activeIndex].click();
-        }
-    });
-
-    // Center active milestone on load
-    setTimeout(() => {
-        const activeMilestone = document.querySelector('.milestone.active');
-        if (activeMilestone) {
-            const rect = activeMilestone.getBoundingClientRect();
-            const trackRect = track.getBoundingClientRect();
-            const offset = rect.left - trackRect.left - trackRect.width / 2 + rect.width / 2;
-            track.scrollBy({ left: offset, behavior: 'smooth' });
-        }
-    }, 100);
+    // ============================================
+    // Initial Load: Display First Milestone
+    // ============================================
+    if (milestones.length > 0) {
+        updateDetailPanel(milestones[0]);
+        setTimeout(() => {
+            scrollToMilestone(milestones[0]);
+        }, 100);
+    }
 });
 
 // ========== Typewriter Effect ==========

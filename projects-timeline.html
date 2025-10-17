@@ -1,0 +1,160 @@
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Projects & Experience</h2>
+            
+            <!-- Timeline Container -->
+            <div class="timeline-container">
+                <button class="timeline-arrow left" onclick="scrollProjectLeft()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                
+                <div class="timeline-wrapper">
+                    <div class="timeline-track">
+                        <!-- Project Milestones -->
+                        <div class="milestone" data-project="0" onclick="selectProject(0)">
+                            <div class="milestone-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/>
+                                </svg>
+                            </div>
+                            <div class="milestone-date">2024</div>
+                        </div>
+
+                        <div class="milestone" data-project="1" onclick="selectProject(1)">
+                            <div class="milestone-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                                </svg>
+                            </div>
+                            <div class="milestone-date">Oct 2024</div>
+                        </div>
+
+                        <div class="milestone" data-project="2" onclick="selectProject(2)">
+                            <div class="milestone-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+                                </svg>
+                            </div>
+                            <div class="milestone-date">May 2025</div>
+                        </div>
+
+                        <div class="milestone" data-project="3" onclick="selectProject(3)">
+                            <div class="milestone-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                            </div>
+                            <div class="milestone-date">Oct 2025</div>
+                        </div>
+
+                        <div class="milestone active" data-project="4" onclick="selectProject(4)">
+                            <div class="milestone-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                            </div>
+                            <div class="milestone-date">Present</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="timeline-arrow right" onclick="scrollProjectRight()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Project Description Panel -->
+            <div class="description-panel">
+                <!-- Project 0: Tunisie Télécom -->
+                <div class="milestone-content" data-content="0">
+                    <h3 class="milestone-title">Stage Opérateur – Tunisie Télécom</h3>
+                    <p class="milestone-subtitle">Professional Immersion Internship | 2024</p>
+                    <p class="milestone-description">
+                        Stage d'un mois pour une immersion dans le milieu professionnel des infrastructures de télécommunications.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Telecommunications</span>
+                        <span class="tag">Infrastructure</span>
+                    </div>
+                </div>
+
+                <!-- Project 1: STMicroelectronics -->
+                <div class="milestone-content" data-content="1">
+                    <h3 class="milestone-title">ML for Microelectronics Similarity – STMicroelectronics</h3>
+                    <p class="milestone-subtitle">Team Engineering Project | Oct 2024 – May 2025</p>
+                    <p class="milestone-description">
+                        Team member responsible for developing and implementing the machine learning algorithms. 
+                        The project delivered a custom AI model that reached <strong>98% accuracy</strong>, surpassing the performance of the company's internal solution.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Scikit-learn</span>
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Pandas</span>
+                        <span class="tag">Numpy</span>
+                    </div>
+                </div>
+
+                <!-- Project 2: TTS Research -->
+                <div class="milestone-content" data-content="2">
+                    <h3 class="milestone-title">Research Internship – French Text-to-Speech Systems</h3>
+                    <p class="milestone-subtitle">CMAP Lab, École Polytechnique | Supervised by Prof. Eric Moulines | May – Sept 2025</p>
+                    <p class="milestone-description">
+                        Research on improving French Text-to-Speech (TTS) systems: prosody control, multilingual adaptation, voice conversion.
+                        <br><br>
+                        <strong>Publications:</strong><br>
+                        • ICNLSP 2025 (accepted) – <a href="https://arxiv.org/abs/2508.17494" target="_blank" class="milestone-link">A french Text to Speech system for the France 2030 plan</a><br>
+                        • ICASSP 2026 (under evaluation) – <a href="https://github.com/hi-paris/CosyVoice2-EU" target="_blank" class="milestone-link">Efficient adaptation method of a SOTA Voice Cloning model to European languages</a>
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Neural Networks</span>
+                        <span class="tag">Transformers</span>
+                        <span class="tag">TTS</span>
+                        <span class="tag">Data Processing</span>
+                        <span class="tag">Voice Cloning</span>
+                    </div>
+                </div>
+
+                <!-- Project 3: NASA Space Apps -->
+                <div class="milestone-content" data-content="3">
+                    <h3 class="milestone-title">NASA Space Apps Challenge – Hunting for Exoplanets with AI</h3>
+                    <p class="milestone-subtitle">Team "Make Pluto Great Again" | Paris, France | Oct 2025</p>
+                    <p class="milestone-description">
+                        <a href="https://www.makeplutogreatagain.us" target="_blank" class="milestone-link">Built a full-stack data pipeline to identify exoplanets from light curve data</a>, 
+                        achieving ~94.3% accuracy. Trained multiple models (CNN, Autoencoder, MLP) for exoplanet detection.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">Flask</span>
+                        <span class="tag">Google Cloud Run</span>
+                        <span class="tag">CNNs</span>
+                        <span class="tag">Autoencoders</span>
+                    </div>
+                </div>
+
+                <!-- Project 4: Embodied AI VLA -->
+                <div class="milestone-content active" data-content="4">
+                    <h3 class="milestone-title">Embodied AI with Vision-Language-Action Models (VLAs)</h3>
+                    <p class="milestone-subtitle">Academic Project | Team of 5 | Supervised by Prof. Gianni FRANCHI | Oct 2025 – Present</p>
+                    <p class="milestone-description">
+                        Develop a pipeline where a Vision-Language-Action Model (VLA) guides a robot's navigation and interaction with natural language. 
+                        Compare the performance of VLAs against traditional LVLMs to measure improvements in navigation accuracy and task success.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">PyBullet</span>
+                        <span class="tag">MuJoCo</span>
+                        <span class="tag">Embodied AI</span>
+                        <span class="tag">VLAs</span>
+                        <span class="tag">LVLMs</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

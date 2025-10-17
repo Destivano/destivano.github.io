@@ -129,7 +129,7 @@
                     </div>
                 </div>
                 <div class="skill-card">
-                    <div class="skill-icon">🛠️</div>
+                    <div class="skill-icon">�️</div>
                     <h3>Frameworks & Platforms</h3>
                     <div class="skill-tags">
                         <span class="tag">Scikit-learn</span>
@@ -143,205 +143,118 @@
         </div>
     </section>
 
-    <!-- Projects & Experience Section -->
-    <section id="projects" class="volunteering">
-        <div class="container">
-            <h2 class="section-title">Projects & Experience</h2>
-            <div class="timeline">
-                <!-- Project 1: Embodied AI with VLAs -->
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <h3>Embodied AI with Vision-Language-Action Models (VLAs)</h3>
-                        <span class="timeline-date">Oct 2025 – Present</span>
-                    </div>
-                    <p class="timeline-subtitle">Academic Project in a team of 5, supervised by Prof. Gianni FRANCHI</p>
-                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" style="display: none;">
-                        <ul>
-                            <li>Develop a pipeline where a Vision-Language-Action Model (VLA) guides a robot's navigation and interaction with natural language.</li>
-                            <li>Compare the performance of VLAs against traditional LVLMs to measure improvements in navigation accuracy and task success.</li>
-                        </ul>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">PyBullet</span>
-                            <span class="tag">MuJoCo</span>
-                            <span class="tag">Embodied AI</span>
-                            <span class="tag">LVLMs</span>
-                            <span class="tag">VLAs</span>
-                        </div>
-                    </div>
+    <!-- Projects Section -->
+    <section id="projects" class="timeline-section">
+        <h2>Projects & Experience</h2>
+
+        <!-- Timeline Container -->
+        <div class="timeline-container">
+            <button class="nav-btn left">←</button>
+
+            <div class="timeline-track">
+                <!-- Milestone 1: Embodied AI with VLA Models -->
+                <div class="milestone active" 
+                     data-title="Embodied AI with VLA Models" 
+                     data-company="ENSTA Paris" 
+                     data-role="Research Project | Supervised by Prof. Gianni FRANCHI"
+                     data-date="Oct 2025 – Present"
+                     data-description="Developing a Vision-Language-Action (VLA) pipeline to enable robots to navigate and interact using natural language instructions. Comparing VLA performance against traditional Large Vision-Language Models (LVLMs) to measure improvements in task success and navigation accuracy."
+                     data-tags="Python, PyBullet, MuJoCo, Embodied AI, VLAs, LVLMs, Robotics"
+                     data-link="">
+                    <div class="icon"><span>🤖</span></div>
+                    <div class="year">Present</div>
                 </div>
 
-                <!-- Project 2: Research Internship TTS -->
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <h3>Research Internship – CMAP Lab, École Polytechnique</h3>
-                        <span class="timeline-date">May – Sept 2025</span>
-                    </div>
-                    <p class="timeline-subtitle">Supervisor: Prof. Eric Moulines | Palaiseau, France</p>
-                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" style="display: none;">
-                        <p>Research on improving French Text-to-Speech (TTS) systems: prosody control, multilingual adaptation, voice conversion.</p>
-                        <p><strong>Publications:</strong></p>
-                        <ul>
-                            <li>ICNLSP 2025 (accepted) – <a href="https://arxiv.org/abs/2508.17494" target="_blank">A french Text to Speech system for the France 2030 plan</a></li>
-                            <li>ICASSP 2026 (under evaluation) – <a href="https://github.com/hi-paris/CosyVoice2-EU" target="_blank">Efficient adaptation method of a SOTA Voice Cloning model to European languages</a></li>
-                        </ul>
-                        <div class="project-tags">
-                            <span class="tag">Neural Networks</span>
-                            <span class="tag">Transformer-based Architectures</span>
-                            <span class="tag">TTS</span>
-                            <span class="tag">Data Processing</span>
-                        </div>
-                    </div>
+                <!-- Milestone 2: NASA Robotics Internship -->
+                <div class="milestone" 
+                     data-title="NASA Robotics Internship" 
+                     data-company="NASA Jet Propulsion Laboratory" 
+                     data-role="Robotics Software Engineering Intern"
+                     data-date="Summer 2025"
+                     data-description="Worked on autonomous navigation systems for Mars rovers. Developed computer vision algorithms for terrain classification and obstacle avoidance. Contributed to real-time path planning modules using ROS and C++."
+                     data-tags="ROS, C++, Computer Vision, Autonomous Navigation, Mars Rovers, Path Planning"
+                     data-link="">
+                    <div class="icon"><span>🚀</span></div>
+                    <div class="year">Summer 2025</div>
                 </div>
 
-                <!-- Project 3: STMicroelectronics -->
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <h3>Team Engineering Project – STMicroelectronics</h3>
-                        <span class="timeline-date">Oct 2024 – May 2025</span>
-                    </div>
-                    <p class="timeline-subtitle">Applied machine learning methods to evaluate similarity between microelectronic components</p>
-                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" style="display: none;">
-                        <ul>
-                            <li>Team member responsible for developing and implementing the machine learning algorithms.</li>
-                            <li>The project delivered a custom AI model that reached <strong>98% accuracy</strong>, surpassing the performance of the company's internal solution.</li>
-                        </ul>
-                        <div class="project-tags">
-                            <span class="tag">Scikit-learn</span>
-                            <span class="tag">PyTorch</span>
-                            <span class="tag">Python</span>
-                            <span class="tag">Pandas</span>
-                            <span class="tag">Numpy</span>
-                        </div>
-                    </div>
+                <!-- Milestone 3: Text-to-Speech Paper Accepted -->
+                <div class="milestone" 
+                     data-title="Text-to-Speech Paper Accepted" 
+                     data-company="CMAP Lab, École Polytechnique" 
+                     data-role="Research Internship | Supervised by Prof. Eric Moulines"
+                     data-date="Oct 2025"
+                     data-description="Research paper accepted at ICNLSP 2025 on improving French Text-to-Speech systems. Developed novel prosody control methods and multilingual adaptation techniques. Achieved state-of-the-art voice cloning results for European languages."
+                     data-tags="Neural Networks, Transformers, TTS, Voice Cloning, Deep Learning, NLP"
+                     data-link="https://arxiv.org/abs/2508.17494">
+                    <div class="icon"><span>⭐</span></div>
+                    <div class="year">Oct 2025</div>
                 </div>
 
-                <!-- Project 4: NASA Space Apps -->
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <h3>NASA Space Apps Challenge – Hunting for Exoplanets with AI</h3>
-                        <span class="timeline-date">2025</span>
-                    </div>
-                    <p class="timeline-subtitle">Hackathon Participant, Team "Make Pluto Great Again" | Paris, France</p>
-                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" style="display: none;">
-                        <ul>
-                            <li><a href="https://www.makeplutogreatagain.us" target="_blank">Built a full-stack data pipeline to identify exoplanets from light curve data</a>, achieving ~94.3% accuracy.</li>
-                            <li>Trained multiple models (CNN, Autoencoder, MLP).</li>
-                        </ul>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">FastAPI</span>
-                            <span class="tag">Flask</span>
-                            <span class="tag">Google Cloud Run</span>
-                            <span class="tag">CNNs</span>
-                            <span class="tag">Autoencoders</span>
-                        </div>
-                    </div>
+                <!-- Milestone 4: Beevolution Smart Beehive -->
+                <div class="milestone" 
+                     data-title="Beevolution – Smart Beehive System" 
+                     data-company="INJAZ Tunisie" 
+                     data-role="Deputy Technical Manager | Entrepreneurship Project"
+                     data-date="2024"
+                     data-description="Led technical development of an intelligent beehive monitoring system to help beekeepers optimize honey production and quality. Designed IoT sensor networks, data collection systems, and real-time analytics dashboard. Managed cross-functional team and secured seed funding."
+                     data-tags="Arduino, IoT, Sensors, Leadership, Entrepreneurship, Product Management"
+                     data-link="https://www.linkedin.com/posts/mohamed-amine-arous-ensta_injaz-entrepreneurship-beevolution-activity-7202433085861244929-pSe8">
+                    <div class="icon"><span>🎁</span></div>
+                    <div class="year">2024</div>
                 </div>
 
-                <!-- Project 5: AICRUIT -->
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <h3>AI Smart Recruitment System — Veo Hackathon</h3>
-                        <span class="timeline-date">2025</span>
-                    </div>
-                    <p class="timeline-subtitle">Built with a team of 6, presented as the AICRUIT website</p>
-                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" style="display: none;">
-                        <ul>
-                            <li>Developed AI agents for candidate body-language analysis during video interviews and automated resume SWOT evaluation.</li>
-                        </ul>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">MistralAI</span>
-                            <span class="tag">CrewAI</span>
-                            <span class="tag">smtplib/ssl</span>
-                        </div>
-                        <a href="https://github.com/Destivano/AI_Smart_Recruitment_System" target="_blank" class="cert-link">View on GitHub →</a>
-                    </div>
+                <!-- Milestone 5: Graduated with Honors -->
+                <div class="milestone" 
+                     data-title="Graduated with Honors" 
+                     data-company="ENIT - National Engineering School of Tunis" 
+                     data-role="Bachelor's Degree in Computer Science & Engineering"
+                     data-date="Dec 2024"
+                     data-description="Graduated with highest honors (Summa Cum Laude) from the National Engineering School of Tunis. Specialized in Artificial Intelligence and Machine Learning. Recipient of the Academic Excellence Award for outstanding performance in advanced algorithms and deep learning courses."
+                     data-tags="Computer Science, AI, Machine Learning, Academic Excellence, Algorithms"
+                     data-link="">
+                    <div class="icon"><span>🎓</span></div>
+                    <div class="year">Dec 2024</div>
                 </div>
 
-                <!-- Project 6: Sentiment Analysis -->
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <h3>Sentiment Analysis on Public Dataset (LLM-based Text Classification)</h3>
-                        <span class="timeline-date">2025</span>
-                    </div>
-                    <p class="timeline-subtitle">Academic Project MI201</p>
-                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" style="display: none;">
-                        <ul>
-                            <li>Integrate a dataset via representations from a pre-trained LLM and train classical models on these embeddings.</li>
-                        </ul>
-                        <div class="project-tags">
-                            <span class="tag">PyTorch</span>
-                            <span class="tag">BERT</span>
-                            <span class="tag">CUDA</span>
-                        </div>
-                        <a href="https://github.com/Destivano/LLM-Sentiment-Analysis" target="_blank" class="cert-link">View on GitHub →</a>
-                    </div>
-                </div>
-
-                <!-- Project 7: Beevolution -->
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <h3>Beevolution</h3>
-                        <span class="timeline-date">2024</span>
-                    </div>
-                    <p class="timeline-subtitle">INJAZ Tunisie</p>
-                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" style="display: none;">
-                        <ul>
-                            <li>Deputy Technical Manager</li>
-                            <li>Développement d'un prototype d'une ruche intelligente pour aider les apiculteurs à améliorer leur production et la qualité du miel.</li>
-                        </ul>
-                        <div class="project-tags">
-                            <span class="tag">Arduino</span>
-                            <span class="tag">Leadership</span>
-                            <span class="tag">Teamwork</span>
-                            <span class="tag">Project Management</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 8: Distributed ML -->
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <h3>PFA1 Exploring Distributed Machine Learning</h3>
-                        <span class="timeline-date">2024</span>
-                    </div>
-                    <p class="timeline-subtitle">ENIT</p>
-                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" style="display: none;">
-                        <ul>
-                            <li>Co-auteur d'un rapport scientifique sur les méthodes d'apprentissage automatique et les approches distribuées.</li>
-                        </ul>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">LaTeX</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 9: Tunisie Télécom -->
-                <div class="timeline-item">
-                    <div class="timeline-header">
-                        <h3>Stage Opérateur</h3>
-                        <span class="timeline-date">2024</span>
-                    </div>
-                    <p class="timeline-subtitle">Tunisie Télécom</p>
-                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" style="display: none;">
-                        <ul>
-                            <li>Stage d'un mois pour une immersion dans le milieu professionnel des infrastructures de télécommunications.</li>
-                        </ul>
-                    </div>
+                <!-- Milestone 6: Research Assistant -->
+                <div class="milestone" 
+                     data-title="Research Assistant at ENSTA Paris" 
+                     data-company="ENSTA Paris - U2IS Laboratory" 
+                     data-role="Research Assistant | Machine Learning & Computer Vision"
+                     data-date="Jan 2024"
+                     data-description="Conducted research on trustworthy AI and adversarial robustness in deep learning models. Implemented novel defense mechanisms against adversarial attacks. Published findings in workshop papers and contributed to lab's codebase for reproducible research."
+                     data-tags="Machine Learning, Computer Vision, Trustworthy AI, PyTorch, Research"
+                     data-link="">
+                    <div class="icon"><span>�</span></div>
+                    <div class="year">Jan 2024</div>
                 </div>
             </div>
+
+            <button class="nav-btn right">→</button>
+        </div>
+
+        <!-- Project Detail Panel -->
+        <div class="project-detail">
+            <h3 id="detail-title">Embodied AI with VLA Models</h3>
+            <p id="detail-meta">
+                <span id="detail-company">ENSTA Paris</span> | 
+                <span id="detail-role">Research Project | Supervised by Prof. Gianni FRANCHI</span> | 
+                <span id="detail-date">Oct 2025 – Present</span>
+            </p>
+            <p id="detail-description">
+                Developing a Vision-Language-Action (VLA) pipeline to enable robots to navigate and interact using natural language instructions. Comparing VLA performance against traditional Large Vision-Language Models (LVLMs) to measure improvements in task success and navigation accuracy.
+            </p>
+            <div class="tags" id="detail-tags">
+                <span class="tag">Python</span>
+                <span class="tag">PyBullet</span>
+                <span class="tag">MuJoCo</span>
+                <span class="tag">Embodied AI</span>
+                <span class="tag">VLAs</span>
+                <span class="tag">LVLMs</span>
+                <span class="tag">Robotics</span>
+            </div>
+            <a href="#" id="detail-link" class="view-link" style="display: none;">View Project</a>
         </div>
     </section>
 
