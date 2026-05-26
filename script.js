@@ -137,6 +137,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+// ========== Hero Grid Cell Highlight ==========
+const hero = document.querySelector('.hero');
+if (hero) {
+    const CELL = 40; // must match the hero grid background-size
+    const cell = document.createElement('div');
+    cell.className = 'grid-cell';
+    hero.appendChild(cell);
+
+    let ticking = false;
+    let lastX = 0;
+    let lastY = 0;
+
+    hero.addEventListener('mousemove', (e) => {
+        const rect = hero.getBoundingClientRect();
+        lastX = e.clientX - rect.left;
+        lastY = e.clientY - rect.top;
+        if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(() => {
+                const col = Math.floor(lastX / CELL);
+                const row = Math.floor(lastY / CELL);
+                cell.style.transform = `translate(${col * CELL}px, ${row * CELL}px)`;
+                cell.style.opacity = '1';
+                ticking = false;
+            });
+        }
+    });
+
+    hero.addEventListener('mouseleave', () => {
+        cell.style.opacity = '0';
+    });
+}
+
 // ========== Active Navigation on Scroll ==========
 const sections = document.querySelectorAll('section');
 const navbar = document.getElementById('navbar');
@@ -170,10 +203,10 @@ window.addEventListener('scroll', () => {
 // ========== Typewriter Effect ==========
 const typewriter = document.getElementById('typewriter');
 const phrases = [
-    'AI Engineering Student',
+    'AI Engineer & Researcher',
     'Passionate about Research and Innovation',
-    'Currently working on LVLMs, VLAs and Embodied AI',
-    'Under the supervision of Mr. Gianni FRANCHI'
+    'Working on Embodied AI, VLAs and Knowledge-Grounded Robotics',
+    'Research Intern at CEA List — LASTI Team'
 ];
 
 let phraseIndex = 0;
@@ -293,7 +326,7 @@ scrollTopBtn.style.cssText = `
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #667eea, #764ba2);
+    background: var(--gradient);
     color: white;
     border: none;
     font-size: 1.5rem;
@@ -344,11 +377,9 @@ function toggleDetails(button) {
     if (isHidden) {
         detailsDiv.style.display = 'block';
         button.textContent = 'Show Less ▲';
-        button.style.background = 'linear-gradient(135deg, #764ba2, #667eea)';
     } else {
         detailsDiv.style.display = 'none';
         button.textContent = 'Show More ▼';
-        button.style.background = 'linear-gradient(135deg, #667eea, #764ba2)';
     }
 }
 

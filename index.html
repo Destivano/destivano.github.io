@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Mohamed Amine AROUS - AI Engineering Student | Deep Learning & Trustworthy AI Researcher">
     <title>Mohamed Amine AROUS - AI Engineer & Researcher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -17,9 +20,9 @@
             <ul class="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#volunteering" class="nav-link">Leadership</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
             <div class="hamburger">
@@ -33,16 +36,18 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
+            <p class="hero-kicker">&gt; booting portfolio<span class="blink">_</span></p>
             <h1 class="hero-title">
                 Hi, I'm <span class="highlight">Mohamed Amine AROUS</span>
             </h1>
             <p class="hero-subtitle">
+                <span class="prompt">~$</span>
                 <span id="typewriter"></span>
-                <span class="cursor">|</span>
+                <span class="cursor">_</span>
             </p>
             <div class="hero-buttons">
-                <a href="#projects" class="btn btn-primary">View My Work</a>
-                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                <a href="#projects" class="btn btn-primary">./view_work</a>
+                <a href="#contact" class="btn btn-secondary">./get_in_touch</a>
             </div>
         </div>
         <div class="scroll-down">
@@ -60,79 +65,30 @@
                     <img src="cropped_circle_image.png" alt="Profile Picture">
                 </div>
                 <div class="about-text">
-                    <h3>AI Engineering Student & Researcher</h3>
+                    <h3>AI Engineer & Researcher</h3>
                     <p>
                         As a final-year AI engineering student at ENSTA Paris, I have a strong foundation in programming and complex problem-solving. I am passionate about Embodied AI—developing intelligent robots that perceive their environment, understand instructions, and act.
                     </p>
                     <p>
-                        I am seeking a final-year research internship to contribute to this field, with the definitive goal of continuing to a PhD program.
+                        I am currently a research intern at CEA List, and I am looking for my next step: a <strong>PhD position</strong> or a <strong>research / AI engineering role</strong> where I can keep advancing this field.
                     </p>
                     <div class="about-info">
                         <div class="info-item">
-                            <strong>Location:</strong>
+                            <strong>location</strong>
                             <span>Massy, Île-de-France, France</span>
                         </div>
                         <div class="info-item">
-                            <strong>Email:</strong>
+                            <strong>email</strong>
                             <span>mohamed-amine.arous@ensta.fr</span>
                         </div>
                         <div class="info-item">
-                            <strong>Education:</strong>
+                            <strong>education</strong>
                             <span>ENSTA Paris - ENIT (Double Degree)</span>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Skills & Technologies</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-icon">🤖</div>
-                    <h3>Deep Learning & AI</h3>
-                    <div class="skill-tags">
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">TensorFlow</span>
-                        <span class="tag">Transformers</span>
-                        <span class="tag">CNNs</span>
-                        <span class="tag">LLMs</span>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">🔬</div>
-                    <h3>Research & ML</h3>
-                    <div class="skill-tags">
-                        <span class="tag">TTS Systems</span>
-                        <span class="tag">NLP</span>
-                        <span class="tag">Computer Vision</span>
-                        <span class="tag">Embodied AI</span>
-                        <span class="tag">VLAs</span>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">💻</div>
-                    <h3>Programming & Tools</h3>
-                    <div class="skill-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">C++</span>
-                        <span class="tag">CUDA</span>
-                        <span class="tag">Git</span>
-                        <span class="tag">LaTeX</span>
-                    </div>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon">🛠️</div>
-                    <h3>Frameworks & Platforms</h3>
-                    <div class="skill-tags">
-                        <span class="tag">Scikit-learn</span>
-                        <span class="tag">Pandas</span>
-                        <span class="tag">FastAPI</span>
-                        <span class="tag">Google Cloud</span>
-                        <span class="tag">Arduino</span>
+                        <div class="info-item">
+                            <strong>status</strong>
+                            <span>seeking PhD / AI engineering role</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -144,18 +100,44 @@
         <div class="container">
             <h2 class="section-title">Projects & Experience</h2>
             <div class="timeline">
+                <!-- Project 0: CEA List Research Internship -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <h3>Research Internship – CEA List (LASTI Team)</h3>
+                        <span class="timeline-date">Apr 2026 – Present</span>
+                    </div>
+                    <p class="timeline-subtitle">Supervisor: Prof. Gaël De Chalendar | Palaiseau, France</p>
+                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="timeline-details" style="display: none;">
+                        <p>Researching how <strong>formal knowledge</strong> (Wikidata, ontologies, environment plans, business rules) can improve <strong>scene understanding</strong> and <strong>robotic planning</strong>, with warehouse navigation as the primary use case.</p>
+                        <ul>
+                            <li>Integrating structured knowledge sources (Wikidata, domain ontologies) to ground robot perception and reasoning.</li>
+                            <li>Leveraging environment plans and business rules to guide planning in warehouse navigation scenarios.</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="tag">Knowledge Graphs</span>
+                            <span class="tag">Ontologies</span>
+                            <span class="tag">Wikidata</span>
+                            <span class="tag">Scene Understanding</span>
+                            <span class="tag">Robotic Planning</span>
+                            <span class="tag">Embodied AI</span>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Project 1: Embodied AI with VLAs -->
                 <div class="timeline-item">
                     <div class="timeline-header">
                         <h3>Embodied AI with Vision-Language-Action Models (VLAs)</h3>
-                        <span class="timeline-date">Oct 2025 – Present</span>
+                        <span class="timeline-date">Oct 2025 – Mar 2026</span>
                     </div>
                     <p class="timeline-subtitle">Academic Project in a team of 5, supervised by Prof. Gianni FRANCHI</p>
                     <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
                     <div class="timeline-details" style="display: none;">
                         <ul>
-                            <li>Develop a pipeline where a Vision-Language-Action Model (VLA) guides a robot's navigation and interaction with natural language.</li>
-                            <li>Compare the performance of VLAs against traditional LVLMs to measure improvements in navigation accuracy and task success.</li>
+                            <li>Developed a deep understanding of state-of-the-art Vision-Language-Action models.</li>
+                            <li>Explored and tested different approaches to improve <strong>CoIN</strong> and <strong>AIUTA</strong>.</li>
+                            <li>Benchmarked AIUTA with different LLMs on the school's GPU cluster.</li>
                         </ul>
                         <div class="project-tags">
                             <span class="tag">Python</span>
@@ -448,6 +430,119 @@
         </div>
     </section>
 
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Technologies</h2>
+            <p class="skills-cmd">$ cat skills.txt | sort | uniq</p>
+
+            <div class="skill-stack">
+                <div class="skill-row">
+                    <span class="skill-row-label">AI_RESEARCH</span>
+                    <div class="skill-row-tags">
+                        <span class="tag">Embodied AI</span>
+                        <span class="tag">VLAs</span>
+                        <span class="tag">Knowledge Graphs</span>
+                        <span class="tag">Ontologies</span>
+                        <span class="tag">NLP</span>
+                        <span class="tag">Computer Vision</span>
+                        <span class="tag">TTS</span>
+                        <span class="tag">CNNs</span>
+                        <span class="tag">LLMs</span>
+                        <span class="tag">Scene Understanding</span>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-row-label">PROGRAMMING</span>
+                    <div class="skill-row-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">C++</span>
+                        <span class="tag">CUDA</span>
+                        <span class="tag">LaTeX</span>
+                        <span class="tag">Git</span>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-row-label">FRAMEWORKS</span>
+                    <div class="skill-row-tags">
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">TensorFlow</span>
+                        <span class="tag">Transformers</span>
+                        <span class="tag">Scikit-learn</span>
+                        <span class="tag">Pandas</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">MuJoCo</span>
+                        <span class="tag">PyBullet</span>
+                        <span class="tag">CrewAI</span>
+                        <span class="tag">Google Cloud</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Infinite scrolling tickers -->
+            <div class="skills-ticker">
+                <div class="ticker-row ticker-left">
+                    <div class="ticker-inner">
+                        <span class="ticker-tag">PyTorch</span>
+                        <span class="ticker-tag">Embodied AI</span>
+                        <span class="ticker-tag">CUDA</span>
+                        <span class="ticker-tag">Knowledge Graphs</span>
+                        <span class="ticker-tag">Python</span>
+                        <span class="ticker-tag">Transformers</span>
+                        <span class="ticker-tag">VLAs</span>
+                        <span class="ticker-tag">FastAPI</span>
+                        <span class="ticker-tag">C++</span>
+                        <span class="ticker-tag">NLP</span>
+                        <span class="ticker-tag">MuJoCo</span>
+                        <span class="ticker-tag">LLMs</span>
+                        <!-- duplicate for seamless loop -->
+                        <span class="ticker-tag">PyTorch</span>
+                        <span class="ticker-tag">Embodied AI</span>
+                        <span class="ticker-tag">CUDA</span>
+                        <span class="ticker-tag">Knowledge Graphs</span>
+                        <span class="ticker-tag">Python</span>
+                        <span class="ticker-tag">Transformers</span>
+                        <span class="ticker-tag">VLAs</span>
+                        <span class="ticker-tag">FastAPI</span>
+                        <span class="ticker-tag">C++</span>
+                        <span class="ticker-tag">NLP</span>
+                        <span class="ticker-tag">MuJoCo</span>
+                        <span class="ticker-tag">LLMs</span>
+                    </div>
+                </div>
+                <div class="ticker-row ticker-right">
+                    <div class="ticker-inner ticker-inner-right">
+                        <span class="ticker-tag">Computer Vision</span>
+                        <span class="ticker-tag">Scikit-learn</span>
+                        <span class="ticker-tag">TTS</span>
+                        <span class="ticker-tag">Pandas</span>
+                        <span class="ticker-tag">Ontologies</span>
+                        <span class="ticker-tag">Git</span>
+                        <span class="ticker-tag">TensorFlow</span>
+                        <span class="ticker-tag">PyBullet</span>
+                        <span class="ticker-tag">CNNs</span>
+                        <span class="ticker-tag">CrewAI</span>
+                        <span class="ticker-tag">LaTeX</span>
+                        <span class="ticker-tag">Google Cloud</span>
+                        <!-- duplicate for seamless loop -->
+                        <span class="ticker-tag">Computer Vision</span>
+                        <span class="ticker-tag">Scikit-learn</span>
+                        <span class="ticker-tag">TTS</span>
+                        <span class="ticker-tag">Pandas</span>
+                        <span class="ticker-tag">Ontologies</span>
+                        <span class="ticker-tag">Git</span>
+                        <span class="ticker-tag">TensorFlow</span>
+                        <span class="ticker-tag">PyBullet</span>
+                        <span class="ticker-tag">CNNs</span>
+                        <span class="ticker-tag">CrewAI</span>
+                        <span class="ticker-tag">LaTeX</span>
+                        <span class="ticker-tag">Google Cloud</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
@@ -455,8 +550,8 @@
                 <span class="contact-subtitle">Ready to Collaborate?</span>
                 <h2 class="section-title">Get In Touch</h2>
                 <p class="contact-description">
-                    I'm actively seeking a final-year research internship in Embodied AI and Robotics, with the goal of continuing to a PhD program. 
-                    Let's discuss research opportunities and collaborations!
+                    I'm looking for a PhD position or a research / AI engineering role in Embodied AI and Robotics.
+                    Let's discuss opportunities and collaborations!
                 </p>
             </div>
             
@@ -533,7 +628,7 @@
             <div class="contact-footer">
                 <div class="availability-badge">
                     <span class="status-dot"></span>
-                    Available for Research Internship Opportunities
+                    Open to PhD Positions & AI Engineering Roles
                 </div>
             </div>
         </div>
