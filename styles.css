@@ -868,6 +868,16 @@ section {
     color: var(--text-light);
 }
 
+.info-item span a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.info-item span a:hover {
+    color: var(--neon);
+    text-decoration: underline;
+}
+
 /* ========== Skills Section (gen-Z redesign) ========== */
 .skills {
     background: transparent;

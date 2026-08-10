@@ -203,9 +203,10 @@ window.addEventListener('scroll', () => {
 // ========== Typewriter Effect ==========
 const typewriter = document.getElementById('typewriter');
 const phrases = [
-    'AI Engineer & Researcher',
-    'Passionate about Research and Innovation',
-    'Working on Embodied AI, VLAs and Knowledge-Grounded Robotics',
+    'AI Engineering',
+    'Generative AI',
+    'LLM Systems',
+    'Applied AI',
     'Research Intern at CEA List — LASTI Team'
 ];
 
