@@ -4,6 +4,7 @@ A modern, responsive personal portfolio website built with vanilla JavaScript, H
 
 ## ✨ Features
 
+- **Personal AI Assistant**: A floating chat widget that answers visitor questions about my projects, experience, research, and skills — grounded in my own portfolio data and backed by a FastAPI backend, with citations back to the relevant section of the site
 - **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
 - **Modern UI/UX**: Clean, professional design with smooth animations
 - **Typewriter Effect**: Dynamic text animation in the hero section
@@ -141,6 +142,14 @@ The contact form is ready for backend integration. Here are some options:
    - Modify the fetch request in `script.js`
    - Connect to your API endpoint
 
+## 🤖 Personal AI Assistant
+
+The site includes a floating chat widget (bottom-right corner) that lets visitors ask questions about my background directly — "What did he do at CEA List?", "What Generative AI projects has he built?", "How can I contact him?" — and get answers grounded in the portfolio's own content, with citations linking back to the relevant section.
+
+- **Frontend**: `assistant-widget.js` + `assistant-widget.css`, vanilla JS with no build step or dependencies, matching the rest of the site. `assistant-config.js` holds the one deployment setting (the backend's API base URL) since GitHub Pages serves static files with no environment-variable injection.
+- **Backend**: a separate FastAPI service (not in this repo) that the widget calls via `/api/chat`. It holds the LLM API key server-side — the browser never sees it — and enforces per-session message limits, rate limits, and refuses off-topic questions.
+- **Answers are sourced, not invented**: responses cite the portfolio data they're drawn from, and the assistant says so when it doesn't know something rather than making it up.
+
 ## 📱 Browser Support
 
 - Chrome (latest)
@@ -153,10 +162,13 @@ The contact form is ready for backend integration. Here are some options:
 
 ```
 personal-portfolio/
-├── index.html          # Main HTML file
-├── styles.css          # All styling
-├── script.js           # JavaScript functionality
-└── README.md          # This file
+├── index.html               # Main HTML file
+├── styles.css                # All styling
+├── script.js                 # JavaScript functionality
+├── assistant-widget.js       # AI assistant chat widget logic
+├── assistant-widget.css      # AI assistant chat widget styling
+├── assistant-config.js       # AI assistant backend API base URL
+└── README.md                 # This file
 ```
 
 ## 🛠️ Technologies Used
