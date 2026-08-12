@@ -49,6 +49,7 @@ if (hero && !prefersReducedMotion.matches) {
     const cell = document.createElement('div');
     cell.className = 'grid-cell';
     hero.appendChild(cell);
+    hero.style.cursor = 'none';
 
     let ticking = false;
     let lastX = 0;
