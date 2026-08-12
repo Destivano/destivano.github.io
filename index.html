@@ -3,21 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mohamed Amine AROUS - AI Engineering Student | Deep Learning & Trustworthy AI Researcher">
-    <title>Mohamed Amine AROUS - AI Engineer & Researcher</title>
+    <title>Mohamed Amine Arous - AI Engineer</title>
+    <meta name="description" content="AI Engineer specialising in Generative AI, LLM systems, RAG and applied machine learning. Final-year AI engineering student at ENSTA Paris, currently at CEA List.">
+    <meta name="author" content="Mohamed Amine Arous">
+    <meta name="theme-color" content="#0e3a5f">
+    <meta name="color-scheme" content="light">
+
+    <!-- Social preview. NOTE: og:url and og:image must be switched to absolute
+         URLs once the production hostname exists - see docs/deployment.md.
+         Until then most crawlers resolve them against the page URL. -->
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Mohamed Amine Arous - AI Engineer">
+    <meta property="og:description" content="Generative AI, LLM systems, RAG and applied machine learning. Final-year AI engineering student at ENSTA Paris, currently at CEA List.">
+    <meta property="og:image" content="cropped_circle_image.webp">
+    <meta property="og:locale" content="en_GB">
+    <meta property="profile:first_name" content="Mohamed Amine">
+    <meta property="profile:last_name" content="Arous">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Mohamed Amine Arous - AI Engineer">
+    <meta name="twitter:description" content="Generative AI, LLM systems, RAG and applied machine learning.">
+    <meta name="twitter:image" content="cropped_circle_image.webp">
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assistant-widget.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Mohamed Amine Arous",
+      "givenName": "Mohamed Amine",
+      "familyName": "Arous",
+      "jobTitle": "AI Engineer",
+      "image": "cropped_circle_image.webp",
+      "email": "mailto:mohamed-amine.arous@ensta-paris.fr",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Massy",
+        "addressRegion": "Île-de-France",
+        "addressCountry": "FR"
+      },
+      "alumniOf": [
+        { "@type": "CollegeOrUniversity", "name": "ENSTA Paris" },
+        { "@type": "CollegeOrUniversity", "name": "École Nationale d'Ingénieurs de Tunis" }
+      ],
+      "affiliation": { "@type": "Organization", "name": "CEA List" },
+      "knowsLanguage": ["en", "fr", "ar"],
+      "knowsAbout": [
+        "Generative AI", "Large Language Models", "Retrieval-Augmented Generation",
+        "Machine Learning", "Knowledge Graphs", "Computer Vision",
+        "Natural Language Processing", "Python", "PyTorch", "FastAPI", "AWS"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/mohamed-amine-arous-ensta",
+        "https://github.com/destivano"
+      ]
+    }
+    </script>
 </head>
 <body>
+    <a class="skip-link" href="#home">Skip to content</a>
+
     <!-- Navigation -->
-    <nav id="navbar">
+    <nav id="navbar" aria-label="Primary">
         <div class="nav-container">
             <div class="logo">
                 <a href="#home">AROUS</a>
             </div>
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#news" class="nav-link">News</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
@@ -27,11 +84,12 @@
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <div class="hamburger">
+            <button class="hamburger" type="button" aria-controls="nav-menu"
+                    aria-expanded="false" aria-label="Toggle navigation menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
-            </div>
+            </button>
         </div>
     </nav>
 
@@ -62,7 +120,7 @@
     <section id="news" class="news">
         <div class="container">
             <p class="news-kicker">&gt; latest_update --status=<span class="accepted-flag">accepted</span><span class="blink">_</span></p>
-            <div class="news-card">
+            <div class="news-card" id="news-eusipco">
                 <div class="news-spark news-spark-2">✦</div>
                 <div class="news-spark news-spark-3">✧</div>
                 <div class="news-card-top">
@@ -71,7 +129,7 @@
                         NEW · PAPER ACCEPTED @ EUSIPCO 2026
                     </div>
                     <div class="news-logo">
-                        <img src="LOGOEUSIPCO.png" alt="EUSIPCO 2026 logo">
+                        <img src="LOGOEUSIPCO.webp" alt="EUSIPCO 2026 logo" width="300" height="89" decoding="async" fetchpriority="high">
                     </div>
                 </div>
                 <h2 class="news-title">Europeanizing Modular Zero-Shot TTS</h2>
@@ -108,7 +166,7 @@
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
                 <div class="about-image">
-                    <img src="cropped_circle_image.png" alt="Profile Picture">
+                    <img src="cropped_circle_image.webp" alt="Profile Picture" width="630" height="630" decoding="async" loading="lazy">
                 </div>
                 <div class="about-text">
                     <h3>AI Engineer</h3>
@@ -133,7 +191,7 @@
                         </div>
                         <div class="info-item">
                             <strong>status</strong>
-                            <span>seeking AI engineering role</span>
+                            <span>seeking AI Engineering roles</span>
                         </div>
                     </div>
                 </div>
@@ -208,31 +266,31 @@
             <div class="logo-marquee">
                 <div class="logo-track">
                     <!-- set A -->
-                    <span class="logo-tile"><img src="polytechnique.png" alt="École Polytechnique" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();"><span class="logo-name">École Polytechnique</span></span>
-                    <span class="logo-tile"><img src="hiparis.png" alt="Hi! PARIS" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();"><span class="logo-name">Hi! PARIS</span></span>
+                    <span class="logo-tile"><img src="polytechnique.webp" alt="École Polytechnique" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();" width="212" height="300" decoding="async" loading="lazy"><span class="logo-name">École Polytechnique</span></span>
+                    <span class="logo-tile"><img src="hiparis.webp" alt="Hi! PARIS" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();" width="300" height="200" decoding="async" loading="lazy"><span class="logo-name">Hi! PARIS</span></span>
                     <span class="logo-tile"><img src="Logo_ENSTA-2025.svg" alt="ENSTA Paris" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();"><span class="logo-name">ENSTA Paris</span></span>
-                    <span class="logo-tile"><img src="LOGO_ENIT_300.png" alt="ENIT" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();"><span class="logo-name">ENIT</span></span>
-                    <span class="logo-tile"><img src="cealist_logo.jpg" alt="CEA List" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();"><span class="logo-name">CEA List</span></span>
-                    <span class="logo-tile"><img src="mena_ml_logo.jpg" alt="Google MENA ML" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();"><span class="logo-name">Google MENA ML</span></span>
-                    <span class="logo-tile"><img src="LOGOEUSIPCO.png" alt="EUSIPCO 2026" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();"><span class="logo-name">EUSIPCO 2026</span></span>
+                    <span class="logo-tile"><img src="LOGO_ENIT_300.webp" alt="ENIT" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();" width="300" height="300" decoding="async" loading="lazy"><span class="logo-name">ENIT</span></span>
+                    <span class="logo-tile"><img src="cealist_logo.webp" alt="CEA List" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();" width="200" height="200" decoding="async" loading="lazy"><span class="logo-name">CEA List</span></span>
+                    <span class="logo-tile"><img src="mena_ml_logo.webp" alt="Google MENA ML" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();" width="200" height="200" decoding="async" loading="lazy"><span class="logo-name">Google MENA ML</span></span>
+                    <span class="logo-tile"><img src="LOGOEUSIPCO.webp" alt="EUSIPCO 2026" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();" width="300" height="89" decoding="async" loading="lazy"><span class="logo-name">EUSIPCO 2026</span></span>
                     <span class="logo-tile"><img src="IBM_logo.svg" alt="IBM" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();"><span class="logo-name">IBM</span></span>
-                    <span class="logo-tile"><img src="EdX_newer_logo.png" alt="edX" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();"><span class="logo-name">edX</span></span>
-                    <span class="logo-tile"><img src="coursera.jpg" alt="Coursera" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();"><span class="logo-name">Coursera</span></span>
-                    <span class="logo-tile"><img src="datacamp.png" alt="DataCamp" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();"><span class="logo-name">DataCamp</span></span>
-                    <span class="logo-tile"><img src="tunisie.jpg" alt="Tunisian Government" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();"><span class="logo-name">Tunisian Gov.</span></span>
+                    <span class="logo-tile"><img src="EdX_newer_logo.webp" alt="edX" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();" width="300" height="169" decoding="async" loading="lazy"><span class="logo-name">edX</span></span>
+                    <span class="logo-tile"><img src="coursera.webp" alt="Coursera" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();" width="300" height="300" decoding="async" loading="lazy"><span class="logo-name">Coursera</span></span>
+                    <span class="logo-tile"><img src="datacamp.webp" alt="DataCamp" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();" width="300" height="158" decoding="async" loading="lazy"><span class="logo-name">DataCamp</span></span>
+                    <span class="logo-tile"><img src="tunisie.webp" alt="Tunisian Government" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();" width="300" height="200" decoding="async" loading="lazy"><span class="logo-name">Tunisian Gov.</span></span>
                     <!-- set B (duplicate for seamless loop) -->
-                    <span class="logo-tile"><img src="polytechnique.png" alt="" aria-hidden="true" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();"><span class="logo-name">École Polytechnique</span></span>
-                    <span class="logo-tile"><img src="hiparis.png" alt="" aria-hidden="true" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();"><span class="logo-name">Hi! PARIS</span></span>
+                    <span class="logo-tile"><img src="polytechnique.webp" alt="" aria-hidden="true" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();" width="212" height="300" decoding="async" loading="lazy"><span class="logo-name">École Polytechnique</span></span>
+                    <span class="logo-tile"><img src="hiparis.webp" alt="" aria-hidden="true" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();" width="300" height="200" decoding="async" loading="lazy"><span class="logo-name">Hi! PARIS</span></span>
                     <span class="logo-tile"><img src="Logo_ENSTA-2025.svg" alt="" aria-hidden="true" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();"><span class="logo-name">ENSTA Paris</span></span>
-                    <span class="logo-tile"><img src="LOGO_ENIT_300.png" alt="" aria-hidden="true" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();"><span class="logo-name">ENIT</span></span>
-                    <span class="logo-tile"><img src="cealist_logo.jpg" alt="" aria-hidden="true" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();"><span class="logo-name">CEA List</span></span>
-                    <span class="logo-tile"><img src="mena_ml_logo.jpg" alt="" aria-hidden="true" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();"><span class="logo-name">Google MENA ML</span></span>
-                    <span class="logo-tile"><img src="LOGOEUSIPCO.png" alt="" aria-hidden="true" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();"><span class="logo-name">EUSIPCO 2026</span></span>
+                    <span class="logo-tile"><img src="LOGO_ENIT_300.webp" alt="" aria-hidden="true" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();" width="300" height="300" decoding="async" loading="lazy"><span class="logo-name">ENIT</span></span>
+                    <span class="logo-tile"><img src="cealist_logo.webp" alt="" aria-hidden="true" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();" width="200" height="200" decoding="async" loading="lazy"><span class="logo-name">CEA List</span></span>
+                    <span class="logo-tile"><img src="mena_ml_logo.webp" alt="" aria-hidden="true" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();" width="200" height="200" decoding="async" loading="lazy"><span class="logo-name">Google MENA ML</span></span>
+                    <span class="logo-tile"><img src="LOGOEUSIPCO.webp" alt="" aria-hidden="true" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();" width="300" height="89" decoding="async" loading="lazy"><span class="logo-name">EUSIPCO 2026</span></span>
                     <span class="logo-tile"><img src="IBM_logo.svg" alt="" aria-hidden="true" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();"><span class="logo-name">IBM</span></span>
-                    <span class="logo-tile"><img src="EdX_newer_logo.png" alt="" aria-hidden="true" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();"><span class="logo-name">edX</span></span>
-                    <span class="logo-tile"><img src="coursera.jpg" alt="" aria-hidden="true" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();"><span class="logo-name">Coursera</span></span>
-                    <span class="logo-tile"><img src="datacamp.png" alt="" aria-hidden="true" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();"><span class="logo-name">DataCamp</span></span>
-                    <span class="logo-tile"><img src="tunisie.jpg" alt="" aria-hidden="true" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();"><span class="logo-name">Tunisian Gov.</span></span>
+                    <span class="logo-tile"><img src="EdX_newer_logo.webp" alt="" aria-hidden="true" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();" width="300" height="169" decoding="async" loading="lazy"><span class="logo-name">edX</span></span>
+                    <span class="logo-tile"><img src="coursera.webp" alt="" aria-hidden="true" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();" width="300" height="300" decoding="async" loading="lazy"><span class="logo-name">Coursera</span></span>
+                    <span class="logo-tile"><img src="datacamp.webp" alt="" aria-hidden="true" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();" width="300" height="158" decoding="async" loading="lazy"><span class="logo-name">DataCamp</span></span>
+                    <span class="logo-tile"><img src="tunisie.webp" alt="" aria-hidden="true" class="logo-img" onerror="this.closest('.logo-tile').classList.add('no-logo'); this.remove();" width="300" height="200" decoding="async" loading="lazy"><span class="logo-name">Tunisian Gov.</span></span>
                 </div>
             </div>
         </div>
@@ -244,14 +302,14 @@
             <h2 class="section-title">Professional Experience</h2>
             <div class="timeline">
                 <!-- Experience 1: CEA List Research Internship -->
-                <div class="timeline-item">
+                <div class="timeline-item" id="experience-cea-list">
                     <div class="timeline-header">
                         <h3>Research Internship – CEA List (LASTI Team)</h3>
                         <span class="timeline-date">Apr 2026 – Present</span>
                     </div>
                     <p class="timeline-subtitle">Supervisor: Prof. Gaël De Chalendar | Palaiseau, France</p>
-                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" style="display: none;">
+                    <button class="show-more-btn" type="button" aria-expanded="false" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="timeline-details" hidden>
                         <p>Developing a <strong>Neuro-Symbolic AI</strong> pipeline fusing <strong>Foundation Models</strong> with an enriched <strong>Knowledge Graph</strong> to improve semantic scene understanding for autonomous warehouse robots.</p>
                         <ul>
                             <li>Designed and implemented a <strong>Knowledge Graph enrichment pipeline</strong> achieving <strong>89% enrichment accuracy</strong>, improving the reliability of injected semantic knowledge.</li>
@@ -270,18 +328,17 @@
                 </div>
 
                 <!-- Experience 2: Research Internship TTS -->
-                <div class="timeline-item">
+                <div class="timeline-item" id="experience-cmap-polytechnique">
                     <div class="timeline-header">
                         <h3>Research Internship – CMAP Lab, École Polytechnique</h3>
                         <span class="timeline-date">May – Sept 2025</span>
                     </div>
                     <p class="timeline-subtitle">Supervisor: Prof. Eric Moulines | Palaiseau, France</p>
-                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" style="display: none;">
+                    <button class="show-more-btn" type="button" aria-expanded="false" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="timeline-details" hidden>
                         <p>Developed <strong>CosyVoice2-EU</strong>, an open-source adaptation of a state-of-the-art Transformer-based voice cloning model for European languages, achieving performance exceeding strong open-source baselines while remaining competitive with a leading commercial speech synthesis system (ElevenLabs).</p>
                         <p><strong>Publications:</strong></p>
                         <ul>
-                            <li>ICNLSP 2025 – <a href="https://arxiv.org/abs/2508.17494" target="_blank">A french Text to Speech system for the France 2030 plan</a></li>
                             <li>EUSIPCO 2026 – <a href="https://github.com/hi-paris/CosyVoice2-EU" target="_blank">Efficient adaptation method of a SOTA Voice Cloning model to European languages</a></li>
                         </ul>
                         <div class="project-tags">
@@ -303,14 +360,14 @@
             <h2 class="section-title">Projects</h2>
             <div class="timeline">
                 <!-- Project 0a: STMicroelectronics -->
-                <div class="timeline-item">
+                <div class="timeline-item" id="project-stmicroelectronics-similarity">
                     <div class="timeline-header">
                         <h3>Team Engineering Project – STMicroelectronics</h3>
                         <span class="timeline-date">Oct 2024 – May 2025</span>
                     </div>
                     <p class="timeline-subtitle">Applied machine learning methods to evaluate similarity between microelectronic components</p>
-                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" style="display: none;">
+                    <button class="show-more-btn" type="button" aria-expanded="false" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="timeline-details" hidden>
                         <ul>
                             <li>Developed machine learning models in Python (Scikit-learn, PyTorch, Pandas, NumPy) to evaluate similarity between microelectronic components.</li>
                             <li>The project delivered a custom AI model that reached <strong>98% accuracy</strong>, surpassing the performance of the company's internal solution.</li>
@@ -327,14 +384,14 @@
                 </div>
 
                 <!-- Project 0b: AWS CI/CD Deployment Pipeline -->
-                <div class="timeline-item">
+                <div class="timeline-item" id="project-aws-cicd-pipeline">
                     <div class="timeline-header">
                         <h3>AWS CI/CD Deployment Pipeline</h3>
                         <span class="timeline-date">2026</span>
                     </div>
                     <p class="timeline-subtitle">Fully automated pipeline from Git commit to production on AWS</p>
-                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" style="display: none;">
+                    <button class="show-more-btn" type="button" aria-expanded="false" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="timeline-details" hidden>
                         <ul>
                             <li>Designed and deployed a fully automated <strong>CI/CD pipeline</strong> on AWS to take a web app from Git commit to production with zero manual steps.</li>
                             <li>Automated artifact management, build, deployment, and release orchestration using <strong>CodePipeline</strong>, <strong>CodeBuild</strong>, <strong>CodeDeploy</strong>, and <strong>CodeArtifact</strong>.</li>
@@ -352,14 +409,14 @@
                 </div>
 
                 <!-- Project 0c: Local Knowledge Assistant (RAG) -->
-                <div class="timeline-item">
+                <div class="timeline-item" id="project-docuchat-rag">
                     <div class="timeline-header">
                         <h3>Local Knowledge Assistant (RAG)</h3>
                         <span class="timeline-date">2026</span>
                     </div>
                     <p class="timeline-subtitle">Local Retrieval-Augmented Generation backend with FastAPI and Ollama</p>
-                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" style="display: none;">
+                    <button class="show-more-btn" type="button" aria-expanded="false" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="timeline-details" hidden>
                         <ul>
                             <li>Developed a local <strong>Retrieval-Augmented Generation (RAG)</strong> backend using <strong>FastAPI</strong> and <strong>Ollama</strong>, implementing a modular architecture integrating document ingestion, embedding generation, semantic retrieval, and LLM-based response generation.</li>
                             <li>Designed <strong>REST API</strong> endpoints separating indexing, retrieval, and inference services, enabling efficient local deployment using open-weight language models.</li>
@@ -376,14 +433,14 @@
                 </div>
 
                 <!-- Project 1: Embodied AI with VLAs -->
-                <div class="timeline-item">
+                <div class="timeline-item" id="project-embodied-ai-vla">
                     <div class="timeline-header">
                         <h3>Embodied AI with Vision-Language-Action Models (VLAs)</h3>
                         <span class="timeline-date">Oct 2025 – Mar 2026</span>
                     </div>
                     <p class="timeline-subtitle">Academic Project in a team of 5, supervised by Prof. Gianni FRANCHI</p>
-                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" style="display: none;">
+                    <button class="show-more-btn" type="button" aria-expanded="false" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="timeline-details" hidden>
                         <ul>
                             <li>Developed a deep understanding of state-of-the-art Vision-Language-Action models.</li>
                             <li>Explored and tested different approaches to improve <strong>CoIN</strong> and <strong>AIUTA</strong>.</li>
@@ -401,14 +458,14 @@
                 </div>
 
                 <!-- Project 4: NASA Space Apps -->
-                <div class="timeline-item">
+                <div class="timeline-item" id="project-nasa-space-apps-exoplanets">
                     <div class="timeline-header">
                         <h3>NASA Space Apps Challenge – Hunting for Exoplanets with AI</h3>
                         <span class="timeline-date">2025</span>
                     </div>
                     <p class="timeline-subtitle">Hackathon Participant, Team "Make Pluto Great Again" | Paris, France</p>
-                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" style="display: none;">
+                    <button class="show-more-btn" type="button" aria-expanded="false" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="timeline-details" hidden>
                         <ul>
                             <li><a href="https://www.makeplutogreatagain.us" target="_blank">Built a full-stack data pipeline to identify exoplanets from light curve data</a>, achieving ~94.3% accuracy.</li>
                             <li>Trained multiple models (CNN, Autoencoder, MLP).</li>
@@ -426,14 +483,14 @@
                 </div>
 
                 <!-- Project 5: AICRUIT -->
-                <div class="timeline-item">
+                <div class="timeline-item" id="project-aicruit-recruitment-agents">
                     <div class="timeline-header">
                         <h3>AI Smart Recruitment System — Veo Hackathon</h3>
                         <span class="timeline-date">2025</span>
                     </div>
                     <p class="timeline-subtitle">Built with a team of 6, presented as the AICRUIT website</p>
-                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" style="display: none;">
+                    <button class="show-more-btn" type="button" aria-expanded="false" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="timeline-details" hidden>
                         <ul>
                             <li>Developed AI agents for candidate body-language analysis during video interviews and automated resume SWOT evaluation.</li>
                         </ul>
@@ -448,14 +505,14 @@
                 </div>
 
                 <!-- Project 6: Sentiment Analysis -->
-                <div class="timeline-item">
+                <div class="timeline-item" id="project-llm-sentiment-analysis">
                     <div class="timeline-header">
                         <h3>Sentiment Analysis on Public Dataset (LLM-based Text Classification)</h3>
                         <span class="timeline-date">2025</span>
                     </div>
                     <p class="timeline-subtitle">Academic Project MI201</p>
-                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" style="display: none;">
+                    <button class="show-more-btn" type="button" aria-expanded="false" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="timeline-details" hidden>
                         <ul>
                             <li>Integrate a dataset via representations from a pre-trained LLM and train classical models on these embeddings.</li>
                         </ul>
@@ -469,17 +526,17 @@
                 </div>
 
                 <!-- Project 7: Beevolution -->
-                <div class="timeline-item">
+                <div class="timeline-item" id="project-beevolution">
                     <div class="timeline-header">
                         <h3>Beevolution</h3>
                         <span class="timeline-date">2024</span>
                     </div>
                     <p class="timeline-subtitle">INJAZ Tunisie</p>
-                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" style="display: none;">
+                    <button class="show-more-btn" type="button" aria-expanded="false" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="timeline-details" hidden>
                         <ul>
                             <li>Deputy Technical Manager</li>
-                            <li>Développement d'un prototype d'une ruche intelligente pour aider les apiculteurs à améliorer leur production et la qualité du miel.</li>
+                            <li lang="fr">Développement d'un prototype d'une ruche intelligente pour aider les apiculteurs à améliorer leur production et la qualité du miel.</li>
                         </ul>
                         <div class="project-tags">
                             <span class="tag">Arduino</span>
@@ -492,16 +549,16 @@
                 </div>
 
                 <!-- Project 8: Distributed ML -->
-                <div class="timeline-item">
+                <div class="timeline-item" id="project-distributed-ml-report">
                     <div class="timeline-header">
                         <h3>PFA1 Exploring Distributed Machine Learning</h3>
                         <span class="timeline-date">2024</span>
                     </div>
                     <p class="timeline-subtitle">ENIT</p>
-                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" style="display: none;">
+                    <button class="show-more-btn" type="button" aria-expanded="false" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="timeline-details" hidden>
                         <ul>
-                            <li>Co-auteur d'un rapport scientifique sur les méthodes d'apprentissage automatique et les approches distribuées.</li>
+                            <li lang="fr">Co-auteur d'un rapport scientifique sur les méthodes d'apprentissage automatique et les approches distribuées.</li>
                         </ul>
                         <div class="project-tags">
                             <span class="tag">Python</span>
@@ -512,16 +569,16 @@
                 </div>
 
                 <!-- Project 9: Tunisie Télécom -->
-                <div class="timeline-item">
+                <div class="timeline-item" id="project-tunisie-telecom-internship">
                     <div class="timeline-header">
                         <h3>Stage Opérateur</h3>
                         <span class="timeline-date">2024</span>
                     </div>
                     <p class="timeline-subtitle">Tunisie Télécom</p>
-                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" style="display: none;">
+                    <button class="show-more-btn" type="button" aria-expanded="false" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="timeline-details" hidden>
                         <ul>
-                            <li>Stage d'un mois pour une immersion dans le milieu professionnel des infrastructures de télécommunications.</li>
+                            <li lang="fr">Stage d'un mois pour une immersion dans le milieu professionnel des infrastructures de télécommunications.</li>
                         </ul>
                     </div>
                 </div>
@@ -535,14 +592,14 @@
             <h2 class="section-title">Volunteering & Leadership</h2>
             <div class="timeline">
                 <!-- Volunteering 1: Tutoring -->
-                <div class="timeline-item">
+                <div class="timeline-item" id="volunteering-genius-tutoring">
                     <div class="timeline-header">
                         <h3>Tutor – #GENIUS Program</h3>
                         <span class="timeline-date">Jan 2025 – May 2025</span>
                     </div>
                     <p class="timeline-subtitle">Equal Opportunities Center, École Polytechnique</p>
-                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" style="display: none;">
+                    <button class="show-more-btn" type="button" aria-expanded="false" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="timeline-details" hidden>
                         <p>Weekly tutoring in pairs with high school students in science and mathematics.</p>
                         <ul>
                             <li>Weekly support aimed at strengthening knowledge and promoting equal opportunities.</li>
@@ -557,14 +614,14 @@
                 </div>
 
                 <!-- Volunteering 2: G2FOSS -->
-                <div class="timeline-item">
+                <div class="timeline-item" id="volunteering-g2foss-competitive-programming">
                     <div class="timeline-header">
                         <h3>Competitive Programming Manager – G²FOSS</h3>
                         <span class="timeline-date">2023 – 2025</span>
                     </div>
                     <p class="timeline-subtitle">General and Geographic Free Open Source Software</p>
-                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" style="display: none;">
+                    <button class="show-more-btn" type="button" aria-expanded="false" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="timeline-details" hidden>
                         <ul>
                             <li>Organization of DSA courses to strengthen problem-solving skills.</li>
                             <li>Promotion of national competitions and events.</li>
@@ -581,14 +638,14 @@
                 </div>
 
                 <!-- Volunteering 3: IEEE -->
-                <div class="timeline-item">
+                <div class="timeline-item" id="volunteering-ieee-member">
                     <div class="timeline-header">
                         <h3>Senior Member – IEEE Computer Society & WIE</h3>
                         <span class="timeline-date">2023 – Present</span>
                     </div>
                     <p class="timeline-subtitle">IEEE Computer Society & Women In Engineering Affinity Group</p>
-                    <button class="show-more-btn" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" style="display: none;">
+                    <button class="show-more-btn" type="button" aria-expanded="false" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="timeline-details" hidden>
                         <ul>
                             <li>Improved global rank in IEEEXtreme from <strong>1370</strong> (<a href="https://ieeextreme.org/ieeextreme-17-0-ranking/" target="_blank">17.0</a>) to <strong>491</strong> (<a href="https://ieeextreme.org/ieeextreme-18-0-ranking/" target="_blank">18.0</a>) with team "DebuggingTrio".</li>
                         </ul>
@@ -885,11 +942,59 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Mohamed Amine AROUS. All rights reserved.</p>
+            <p>&copy; <span class="footer-year">2026</span> Mohamed Amine AROUS. All rights reserved.</p>
             <p>Built with ❤️ using Vanilla JavaScript | ENSTA Paris - AI Engineering Student</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <button class="scroll-top-btn" type="button" aria-label="Scroll back to top">↑</button>
+
+    <!-- Personal AI Assistant: a floating widget layered on top of the static
+         portfolio. It talks to a separately deployed backend (see
+         assistant-config.js) over HTTPS - nothing about the portfolio itself
+         becomes dynamic. See docs/architecture.md. -->
+    <div id="ai-assistant" class="ai-assistant" data-state="closed">
+        <button id="ai-assistant-toggle" class="ai-assistant-toggle" type="button"
+                aria-expanded="false" aria-controls="ai-assistant-panel"
+                aria-label="Open AI assistant">
+            <svg class="ai-assistant-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+            <svg class="ai-assistant-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M18 6 6 18M6 6l12 12"/>
+            </svg>
+            <span>AI Assistant</span>
+            <span class="ai-assistant-dot" aria-hidden="true"></span>
+        </button>
+
+        <div id="ai-assistant-panel" class="ai-assistant-panel" role="dialog"
+             aria-label="Personal AI Assistant" hidden>
+            <div id="ai-assistant-resize-x" class="ai-assistant-resize-x" aria-hidden="true"></div>
+            <div id="ai-assistant-resize-y" class="ai-assistant-resize-y" aria-hidden="true"></div>
+            <div class="ai-assistant-header">
+                <div>
+                    <p class="ai-assistant-title">Personal AI Assistant</p>
+                    <p class="ai-assistant-subtitle">Grounded answers about my work, with citations</p>
+                </div>
+                <button id="ai-assistant-close" class="ai-assistant-close" type="button" aria-label="Close assistant">&times;</button>
+            </div>
+
+            <div id="ai-assistant-log" class="ai-assistant-log" role="log" aria-live="polite" aria-label="Conversation"></div>
+
+            <div id="ai-assistant-suggestions" class="ai-assistant-suggestions"></div>
+
+            <form id="ai-assistant-form" class="ai-assistant-form">
+                <label class="sr-only" for="ai-assistant-input">Ask a question about Mohamed Amine Arous</label>
+                <textarea id="ai-assistant-input" class="ai-assistant-input" rows="1" maxlength="1500"
+                          placeholder="Ask about his experience, projects or publications…"></textarea>
+                <button type="submit" id="ai-assistant-send" class="ai-assistant-send">Send</button>
+            </form>
+            <p id="ai-assistant-meta" class="ai-assistant-meta">Grounded answers with citations · limits apply</p>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+    <script src="assistant-config.js"></script>
+    <script src="assistant-widget.js" defer></script>
 </body>
 </html>

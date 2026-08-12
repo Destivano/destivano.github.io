@@ -1,0 +1,495 @@
+/* ========================================================================
+   Personal AI Assistant — floating widget
+   Vanilla CSS, no build step. Reuses the portfolio's own custom properties
+   (colours, fonts, radii, shadows) from styles.css so the widget reads as
+   part of the site rather than a bolted-on app. See styles.css :root.
+   ======================================================================== */
+
+.ai-assistant .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.ai-assistant {
+    position: fixed;
+    right: 24px;
+    bottom: 100px; /* clears .scroll-top-btn, which sits at bottom:30px */
+    z-index: 1001; /* above the navbar (1000) */
+    font-family: var(--font-body);
+}
+
+/* ------------------------------------------------------------- toggle btn */
+
+.ai-assistant-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.85rem 1.15rem;
+    border: none;
+    border-radius: 999px;
+    background: var(--gradient);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.92rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-lg), var(--glow-sm);
+    transition: var(--transition);
+}
+
+.ai-assistant-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg), var(--glow-md);
+}
+
+.ai-assistant-toggle svg {
+    width: 20px;
+    height: 20px;
+    flex: none;
+}
+
+.ai-assistant-toggle .ai-assistant-icon-close {
+    display: none;
+}
+
+.ai-assistant[data-state="open"] .ai-assistant-toggle .ai-assistant-icon-open {
+    display: none;
+}
+
+.ai-assistant[data-state="open"] .ai-assistant-toggle .ai-assistant-icon-close {
+    display: block;
+}
+
+/* Hidden entirely while the panel is open - the panel's own header close
+   button is the only close control then, and hiding the toggle frees the
+   vertical room it used to reserve below the panel (see .ai-assistant-panel
+   height below). It reappears the moment the panel closes, ready to be
+   clicked to reopen it. */
+.ai-assistant[data-state="open"] .ai-assistant-toggle {
+    display: none;
+}
+
+/* Pulsing dot the first time a visitor sees the button - draws the eye
+   without being an animated attention hog forever. */
+.ai-assistant-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--neon-bright);
+    box-shadow: 0 0 0 rgba(34, 211, 238, 0.6);
+    animation: ai-assistant-pulse 2.2s ease-out infinite;
+    flex: none;
+}
+
+@keyframes ai-assistant-pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.55); }
+    70%  { box-shadow: 0 0 0 9px rgba(34, 211, 238, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0); }
+}
+
+/* ------------------------------------------------------------------ panel */
+
+.ai-assistant-panel {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 14px);
+    width: min(480px, calc(100vw - 48px));
+    height: min(680px, calc(100vh - 130px));
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    box-shadow: var(--shadow-lg), var(--glow-md);
+    overflow: hidden;
+    min-width: 320px;
+    min-height: 420px;
+    max-width: min(720px, calc(100vw - 48px));
+    max-height: min(860px, calc(100vh - 40px));
+}
+
+/* Right/bottom stay anchored (see above), so dragging these grow the panel
+   to the left / upward - the visitor's own reading-size preference, bounded
+   by the min/max above so it can never swallow the whole viewport. Plain
+   CSS `resize` only ever offers a corner grip, not an edge one, so this is
+   a small hand-rolled drag instead (wired up in assistant-widget.js). */
+/* Kept inside the box (not overhanging the edge) because the panel clips
+   its children to the rounded corners with overflow: hidden - an
+   overhanging handle would get partly clipped and lose hit area. */
+.ai-assistant-resize-x {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    cursor: ew-resize;
+    z-index: 2;
+    touch-action: none;
+}
+
+.ai-assistant-resize-y {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 6px;
+    cursor: ns-resize;
+    z-index: 2;
+    touch-action: none;
+}
+
+.ai-assistant-resize-x:hover,
+.ai-assistant-resize-x.is-active,
+.ai-assistant-resize-y:hover,
+.ai-assistant-resize-y.is-active {
+    background: var(--neon);
+    opacity: 0.35;
+}
+
+body.ai-assistant-resizing-x,
+body.ai-assistant-resizing-x * {
+    cursor: ew-resize !important;
+    user-select: none !important;
+}
+
+body.ai-assistant-resizing-y,
+body.ai-assistant-resizing-y * {
+    cursor: ns-resize !important;
+    user-select: none !important;
+}
+
+.ai-assistant-panel[hidden] {
+    display: none;
+}
+
+.ai-assistant-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 1.1rem 1.2rem;
+    background: var(--hero-bg);
+    color: var(--hero-text);
+    flex: none;
+}
+
+.ai-assistant-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+.ai-assistant-subtitle {
+    font-size: 0.78rem;
+    color: rgba(234, 246, 255, 0.78);
+    max-width: 30ch;
+}
+
+.ai-assistant-close {
+    flex: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    font-size: 1.1rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.ai-assistant-close:hover {
+    background: rgba(255, 255, 255, 0.24);
+}
+
+/* --------------------------------------------------------------------- log */
+
+.ai-assistant-log {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    padding: 1rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    background: var(--bg-light);
+}
+
+.ai-assistant-intro {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.55;
+    padding: 0.2rem 0.1rem 0.4rem;
+}
+
+.ai-assistant-msg {
+    max-width: 86%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.ai-assistant-msg.user {
+    align-self: flex-end;
+    align-items: flex-end;
+}
+
+.ai-assistant-msg.bot {
+    align-self: flex-start;
+    align-items: flex-start;
+}
+
+.ai-assistant-bubble {
+    padding: 0.65rem 0.85rem;
+    border-radius: 14px;
+    font-size: 0.87rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+.ai-assistant-msg.user .ai-assistant-bubble {
+    background: var(--gradient);
+    color: #fff;
+    border-bottom-right-radius: 4px;
+}
+
+.ai-assistant-msg.bot .ai-assistant-bubble {
+    background: var(--surface);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-bottom-left-radius: 4px;
+}
+
+.ai-assistant-route {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.12rem 0.5rem;
+    border-radius: 999px;
+    background: var(--tint-2);
+    color: var(--secondary-color);
+    border: 1px solid rgba(20, 184, 166, 0.3);
+}
+
+.ai-assistant-route[data-route="structured"],
+.ai-assistant-route[data-route="tool"] {
+    background: rgba(13, 148, 136, 0.12);
+    color: var(--status-color);
+}
+
+.ai-assistant-route[data-route="refused"] {
+    background: rgba(90, 107, 123, 0.12);
+    color: var(--text-light);
+}
+
+.ai-assistant-citations {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.1rem;
+}
+
+.ai-assistant-citation {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    padding: 0.22rem 0.55rem;
+    border-radius: 999px;
+    background: var(--surface);
+    border: 1px solid var(--border-color);
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.ai-assistant-citation:hover {
+    border-color: var(--neon);
+    color: var(--secondary-color);
+    background: var(--tint-2);
+}
+
+.ai-assistant-thinking {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    align-self: flex-start;
+    padding: 0.55rem 0.8rem;
+    border-radius: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border-color);
+    font-size: 0.78rem;
+    color: var(--text-light);
+}
+
+.ai-assistant-thinking-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--neon);
+    animation: ai-assistant-blink 1.1s ease-in-out infinite;
+}
+
+@keyframes ai-assistant-blink {
+    0%, 80%, 100% { opacity: 0.25; }
+    40% { opacity: 1; }
+}
+
+.ai-assistant-error {
+    font-size: 0.8rem;
+    color: #b1503a;
+    background: rgba(177, 80, 58, 0.08);
+    border: 1px solid rgba(177, 80, 58, 0.25);
+    border-radius: 10px;
+    padding: 0.6rem 0.8rem;
+}
+
+/* -------------------------------------------------------------- starters */
+
+.ai-assistant-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    padding: 0 1.1rem 0.8rem;
+    flex: none;
+    background: var(--bg-light);
+}
+
+.ai-assistant-chip {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    padding: 0.4rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid var(--border-color);
+    background: var(--surface);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: left;
+}
+
+.ai-assistant-chip:hover:not(:disabled) {
+    border-color: var(--neon);
+    background: var(--tint-2);
+}
+
+.ai-assistant-chip:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ------------------------------------------------------------------ form */
+
+.ai-assistant-form {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.55rem;
+    padding: 0.8rem;
+    border-top: 1px solid var(--border-color);
+    background: var(--surface);
+    flex: none;
+}
+
+.ai-assistant-input {
+    flex: 1 1 auto;
+    resize: none;
+    max-height: 90px;
+    padding: 0.6rem 0.75rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.ai-assistant-input:focus {
+    outline: 2px solid var(--neon);
+    outline-offset: 1px;
+}
+
+.ai-assistant-send {
+    flex: none;
+    padding: 0.6rem 1.1rem;
+    border: none;
+    border-radius: 10px;
+    background: var(--gradient);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.ai-assistant-send:hover:not(:disabled) {
+    filter: brightness(1.08);
+}
+
+.ai-assistant-send:disabled,
+.ai-assistant-input:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.ai-assistant-meta {
+    padding: 0 1.1rem 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--text-light);
+    background: var(--surface);
+    flex: none;
+}
+
+/* -------------------------------------------------------------- mobile */
+
+@media (max-width: 540px) {
+    .ai-assistant {
+        right: 16px;
+        bottom: 84px;
+    }
+
+    .ai-assistant-panel {
+        position: fixed;
+        left: 12px;
+        right: 12px;
+        bottom: 84px;
+        width: auto;
+        height: min(72vh, 640px);
+    }
+
+    /* left+right are both pinned here, so a horizontal drag has no room to
+       act in - the resize handles only make sense above this breakpoint. */
+    .ai-assistant-resize-x,
+    .ai-assistant-resize-y {
+        display: none;
+    }
+
+    .ai-assistant-toggle span {
+        display: none;
+    }
+
+    .ai-assistant-toggle {
+        padding: 0.85rem;
+    }
+}
+
+/* ------------------------------------------------------------- a11y */
+
+@media (prefers-reduced-motion: reduce) {
+    .ai-assistant-dot,
+    .ai-assistant-thinking-dot {
+        animation: none;
+    }
+    .ai-assistant-toggle:hover {
+        transform: none;
+    }
+}

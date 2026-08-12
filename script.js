@@ -1,145 +1,50 @@
+/* Portfolio interactions.
+ *
+ * Every behaviour below is bound to markup that actually exists in index.html.
+ * Two subsystems used to live here and no longer do: a horizontal-carousel
+ * timeline (.milestone / .timeline-track / #detail-*) and a project-card filter
+ * (.filter-btn / .project-card). Both belonged to earlier layouts; the carousel
+ * code also threw a TypeError on every page load, which silently killed the
+ * listeners registered after it.
+ */
+
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+/* Respect the user's motion preference for programmatic scrolling. */
+const scrollBehavior = () => (prefersReducedMotion.matches ? 'auto' : 'smooth');
+
 // ========== Mobile Navigation Toggle ==========
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-link');
 
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
+if (hamburger && navMenu) {
+    const setMenu = (open) => {
+        hamburger.classList.toggle('active', open);
+        navMenu.classList.toggle('active', open);
+        hamburger.setAttribute('aria-expanded', String(open));
+    };
 
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-    });
-});
-
-// ============================================
-// Timeline Navigation & Detail Panel Logic
-// ============================================
-document.addEventListener('DOMContentLoaded', () => {
-    // Select all milestones in DOM order (left to right = newest to oldest)
-    const milestones = Array.from(document.querySelectorAll('.milestone'));
-    const track = document.querySelector('.timeline-track');
-    const leftBtn = document.querySelector('.nav-btn.left');
-    const rightBtn = document.querySelector('.nav-btn.right');
-    
-    let activeIndex = 0;
-
-    // ============================================
-    // Update Detail Panel Function
-    // ============================================
-    function updateDetailPanel(milestone) {
-        // Read data attributes
-        const title = milestone.getAttribute('data-title');
-        const company = milestone.getAttribute('data-company');
-        const role = milestone.getAttribute('data-role');
-        const date = milestone.getAttribute('data-date');
-        const description = milestone.getAttribute('data-description');
-        const tags = milestone.getAttribute('data-tags');
-        const link = milestone.getAttribute('data-link');
-
-        // Update detail panel elements
-        document.getElementById('detail-title').textContent = title;
-        document.getElementById('detail-company').textContent = company;
-        document.getElementById('detail-role').textContent = role;
-        document.getElementById('detail-date').textContent = date;
-        document.getElementById('detail-description').innerHTML = description;
-
-        // Create tags
-        const tagsContainer = document.getElementById('detail-tags');
-        tagsContainer.innerHTML = '';
-        if (tags) {
-            tags.split(',').forEach(tag => {
-                const tagSpan = document.createElement('span');
-                tagSpan.className = 'tag';
-                tagSpan.textContent = tag.trim();
-                tagsContainer.appendChild(tagSpan);
-            });
-        }
-
-        // Update link
-        const linkElement = document.getElementById('detail-link');
-        if (link && link.trim() !== '') {
-            linkElement.href = link;
-            linkElement.style.display = 'inline-flex';
-            
-            // Set link text based on URL
-            if (link.includes('linkedin.com')) {
-                linkElement.textContent = 'View LinkedIn Post';
-            } else {
-                linkElement.textContent = 'View Project';
-            }
-        } else {
-            linkElement.style.display = 'none';
-        }
-
-        // Update active state
-        milestones.forEach(m => m.classList.remove('active'));
-        milestone.classList.add('active');
-    }
-
-    // ============================================
-    // Smooth Scroll to Center Milestone
-    // ============================================
-    function scrollToMilestone(milestone) {
-        const rect = milestone.getBoundingClientRect();
-        const trackRect = track.getBoundingClientRect();
-        const offset = rect.left - trackRect.left + rect.width / 2 - trackRect.width / 2;
-        track.scrollBy({ left: offset, behavior: 'smooth' });
-    }
-
-    // ============================================
-    // Milestone Click Handler
-    // ============================================
-    milestones.forEach((milestone, index) => {
-        milestone.addEventListener('click', () => {
-            activeIndex = index;
-            updateDetailPanel(milestone);
-            scrollToMilestone(milestone);
-        });
+    hamburger.addEventListener('click', () => {
+        setMenu(!navMenu.classList.contains('active'));
     });
 
-    // ============================================
-    // Left Button (Go to Older Project → Right)
-    // ============================================
-    leftBtn.addEventListener('click', () => {
-        if (activeIndex < milestones.length - 1) {
-            activeIndex++;
-            milestones[activeIndex].click();
-        }
+    navLinks.forEach((link) => {
+        link.addEventListener('click', () => setMenu(false));
     });
 
-    // ============================================
-    // Right Button (Go to Newer Project ← Left)
-    // ============================================
-    rightBtn.addEventListener('click', () => {
-        if (activeIndex > 0) {
-            activeIndex--;
-            milestones[activeIndex].click();
+    // Escape closes the menu and returns focus to the toggle.
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+            setMenu(false);
+            hamburger.focus();
         }
     });
-
-    // ============================================
-    // Initial Load: Display First Milestone
-    // ============================================
-    if (milestones.length > 0) {
-        updateDetailPanel(milestones[0]);
-        setTimeout(() => {
-            scrollToMilestone(milestones[0]);
-        }, 100);
-    }
-});
-
-// ========== Typewriter Effect ==========
-
-
-
+}
 
 // ========== Hero Grid Cell Highlight ==========
 const hero = document.querySelector('.hero');
-if (hero) {
+if (hero && !prefersReducedMotion.matches) {
     const CELL = 40; // must match the hero grid background-size
     const cell = document.createElement('div');
     cell.className = 'grid-cell';
@@ -170,35 +75,54 @@ if (hero) {
     });
 }
 
-// ========== Active Navigation on Scroll ==========
-const sections = document.querySelectorAll('section');
+// ========== Navbar Shadow + Scroll-Spy ==========
 const navbar = document.getElementById('navbar');
+const sections = Array.from(document.querySelectorAll('section[id]'));
+const scrollTopBtn = document.querySelector('.scroll-top-btn');
 
-window.addEventListener('scroll', () => {
-    // Add shadow to navbar on scroll
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
+/* One scroll listener, rAF-throttled, driving all three scroll-dependent
+ * behaviours. Previously these were three separate unthrottled listeners. */
+let scrollQueued = false;
+
+function onScroll() {
+    const y = window.scrollY;
+
+    if (navbar) {
+        navbar.classList.toggle('scrolled', y > 50);
     }
 
-    // Highlight active nav link
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (window.scrollY >= sectionTop - 100) {
-            current = section.getAttribute('id');
-        }
-    });
+    if (scrollTopBtn) {
+        scrollTopBtn.classList.toggle('visible', y > 500);
+    }
 
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').includes(current)) {
-            link.classList.add('active');
+    let current = '';
+    for (const section of sections) {
+        if (y >= section.offsetTop - 100) {
+            current = section.id;
+        }
+    }
+    navLinks.forEach((link) => {
+        const isActive = current !== '' && link.getAttribute('href') === `#${current}`;
+        link.classList.toggle('active', isActive);
+        if (isActive) {
+            link.setAttribute('aria-current', 'true');
+        } else {
+            link.removeAttribute('aria-current');
         }
     });
-});
+}
+
+window.addEventListener('scroll', () => {
+    if (!scrollQueued) {
+        scrollQueued = true;
+        requestAnimationFrame(() => {
+            onScroll();
+            scrollQueued = false;
+        });
+    }
+}, { passive: true });
+
+onScroll();
 
 // ========== Typewriter Effect ==========
 const typewriter = document.getElementById('typewriter');
@@ -210,184 +134,103 @@ const phrases = [
     'Research Intern at CEA List — LASTI Team'
 ];
 
-let phraseIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-let typingSpeed = 100;
-
-function type() {
-    const currentPhrase = phrases[phraseIndex];
-    
-    if (isDeleting) {
-        typewriter.textContent = currentPhrase.substring(0, charIndex - 1);
-        charIndex--;
-        typingSpeed = 50;
+if (typewriter) {
+    if (prefersReducedMotion.matches) {
+        // No animation: show the primary positioning statically.
+        typewriter.textContent = phrases[0];
     } else {
-        typewriter.textContent = currentPhrase.substring(0, charIndex + 1);
-        charIndex++;
-        typingSpeed = 100;
-    }
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
 
-    if (!isDeleting && charIndex === currentPhrase.length) {
-        // Pause at end of phrase
-        typingSpeed = 2000;
-        isDeleting = true;
-    } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-        typingSpeed = 500;
-    }
+        const type = () => {
+            const phrase = phrases[phraseIndex];
+            let delay;
 
-    setTimeout(type, typingSpeed);
+            if (isDeleting) {
+                charIndex -= 1;
+                delay = 50;
+            } else {
+                charIndex += 1;
+                delay = 100;
+            }
+            typewriter.textContent = phrase.substring(0, charIndex);
+
+            if (!isDeleting && charIndex === phrase.length) {
+                delay = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                delay = 500;
+            }
+
+            setTimeout(type, delay);
+        };
+
+        setTimeout(type, 1000);
+    }
 }
 
-// Start typewriter effect
-document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(type, 1000);
+// ========== Smooth Anchor Scrolling ==========
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (!href || href === '#') return;
+        const target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: scrollBehavior(), block: 'start' });
+        // Keep the URL and focus in sync for keyboard/screen-reader users.
+        history.replaceState(null, '', href);
+        target.setAttribute('tabindex', '-1');
+        target.focus({ preventScroll: true });
+    });
 });
 
-// ========== Project Filtering ==========
-const filterButtons = document.querySelectorAll('.filter-btn');
-const projectCards = document.querySelectorAll('.project-card');
+// ========== Reveal-on-Scroll ==========
+const revealTargets = document.querySelectorAll(
+    '.about-content, .contact-content, .ach-card, .cert-card, .timeline-item, .skill-row'
+);
 
-filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        // Remove active class from all buttons
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        // Add active class to clicked button
-        button.classList.add('active');
-
-        const filterValue = button.getAttribute('data-filter');
-
-        projectCards.forEach(card => {
-            const category = card.getAttribute('data-category');
-            
-            if (filterValue === 'all' || category === filterValue) {
-                card.classList.remove('hidden');
-                card.style.display = 'block';
-                // Add animation
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'scale(1)';
-                }, 10);
-            } else {
-                card.style.opacity = '0';
-                card.style.transform = 'scale(0.8)';
-                setTimeout(() => {
-                    card.classList.add('hidden');
-                    card.style.display = 'none';
-                }, 300);
+if (prefersReducedMotion.matches || !('IntersectionObserver' in window)) {
+    revealTargets.forEach((el) => el.classList.add('fade-in'));
+} else {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+                observer.unobserve(entry.target);
             }
         });
+    }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
+
+    revealTargets.forEach((el) => observer.observe(el));
+}
+
+// ========== Scroll to Top ==========
+if (scrollTopBtn) {
+    scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: scrollBehavior() });
     });
-});
-
-// ========== Smooth Scroll ==========
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
-});
-
-// ========== Scroll Animations ==========
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
-        }
-    });
-}, observerOptions);
-
-// Observe elements for animation
-document.querySelectorAll('.skill-card, .project-card, .about-content, .contact-content').forEach(el => {
-    observer.observe(el);
-});
-
-// ========== Scroll to Top Button (Optional Enhancement) ==========
-// Create scroll to top button
-const scrollTopBtn = document.createElement('button');
-scrollTopBtn.innerHTML = '↑';
-scrollTopBtn.className = 'scroll-top-btn';
-scrollTopBtn.style.cssText = `
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: var(--gradient);
-    color: white;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    display: none;
-    z-index: 999;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-`;
-
-document.body.appendChild(scrollTopBtn);
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 500) {
-        scrollTopBtn.style.display = 'block';
-    } else {
-        scrollTopBtn.style.display = 'none';
-    }
-});
-
-scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-});
-
-scrollTopBtn.addEventListener('mouseenter', () => {
-    scrollTopBtn.style.transform = 'scale(1.1)';
-});
-
-scrollTopBtn.addEventListener('mouseleave', () => {
-    scrollTopBtn.style.transform = 'scale(1)';
-});
+}
 
 // ========== Dynamic Year in Footer ==========
-const yearElement = document.querySelector('.footer p');
+const yearElement = document.querySelector('.footer-year');
 if (yearElement) {
-    const currentYear = new Date().getFullYear();
-    yearElement.textContent = yearElement.textContent.replace('2025', currentYear);
+    yearElement.textContent = String(new Date().getFullYear());
 }
 
-// ========== Toggle Details Function ==========
+// ========== Show More / Less on timeline items ==========
 function toggleDetails(button) {
-    const detailsDiv = button.nextElementSibling;
-    const isHidden = detailsDiv.style.display === 'none' || detailsDiv.style.display === '';
-    
-    if (isHidden) {
-        detailsDiv.style.display = 'block';
-        button.textContent = 'Show Less ▲';
-    } else {
-        detailsDiv.style.display = 'none';
-        button.textContent = 'Show More ▼';
-    }
+    const details = button.nextElementSibling;
+    if (!details) return;
+
+    const isOpen = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', String(!isOpen));
+    details.hidden = isOpen;
+    button.textContent = isOpen ? 'Show More ▼' : 'Show Less ▲';
 }
 
-// Make function globally available
+// Invoked from inline onclick handlers in index.html.
 window.toggleDetails = toggleDetails;
-
-// ========== Console Message ==========
-console.log('%c👋 Hello Developer!', 'color: #667eea; font-size: 20px; font-weight: bold;');
-console.log('%cThanks for checking out the code!', 'color: #764ba2; font-size: 14px;');
-console.log('%cFeel free to reach out if you have any questions.', 'color: #718096; font-size: 12px;');

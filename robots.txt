@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# The assistant API is not content to crawl.
+Disallow: /api/
