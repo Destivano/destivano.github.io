@@ -392,26 +392,28 @@
                 <!-- Project 0a2: NORMA -->
                 <div class="timeline-item" id="project-norma-ontology">
                     <div class="timeline-header">
-                        <h3>NORMA – Normative Ontology for Requirements Modeling &amp; Analysis</h3>
+                        <h3>NORMA – Knowledge Graph &amp; GraphRAG for Automotive Regulations</h3>
                         <span class="timeline-date">2026</span>
                     </div>
-                    <p class="timeline-subtitle">Knowledge-graph pipeline turning automotive regulatory documents into a validated, versioned graph</p>
+                    <p class="timeline-subtitle">Normative Ontology for Requirements Modeling &amp; Analysis</p>
                     <button class="show-more-btn" type="button" aria-expanded="false" onclick="toggleDetails(this)">Show More ▼</button>
                     <div class="timeline-details" hidden>
                         <ul>
-                            <li>Built a knowledge-graph pipeline transforming automotive regulatory documents (UNECE, EU, ISO 26262) into a versioned, provenance-tracked graph in <strong>Neo4j</strong>, combining a cost-tiered <strong>NER</strong> cascade (GLiNER) with local LLM relation extraction (Ollama).</li>
-                            <li>Modeled the domain with a versioned <strong>OWL</strong> ontology and validated the operational graph with <strong>SHACL</strong>, resolving 21,700 violations to reach <strong>100% property coverage</strong>.</li>
+                            <li>Built a bilingual knowledge-graph pipeline turning UNECE/EU automotive regulations into a versioned, provenance-tracked <strong>Neo4j</strong> graph under an <strong>OWL</strong> ontology; <strong>SHACL</strong> validation resolved 21,700 violations to 0.</li>
+                            <li>Deterministic clause-edge expansion lifted multi-hop recall@10 <strong>2.2×</strong> (0.317 → 0.708, 283 queries); relations built by the LLM measured 0.000 precision and were cut. Live on <strong>AWS Lambda</strong>, ~$0.003/mo.</li>
                         </ul>
                         <div class="project-tags">
                             <span class="tag">Knowledge Graphs</span>
+                            <span class="tag">GraphRAG</span>
                             <span class="tag">Neo4j</span>
-                            <span class="tag">NER</span>
-                            <span class="tag">GLiNER</span>
-                            <span class="tag">Ollama</span>
                             <span class="tag">OWL</span>
                             <span class="tag">SHACL</span>
+                            <span class="tag">AWS Lambda</span>
                         </div>
-                        <a href="https://github.com/Destivano/NORMA" target="_blank" class="cert-link">View on GitHub →</a>
+                        <div class="project-links">
+                            <a href="https://github.com/Destivano/NORMA" target="_blank" class="cert-link">View on GitHub →</a>
+                            <a href="https://destivano.github.io/NORMA" target="_blank" class="cert-link">View Live →</a>
+                        </div>
                     </div>
                 </div>
 
