@@ -14,19 +14,22 @@
 (function () {
   "use strict";
 
+  var FRENCH = document.documentElement.lang === "fr";
+  function ui(english, french) { return FRENCH ? french : english; }
+
   var CONFIG = window.PERSONAL_ASSISTANT_CONFIG || {};
   var API_BASE = (CONFIG.apiBase || "").replace(/\/$/, "");
   var MAX_CHARS = 1500;
   var HISTORY_TURNS = 6;
-  var SESSION_KEY = "personalAssistant.session.v1";
+  var SESSION_KEY = "personalAssistant.session.v1" + (FRENCH ? ".fr" : "");
 
   var STARTERS = [
-    "What projects has he worked on?",
-    "What did he do at CEA List?",
-    "What Generative AI projects has he built?",
-    "What research has he published?",
-    "Why would he be a good AI Engineer candidate?",
-    "How can I contact him?",
+    ui("What projects has he worked on?", "Sur quels projets a-t-il travaillé ?"),
+    ui("What did he do at CEA List?", "Qu’a-t-il réalisé au CEA List ?"),
+    ui("What Generative AI projects has he built?", "Quels projets d’IA générative a-t-il développés ?"),
+    ui("What research has he published?", "Quels travaux de recherche a-t-il publiés ?"),
+    ui("Why would he be a good AI Engineer candidate?", "Pourquoi est-il un bon candidat pour un poste d’ingénieur IA ?"),
+    ui("How can I contact him?", "Comment le contacter ?"),
   ];
 
   // Badge text shown above an answer. Deliberately written for a recruiter, not
@@ -36,11 +39,11 @@
   // logs and tests - only the display text is translated. An unrecognised route
   // renders no badge at all rather than a raw enum value.
   var ROUTE_LABEL = {
-    structured: "from his portfolio data",
-    tool: "from his portfolio data",
-    rag: "sourced answer",
+    structured: ui("from his portfolio data", "d’après les données de son portfolio"),
+    tool: ui("from his portfolio data", "d’après les données de son portfolio"),
+    rag: ui("sourced answer", "réponse sourcée"),
     refused: "",
-    degraded: "quoted directly from his portfolio",
+    degraded: ui("quoted directly from his portfolio", "citation directe de son portfolio"),
   };
 
   // ------------------------------------------------------------- utilities
@@ -96,8 +99,8 @@
         return null;
       }).then(function (body) {
         if (!response.ok) {
-          var detail = body && body.error ? body.error : { code: "unknown", message: "Something went wrong." };
-          var err = new Error(detail.message || "Request failed.");
+          var detail = body && body.error ? body.error : { code: "unknown", message: ui("Something went wrong.", "Une erreur s’est produite.") };
+          var err = new Error(detail.message || ui("Request failed.", "La requête a échoué."));
           err.code = detail.code;
           err.retryAfterSeconds = detail.retry_after_seconds;
           err.status = response.status;
@@ -136,7 +139,7 @@
     };
 
     if (!API_BASE) {
-      meta.textContent = "Assistant is not configured (missing apiBase in assistant-config.js).";
+      meta.textContent = ui("Assistant is not configured (missing apiBase in assistant-config.js).", "L’assistant n’est pas configuré (apiBase manquant dans assistant-config.js).");
     }
 
     // ----------------------------------------------------------- rendering
@@ -153,7 +156,7 @@
       a.className = "ai-assistant-citation";
       a.href = href;
       a.textContent = citation.title;
-      a.title = "Source: " + citation.source_type + " / " + citation.entity_id;
+      a.title = ui("Source: ", "Source : ") + citation.source_type + " / " + citation.entity_id;
       if (citation.url && !citation.anchor) {
         a.target = "_blank";
         a.rel = "noopener noreferrer";
@@ -208,6 +211,10 @@
     function renderIntro() {
       var p = document.createElement("p");
       p.className = "ai-assistant-intro";
+      if (FRENCH) {
+        p.textContent = "Bonjour ! Je suis l’assistant IA personnel de Mohamed. Posez-moi des questions sur ses projets, ses recherches, son expérience, ses compétences, ses publications ou sa recherche d’emploi. Mes réponses s’appuient sur ses données de carrière et citent leurs sources ; je signale ce que je ne sais pas.";
+        return p;
+      }
       p.innerHTML =
         "Hi! I&rsquo;m Mohamed&rsquo;s personal AI assistant. Ask me about his " +
         "projects, research, experience, skills, publications, or what he&rsquo;s " +
@@ -270,7 +277,7 @@
       var thinking = document.createElement("div");
       thinking.className = "ai-assistant-thinking";
       thinking.innerHTML =
-        '<span class="ai-assistant-thinking-dot"></span><span>thinking&hellip;</span>';
+        '<span class="ai-assistant-thinking-dot"></span><span>' + ui("thinking…", "réflexion…") + '</span>';
       log.appendChild(thinking);
       log.scrollTop = log.scrollHeight;
 
@@ -295,7 +302,7 @@
               data.usage.messages_remaining +
                 " message" +
                 (data.usage.messages_remaining === 1 ? "" : "s") +
-                " left in this conversation"
+                ui(" left in this conversation", " restant(s) dans cette conversation")
             );
             if (data.usage.messages_remaining <= 0) state.exhausted = true;
           }
@@ -304,7 +311,7 @@
           var friendly =
             err && err.status
               ? err.message
-              : "The assistant is unreachable right now. The portfolio above is complete, and the Contact section has direct ways to get in touch.";
+              : ui("The assistant is unreachable right now. The portfolio above is complete, and the Contact section has direct ways to get in touch.", "L’assistant est actuellement inaccessible. Le portfolio est complet ; la section Contact permet de me joindre directement.");
           var errBox = document.createElement("p");
           errBox.className = "ai-assistant-error";
           errBox.textContent = friendly;

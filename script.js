@@ -134,6 +134,11 @@ const phrases = [
     'Applied AI',
     'Research Intern at CEA List — LASTI Team'
 ];
+if (document.documentElement.lang === 'fr') {
+    phrases.splice(0, phrases.length,
+        'Ingénierie IA', 'IA générative', 'Systèmes LLM', 'IA appliquée',
+        'Stage de recherche au CEA List — équipe LASTI');
+}
 
 if (typewriter) {
     if (prefersReducedMotion.matches) {
@@ -230,7 +235,10 @@ function toggleDetails(button) {
     const isOpen = button.getAttribute('aria-expanded') === 'true';
     button.setAttribute('aria-expanded', String(!isOpen));
     details.hidden = isOpen;
-    button.textContent = isOpen ? 'Show More ▼' : 'Show Less ▲';
+    const french = document.documentElement.lang === 'fr';
+    button.textContent = isOpen
+        ? (french ? 'Voir plus ▼' : 'Show More ▼')
+        : (french ? 'Voir moins ▲' : 'Show Less ▲');
 }
 
 // Invoked from inline onclick handlers in index.html.
