@@ -1,6 +1,7 @@
 /* A compact language control, shared by the two static pages. */
 .nav-container { gap: 1rem; }
 .nav-menu { gap: clamp(.6rem, 1.2vw, 1.25rem); }
+.hero-availability { margin: 0 auto 1.5rem; max-width: 42rem; font-size: 1rem; line-height: 1.6; color: var(--neon-bright); }
 .nav-controls { display: flex; align-items: center; gap: 1rem; flex-shrink: 0; }
 .language-switch { display: flex; align-items: center; gap: .2rem; padding: .2rem; border: 1px solid var(--border-color, #d8e1ea); border-radius: .5rem; }
 .language-option { display: inline-flex; align-items: center; gap: .3rem; min-height: 36px; padding: .3rem .5rem; color: var(--text-color); font: 600 .8rem var(--font-mono); text-decoration: none; border-radius: .3rem; white-space: nowrap; }
