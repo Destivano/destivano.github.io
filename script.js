@@ -26,8 +26,21 @@ if (hamburger && navMenu) {
     };
 
     hamburger.addEventListener('click', () => {
-        setMenu(!navMenu.classList.contains('active'));
+        const open = !navMenu.classList.contains('active');
+        setMenu(open);
+        // Move focus once the dropdown's entrance transition is complete.
+        if (open) window.setTimeout(() => {
+            if (navMenu.classList.contains('active')) navLinks[0]?.focus();
+        }, 220);
     });
+
+    document.addEventListener('click', (event) => {
+        if (!navMenu.contains(event.target) && !hamburger.contains(event.target)) setMenu(false);
+    });
+    document.addEventListener('focusin', (event) => {
+        if (!navMenu.contains(event.target) && !hamburger.contains(event.target)) setMenu(false);
+    });
+    window.matchMedia('(max-width: 899px)').addEventListener('change', () => setMenu(false));
 
     navLinks.forEach((link) => {
         link.addEventListener('click', () => setMenu(false));
@@ -81,8 +94,7 @@ const navbar = document.getElementById('navbar');
 const sections = Array.from(document.querySelectorAll('section[id]'));
 const scrollTopBtn = document.querySelector('.scroll-top-btn');
 
-/* One scroll listener, rAF-throttled, driving all three scroll-dependent
- * behaviours. Previously these were three separate unthrottled listeners. */
+/* Shadow and back-to-top visibility; section tracking uses an observer below. */
 let scrollQueued = false;
 
 function onScroll() {
@@ -96,17 +108,15 @@ function onScroll() {
         scrollTopBtn.classList.toggle('visible', y > 500);
     }
 
-    let current = '';
-    for (const section of sections) {
-        if (y >= section.offsetTop - 100) {
-            current = section.id;
-        }
-    }
+}
+
+function markCurrentSection(section) {
+    const current = section?.dataset.navGroup || section?.id;
     navLinks.forEach((link) => {
-        const isActive = current !== '' && link.getAttribute('href') === `#${current}`;
+        const isActive = link.getAttribute('href') === `#${current}`;
         link.classList.toggle('active', isActive);
         if (isActive) {
-            link.setAttribute('aria-current', 'true');
+            link.setAttribute('aria-current', 'location');
         } else {
             link.removeAttribute('aria-current');
         }
@@ -124,6 +134,29 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 onScroll();
+
+let sectionObserver;
+function observeNavigationSections() {
+    sectionObserver?.disconnect();
+    const headerHeight = Math.ceil(navbar?.getBoundingClientRect().height || 80);
+    document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
+    const visible = new Set();
+    const bottomMargin = Math.max(0, window.innerHeight - headerHeight - 100);
+    sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) visible.add(entry.target);
+            else visible.delete(entry.target);
+        });
+        const candidates = sections.filter(section => visible.has(section));
+        const current = candidates.find(section => section.getBoundingClientRect().bottom > headerHeight + 1);
+        if (current) markCurrentSection(current);
+    }, {rootMargin: `-${headerHeight}px 0px -${bottomMargin}px 0px`, threshold: 0});
+    sections.forEach(section => sectionObserver.observe(section));
+}
+markCurrentSection(sections[0]);
+observeNavigationSections();
+new ResizeObserver(observeNavigationSections).observe(navbar);
+window.addEventListener('resize', observeNavigationSections);
 
 // ========== Typewriter Effect ==========
 const typewriter = document.getElementById('typewriter');

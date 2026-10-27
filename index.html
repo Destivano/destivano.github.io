@@ -80,14 +80,11 @@
             </div>
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#news" class="nav-link">News</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#experience" class="nav-link">Journey</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#volunteering" class="nav-link">Leadership</a></li>
-                <li><a href="#certifications" class="nav-link">Certifications</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#news" class="nav-link">News</a></li>
+                <li><a href="#contact" class="nav-link nav-contact">Contact</a></li>
             </ul>
             <div class="nav-controls">
                 <div class="language-switch" role="group" aria-label="Website language">
@@ -105,7 +102,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
+    <section id="home" data-nav-group="home" class="hero">
         <div class="hero-content">
             <p class="hero-kicker">&gt; booting portfolio<span class="blink">_</span></p>
             <h1 class="hero-title">
@@ -129,53 +126,8 @@
         </div>
     </section>
 
-    <!-- News / Paper Highlight Section -->
-    <section id="news" class="news">
-        <div class="container">
-            <p class="news-kicker">&gt; latest_update --status=<span class="accepted-flag">accepted</span><span class="blink">_</span></p>
-            <div class="news-card" id="news-eusipco">
-                <div class="news-spark news-spark-2">✦</div>
-                <div class="news-spark news-spark-3">✧</div>
-                <div class="news-card-top">
-                    <div class="news-badge">
-                        <span class="news-badge-dot"></span>
-                        NEW · PAPER ACCEPTED @ EUSIPCO 2026
-                    </div>
-                    <div class="news-logo">
-                        <img src="LOGOEUSIPCO.webp" alt="EUSIPCO 2026 logo" width="300" height="89" decoding="async" fetchpriority="high">
-                    </div>
-                </div>
-                <h2 class="news-title">Europeanizing Modular Zero-Shot TTS</h2>
-                <p class="news-subtitle">Component-Level Adaptation Framework for French &amp; German</p>
-                <p class="news-authors">
-                    Tim Luka Horstmann, Nassima Ould Ouali, <span class="me">Mohamed Amine Arous</span>, Awais Hussain Sani, Eric Moulines
-                </p>
-                <p class="news-affil">
-                    <span>École Polytechnique</span>
-                    <span>Hi! PARIS</span>
-                    <span>ENSTA Paris</span>
-                </p>
-                <p class="news-abstract">
-                    A component-level framework for data-efficient adaptation of modular zero-shot TTS to French and German. We identify the <strong>text-speech LM</strong> as the dominant adaptation lever, and release <strong>CosyVoice2-EU</strong> — with model, package, demo, and an extensible codebase.
-                </p>
-                <div class="news-tags">
-                    <span class="tag">Zero-Shot TTS</span>
-                    <span class="tag">French</span>
-                    <span class="tag">German</span>
-                    <span class="tag">Voice Cloning</span>
-                    <span class="tag">CosyVoice2-EU</span>
-                </div>
-                <div class="news-links">
-                    <span class="btn btn-soon">arXiv · coming soon ⧗</span>
-                    <a href="https://www.eurasip.org/Proceedings/Eusipco/Eusipco2026/pdfs/0000471.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">./read_paper</a>
-                    <a href="https://github.com/hi-paris/CosyVoice2-EU" target="_blank" class="btn btn-secondary">./view_code</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- About Section -->
-    <section id="about" class="about">
+    <section id="about" data-nav-group="about" class="about">
         <div class="container">
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
@@ -210,8 +162,270 @@
         </div>
     </section>
 
+    <!-- Skills Section -->
+    <section id="skills" data-nav-group="about" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Technologies</h2>
+            <p class="skills-cmd">$ cat skills.txt | sort | uniq</p>
+
+            <div class="skill-stack">
+                <div class="skill-row">
+                    <span class="skill-row-label">AI_RESEARCH</span>
+                    <div class="skill-row-tags">
+                        <span class="tag">Embodied AI</span>
+                        <span class="tag">VLAs</span>
+                        <span class="tag">NLP</span>
+                        <span class="tag">Computer Vision</span>
+                        <span class="tag">TTS</span>
+                        <span class="tag">CNNs</span>
+                        <span class="tag">LLMs</span>
+                        <span class="tag">RAG</span>
+                        <span class="tag">Vector Embeddings</span>
+                        <span class="tag">Scene Understanding</span>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-row-label">PROGRAMMING</span>
+                    <div class="skill-row-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">C++</span>
+                        <span class="tag">CUDA</span>
+                        <span class="tag">LaTeX</span>
+                        <span class="tag">Git</span>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-row-label">FRAMEWORKS</span>
+                    <div class="skill-row-tags">
+                        <span class="tag">PyTorch</span>
+                        <span class="tag">TensorFlow</span>
+                        <span class="tag">Transformers</span>
+                        <span class="tag">Scikit-learn</span>
+                        <span class="tag">Pandas</span>
+                        <span class="tag">FastAPI</span>
+                        <span class="tag">Flask</span>
+                        <span class="tag">Streamlit</span>
+                        <span class="tag">Gradio</span>
+                        <span class="tag">Ollama</span>
+                        <span class="tag">CrewAI</span>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-row-label">DATABASES</span>
+                    <div class="skill-row-tags">
+                        <span class="tag">PostgreSQL</span>
+                        <span class="tag">Neo4j</span>
+                        <span class="tag">DynamoDB</span>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-row-label">CLOUD_DEVOPS</span>
+                    <div class="skill-row-tags">
+                        <span class="tag">AWS</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">CI/CD</span>
+                        <span class="tag">Git</span>
+                        <span class="tag">GitHub</span>
+                        <span class="tag">Google Cloud</span>
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-row-label">KNOWLEDGE_SEMANTIC_AI</span>
+                    <div class="skill-row-tags">
+                        <span class="tag">Knowledge Graphs</span>
+                        <span class="tag">Ontologies</span>
+                        <span class="tag">OWL</span>
+                        <span class="tag">SHACL</span>
+                        <span class="tag">RDF</span>
+                        <span class="tag">NER</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Infinite scrolling tickers -->
+            <div class="skills-ticker">
+                <div class="ticker-row ticker-left">
+                    <div class="ticker-inner">
+                        <span class="ticker-tag">PyTorch</span>
+                        <span class="ticker-tag">Embodied AI</span>
+                        <span class="ticker-tag">CUDA</span>
+                        <span class="ticker-tag">Knowledge Graphs</span>
+                        <span class="ticker-tag">Python</span>
+                        <span class="ticker-tag">Transformers</span>
+                        <span class="ticker-tag">VLAs</span>
+                        <span class="ticker-tag">FastAPI</span>
+                        <span class="ticker-tag">C++</span>
+                        <span class="ticker-tag">NLP</span>
+                        <span class="ticker-tag">LLMs</span>
+                        <span class="ticker-tag">AWS</span>
+                        <span class="ticker-tag">RAG</span>
+                        <span class="ticker-tag">Docker</span>
+                        <span class="ticker-tag">Flask</span>
+                        <span class="ticker-tag">PostgreSQL</span>
+                        <span class="ticker-tag">Neo4j</span>
+                        <span class="ticker-tag">DynamoDB</span>
+                        <!-- duplicate for seamless loop -->
+                        <span class="ticker-tag">PyTorch</span>
+                        <span class="ticker-tag">Embodied AI</span>
+                        <span class="ticker-tag">CUDA</span>
+                        <span class="ticker-tag">Knowledge Graphs</span>
+                        <span class="ticker-tag">Python</span>
+                        <span class="ticker-tag">Transformers</span>
+                        <span class="ticker-tag">VLAs</span>
+                        <span class="ticker-tag">FastAPI</span>
+                        <span class="ticker-tag">C++</span>
+                        <span class="ticker-tag">NLP</span>
+                        <span class="ticker-tag">LLMs</span>
+                        <span class="ticker-tag">AWS</span>
+                        <span class="ticker-tag">RAG</span>
+                        <span class="ticker-tag">Docker</span>
+                        <span class="ticker-tag">Flask</span>
+                        <span class="ticker-tag">PostgreSQL</span>
+                        <span class="ticker-tag">Neo4j</span>
+                        <span class="ticker-tag">DynamoDB</span>
+                    </div>
+                </div>
+                <div class="ticker-row ticker-right">
+                    <div class="ticker-inner ticker-inner-right">
+                        <span class="ticker-tag">Computer Vision</span>
+                        <span class="ticker-tag">Scikit-learn</span>
+                        <span class="ticker-tag">TTS</span>
+                        <span class="ticker-tag">Pandas</span>
+                        <span class="ticker-tag">Ontologies</span>
+                        <span class="ticker-tag">Git</span>
+                        <span class="ticker-tag">TensorFlow</span>
+                        <span class="ticker-tag">CNNs</span>
+                        <span class="ticker-tag">CrewAI</span>
+                        <span class="ticker-tag">LaTeX</span>
+                        <span class="ticker-tag">Google Cloud</span>
+                        <span class="ticker-tag">Ollama</span>
+                        <span class="ticker-tag">Streamlit</span>
+                        <span class="ticker-tag">CI/CD</span>
+                        <span class="ticker-tag">OWL</span>
+                        <span class="ticker-tag">SHACL</span>
+                        <span class="ticker-tag">RDF</span>
+                        <span class="ticker-tag">NER</span>
+                        <!-- duplicate for seamless loop -->
+                        <span class="ticker-tag">Computer Vision</span>
+                        <span class="ticker-tag">Scikit-learn</span>
+                        <span class="ticker-tag">TTS</span>
+                        <span class="ticker-tag">Pandas</span>
+                        <span class="ticker-tag">Ontologies</span>
+                        <span class="ticker-tag">Git</span>
+                        <span class="ticker-tag">TensorFlow</span>
+                        <span class="ticker-tag">CNNs</span>
+                        <span class="ticker-tag">CrewAI</span>
+                        <span class="ticker-tag">LaTeX</span>
+                        <span class="ticker-tag">Google Cloud</span>
+                        <span class="ticker-tag">Ollama</span>
+                        <span class="ticker-tag">Streamlit</span>
+                        <span class="ticker-tag">CI/CD</span>
+                        <span class="ticker-tag">OWL</span>
+                        <span class="ticker-tag">SHACL</span>
+                        <span class="ticker-tag">RDF</span>
+                        <span class="ticker-tag">NER</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" data-nav-group="about" class="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <div class="certs-grid">
+                <div class="cert-card">
+                    <div class="cert-card-head">
+                        <span class="cert-index">01</span>
+                        <span class="cert-verified">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            verified
+                        </span>
+                    </div>
+                    <h3>Generative AI Engineering</h3>
+                    <p class="cert-issuer">// issued by IBM</p>
+                    <div class="cert-foot">
+                        <span class="cert-year">2025</span>
+                        <a href="https://credentials.edx.org/credentials/0801d631d980494a9a5eb36510d4ad43/" target="_blank" class="cert-link">view_cert →</a>
+                    </div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-card-head">
+                        <span class="cert-index">02</span>
+                        <span class="cert-verified">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            verified
+                        </span>
+                    </div>
+                    <h3>Data Science</h3>
+                    <p class="cert-issuer">// issued by IBM</p>
+                    <div class="cert-foot">
+                        <span class="cert-year">2025</span>
+                        <a href="https://credentials.edx.org/credentials/c040e8ca88c74fffbd8e2ad72cc7f9ea/" target="_blank" class="cert-link">view_cert →</a>
+                    </div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-card-head">
+                        <span class="cert-index">03</span>
+                        <span class="cert-verified">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            verified
+                        </span>
+                    </div>
+                    <h3>Foundations of AI</h3>
+                    <p class="cert-issuer">// issued by IBM</p>
+                    <div class="cert-foot">
+                        <span class="cert-year">2025</span>
+                        <a href="https://credentials.edx.org/credentials/70ea57c12b5245088891ebed28fb422f/" target="_blank" class="cert-link">view_cert →</a>
+                    </div>
+                </div>
+                <div class="cert-card">
+                    <div class="cert-card-head">
+                        <span class="cert-index">04</span>
+                        <span class="cert-verified">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            verified
+                        </span>
+                    </div>
+                    <h3>AWS Certified AI Practitioner</h3>
+                    <p class="cert-issuer">// issued by Amazon Web Services Training and Certification</p>
+                    <div class="cert-foot">
+                        <span class="cert-year">2026</span>
+                        <a href="https://www.credly.com/badges/168723e9-aa16-44b9-a3f6-eba51971645c" target="_blank" class="cert-link">view_cert →</a>
+                    </div>
+                </div>
+            </div>
+            <h3 class="certs-subtitle">Certifications in progress</h3>
+            <div class="certs-grid certs-grid--progress">
+                <div class="cert-card cert-card--progress">
+                    <div class="cert-card-head">
+                        <span class="cert-index">05</span>
+                        <span class="cert-status">in progress</span>
+                    </div>
+                    <h3>AWS Certified Cloud Practitioner</h3>
+                    <p class="cert-issuer">// preparing for the exam</p>
+                    <div class="cert-foot">
+                        <span class="cert-year">planned</span>
+                    </div>
+                </div>
+                <div class="cert-card cert-card--progress">
+                    <div class="cert-card-head">
+                        <span class="cert-index">06</span>
+                        <span class="cert-status">in progress</span>
+                    </div>
+                    <h3>AWS Certified Solutions Architect – Associate</h3>
+                    <p class="cert-issuer">// preparing for the exam</p>
+                    <div class="cert-foot">
+                        <span class="cert-year">planned</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Supervisor recommendation -->
-    <section id="recommendation" class="recommendation" aria-labelledby="recommendation-title">
+    <section id="recommendation" data-nav-group="about" class="recommendation" aria-labelledby="recommendation-title">
         <div class="container">
             <h2 id="recommendation-title" class="section-title">Recommendation</h2>
             <figure class="recommendation-card">
@@ -235,7 +449,7 @@
     </section>
 
     <!-- Achievements & Highlights Section -->
-    <section id="achievements" class="achievements">
+    <section id="achievements" data-nav-group="about" class="achievements">
         <div class="container">
             <h2 class="section-title">Achievements & Highlights</h2>
             <p class="ach-cmd">$ ./list_highlights --verified</p>
@@ -334,7 +548,7 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="volunteering">
+    <section id="experience" data-nav-group="experience" class="volunteering">
         <div class="container">
             <h2 class="section-title">Professional Experience</h2>
             <div class="timeline">
@@ -389,8 +603,82 @@
         </div>
     </section>
 
+    <!-- Volunteering & Leadership Section -->
+    <section id="volunteering" data-nav-group="experience" class="volunteering">
+        <div class="container">
+            <h2 class="section-title">Volunteering & Leadership</h2>
+            <div class="timeline">
+                <!-- Volunteering 1: Tutoring -->
+                <div class="timeline-item" id="volunteering-genius-tutoring">
+                    <div class="timeline-header">
+                        <h3>Tutor – #GENIUS Program</h3>
+                        <span class="timeline-date">Jan 2025 – May 2025</span>
+                    </div>
+                    <p class="timeline-subtitle">Equal Opportunities Center, École Polytechnique</p>
+                    <button class="show-more-btn" type="button" aria-expanded="false" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="timeline-details" hidden>
+                        <p>Weekly tutoring in pairs with high school students in science and mathematics.</p>
+                        <ul>
+                            <li>Weekly support aimed at strengthening knowledge and promoting equal opportunities.</li>
+                            <li>Reinforcement of basic scientific concepts and preparation for post-baccalaureate courses.</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="tag">Teaching</span>
+                            <span class="tag">Communication</span>
+                            <span class="tag">Mentoring</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Volunteering 2: G2FOSS -->
+                <div class="timeline-item" id="volunteering-g2foss-competitive-programming">
+                    <div class="timeline-header">
+                        <h3>Competitive Programming Manager – G²FOSS</h3>
+                        <span class="timeline-date">2023 – 2025</span>
+                    </div>
+                    <p class="timeline-subtitle">General and Geographic Free Open Source Software</p>
+                    <button class="show-more-btn" type="button" aria-expanded="false" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="timeline-details" hidden>
+                        <ul>
+                            <li>Organization of DSA courses to strengthen problem-solving skills.</li>
+                            <li>Promotion of national competitions and events.</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="tag">Algorithms</span>
+                            <span class="tag">Graph Theory</span>
+                            <span class="tag">C++</span>
+                            <span class="tag">Communication</span>
+                            <span class="tag">Leadership</span>
+                        </div>
+                        <a href="https://www.linkedin.com/posts/mohamed-amine-arous-ensta_ambassadeur-ambassador-acm-activity-7174448127356059648-UQPV?utm_source=share&utm_medium=member_desktop" target="_blank" class="cert-link">View on LinkedIn →</a>
+                    </div>
+                </div>
+
+                <!-- Volunteering 3: IEEE -->
+                <div class="timeline-item" id="volunteering-ieee-member">
+                    <div class="timeline-header">
+                        <h3>Senior Member – IEEE Computer Society & WIE</h3>
+                        <span class="timeline-date">2023 – Present</span>
+                    </div>
+                    <p class="timeline-subtitle">IEEE Computer Society & Women In Engineering Affinity Group</p>
+                    <button class="show-more-btn" type="button" aria-expanded="false" onclick="toggleDetails(this)">Show More ▼</button>
+                    <div class="timeline-details" hidden>
+                        <ul>
+                            <li>Improved global rank in IEEEXtreme from <strong>1370</strong> (<a href="https://ieeextreme.org/ieeextreme-17-0-ranking/" target="_blank">17.0</a>) to <strong>491</strong> (<a href="https://ieeextreme.org/ieeextreme-18-0-ranking/" target="_blank">18.0</a>) with team "DebuggingTrio".</li>
+                        </ul>
+                        <div class="project-tags">
+                            <span class="tag">Problem Solving</span>
+                            <span class="tag">C++</span>
+                            <span class="tag">Competitive Programming</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Projects Section -->
-    <section id="projects" class="volunteering">
+    <section id="projects" data-nav-group="projects" class="volunteering">
         <div class="container">
             <h2 class="section-title">Projects</h2>
             <div class="timeline">
@@ -678,344 +966,53 @@
         </div>
     </section>
 
-    <!-- Volunteering & Leadership Section -->
-    <section id="volunteering" class="volunteering">
+    <!-- News / Paper Highlight Section -->
+    <section id="news" data-nav-group="news" class="news">
         <div class="container">
-            <h2 class="section-title">Volunteering & Leadership</h2>
-            <div class="timeline">
-                <!-- Volunteering 1: Tutoring -->
-                <div class="timeline-item" id="volunteering-genius-tutoring">
-                    <div class="timeline-header">
-                        <h3>Tutor – #GENIUS Program</h3>
-                        <span class="timeline-date">Jan 2025 – May 2025</span>
+            <p class="news-kicker">&gt; latest_update --status=<span class="accepted-flag">accepted</span><span class="blink">_</span></p>
+            <div class="news-card" id="news-eusipco">
+                <div class="news-spark news-spark-2">✦</div>
+                <div class="news-spark news-spark-3">✧</div>
+                <div class="news-card-top">
+                    <div class="news-badge">
+                        <span class="news-badge-dot"></span>
+                        NEW · PAPER ACCEPTED @ EUSIPCO 2026
                     </div>
-                    <p class="timeline-subtitle">Equal Opportunities Center, École Polytechnique</p>
-                    <button class="show-more-btn" type="button" aria-expanded="false" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" hidden>
-                        <p>Weekly tutoring in pairs with high school students in science and mathematics.</p>
-                        <ul>
-                            <li>Weekly support aimed at strengthening knowledge and promoting equal opportunities.</li>
-                            <li>Reinforcement of basic scientific concepts and preparation for post-baccalaureate courses.</li>
-                        </ul>
-                        <div class="project-tags">
-                            <span class="tag">Teaching</span>
-                            <span class="tag">Communication</span>
-                            <span class="tag">Mentoring</span>
-                        </div>
+                    <div class="news-logo">
+                        <img src="LOGOEUSIPCO.webp" alt="EUSIPCO 2026 logo" width="300" height="89" decoding="async" fetchpriority="high">
                     </div>
                 </div>
-
-                <!-- Volunteering 2: G2FOSS -->
-                <div class="timeline-item" id="volunteering-g2foss-competitive-programming">
-                    <div class="timeline-header">
-                        <h3>Competitive Programming Manager – G²FOSS</h3>
-                        <span class="timeline-date">2023 – 2025</span>
-                    </div>
-                    <p class="timeline-subtitle">General and Geographic Free Open Source Software</p>
-                    <button class="show-more-btn" type="button" aria-expanded="false" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" hidden>
-                        <ul>
-                            <li>Organization of DSA courses to strengthen problem-solving skills.</li>
-                            <li>Promotion of national competitions and events.</li>
-                        </ul>
-                        <div class="project-tags">
-                            <span class="tag">Algorithms</span>
-                            <span class="tag">Graph Theory</span>
-                            <span class="tag">C++</span>
-                            <span class="tag">Communication</span>
-                            <span class="tag">Leadership</span>
-                        </div>
-                        <a href="https://www.linkedin.com/posts/mohamed-amine-arous-ensta_ambassadeur-ambassador-acm-activity-7174448127356059648-UQPV?utm_source=share&utm_medium=member_desktop" target="_blank" class="cert-link">View on LinkedIn →</a>
-                    </div>
+                <h2 class="news-title">Europeanizing Modular Zero-Shot TTS</h2>
+                <p class="news-subtitle">Component-Level Adaptation Framework for French &amp; German</p>
+                <p class="news-authors">
+                    Tim Luka Horstmann, Nassima Ould Ouali, <span class="me">Mohamed Amine Arous</span>, Awais Hussain Sani, Eric Moulines
+                </p>
+                <p class="news-affil">
+                    <span>École Polytechnique</span>
+                    <span>Hi! PARIS</span>
+                    <span>ENSTA Paris</span>
+                </p>
+                <p class="news-abstract">
+                    A component-level framework for data-efficient adaptation of modular zero-shot TTS to French and German. We identify the <strong>text-speech LM</strong> as the dominant adaptation lever, and release <strong>CosyVoice2-EU</strong> — with model, package, demo, and an extensible codebase.
+                </p>
+                <div class="news-tags">
+                    <span class="tag">Zero-Shot TTS</span>
+                    <span class="tag">French</span>
+                    <span class="tag">German</span>
+                    <span class="tag">Voice Cloning</span>
+                    <span class="tag">CosyVoice2-EU</span>
                 </div>
-
-                <!-- Volunteering 3: IEEE -->
-                <div class="timeline-item" id="volunteering-ieee-member">
-                    <div class="timeline-header">
-                        <h3>Senior Member – IEEE Computer Society & WIE</h3>
-                        <span class="timeline-date">2023 – Present</span>
-                    </div>
-                    <p class="timeline-subtitle">IEEE Computer Society & Women In Engineering Affinity Group</p>
-                    <button class="show-more-btn" type="button" aria-expanded="false" onclick="toggleDetails(this)">Show More ▼</button>
-                    <div class="timeline-details" hidden>
-                        <ul>
-                            <li>Improved global rank in IEEEXtreme from <strong>1370</strong> (<a href="https://ieeextreme.org/ieeextreme-17-0-ranking/" target="_blank">17.0</a>) to <strong>491</strong> (<a href="https://ieeextreme.org/ieeextreme-18-0-ranking/" target="_blank">18.0</a>) with team "DebuggingTrio".</li>
-                        </ul>
-                        <div class="project-tags">
-                            <span class="tag">Problem Solving</span>
-                            <span class="tag">C++</span>
-                            <span class="tag">Competitive Programming</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certifications Section -->
-    <section id="certifications" class="certifications">
-        <div class="container">
-            <h2 class="section-title">Certifications</h2>
-            <div class="certs-grid">
-                <div class="cert-card">
-                    <div class="cert-card-head">
-                        <span class="cert-index">01</span>
-                        <span class="cert-verified">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            verified
-                        </span>
-                    </div>
-                    <h3>Generative AI Engineering</h3>
-                    <p class="cert-issuer">// issued by IBM</p>
-                    <div class="cert-foot">
-                        <span class="cert-year">2025</span>
-                        <a href="https://credentials.edx.org/credentials/0801d631d980494a9a5eb36510d4ad43/" target="_blank" class="cert-link">view_cert →</a>
-                    </div>
-                </div>
-                <div class="cert-card">
-                    <div class="cert-card-head">
-                        <span class="cert-index">02</span>
-                        <span class="cert-verified">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            verified
-                        </span>
-                    </div>
-                    <h3>Data Science</h3>
-                    <p class="cert-issuer">// issued by IBM</p>
-                    <div class="cert-foot">
-                        <span class="cert-year">2025</span>
-                        <a href="https://credentials.edx.org/credentials/c040e8ca88c74fffbd8e2ad72cc7f9ea/" target="_blank" class="cert-link">view_cert →</a>
-                    </div>
-                </div>
-                <div class="cert-card">
-                    <div class="cert-card-head">
-                        <span class="cert-index">03</span>
-                        <span class="cert-verified">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            verified
-                        </span>
-                    </div>
-                    <h3>Foundations of AI</h3>
-                    <p class="cert-issuer">// issued by IBM</p>
-                    <div class="cert-foot">
-                        <span class="cert-year">2025</span>
-                        <a href="https://credentials.edx.org/credentials/70ea57c12b5245088891ebed28fb422f/" target="_blank" class="cert-link">view_cert →</a>
-                    </div>
-                </div>
-                <div class="cert-card">
-                    <div class="cert-card-head">
-                        <span class="cert-index">04</span>
-                        <span class="cert-verified">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            verified
-                        </span>
-                    </div>
-                    <h3>AWS Certified AI Practitioner</h3>
-                    <p class="cert-issuer">// issued by Amazon Web Services Training and Certification</p>
-                    <div class="cert-foot">
-                        <span class="cert-year">2026</span>
-                        <a href="https://www.credly.com/badges/168723e9-aa16-44b9-a3f6-eba51971645c" target="_blank" class="cert-link">view_cert →</a>
-                    </div>
-                </div>
-            </div>
-            <h3 class="certs-subtitle">Certifications in progress</h3>
-            <div class="certs-grid certs-grid--progress">
-                <div class="cert-card cert-card--progress">
-                    <div class="cert-card-head">
-                        <span class="cert-index">05</span>
-                        <span class="cert-status">in progress</span>
-                    </div>
-                    <h3>AWS Certified Cloud Practitioner</h3>
-                    <p class="cert-issuer">// preparing for the exam</p>
-                    <div class="cert-foot">
-                        <span class="cert-year">planned</span>
-                    </div>
-                </div>
-                <div class="cert-card cert-card--progress">
-                    <div class="cert-card-head">
-                        <span class="cert-index">06</span>
-                        <span class="cert-status">in progress</span>
-                    </div>
-                    <h3>AWS Certified Solutions Architect – Associate</h3>
-                    <p class="cert-issuer">// preparing for the exam</p>
-                    <div class="cert-foot">
-                        <span class="cert-year">planned</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Skills & Technologies</h2>
-            <p class="skills-cmd">$ cat skills.txt | sort | uniq</p>
-
-            <div class="skill-stack">
-                <div class="skill-row">
-                    <span class="skill-row-label">AI_RESEARCH</span>
-                    <div class="skill-row-tags">
-                        <span class="tag">Embodied AI</span>
-                        <span class="tag">VLAs</span>
-                        <span class="tag">NLP</span>
-                        <span class="tag">Computer Vision</span>
-                        <span class="tag">TTS</span>
-                        <span class="tag">CNNs</span>
-                        <span class="tag">LLMs</span>
-                        <span class="tag">RAG</span>
-                        <span class="tag">Vector Embeddings</span>
-                        <span class="tag">Scene Understanding</span>
-                    </div>
-                </div>
-                <div class="skill-row">
-                    <span class="skill-row-label">PROGRAMMING</span>
-                    <div class="skill-row-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">C++</span>
-                        <span class="tag">CUDA</span>
-                        <span class="tag">LaTeX</span>
-                        <span class="tag">Git</span>
-                    </div>
-                </div>
-                <div class="skill-row">
-                    <span class="skill-row-label">FRAMEWORKS</span>
-                    <div class="skill-row-tags">
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">TensorFlow</span>
-                        <span class="tag">Transformers</span>
-                        <span class="tag">Scikit-learn</span>
-                        <span class="tag">Pandas</span>
-                        <span class="tag">FastAPI</span>
-                        <span class="tag">Flask</span>
-                        <span class="tag">Streamlit</span>
-                        <span class="tag">Gradio</span>
-                        <span class="tag">Ollama</span>
-                        <span class="tag">CrewAI</span>
-                    </div>
-                </div>
-                <div class="skill-row">
-                    <span class="skill-row-label">DATABASES</span>
-                    <div class="skill-row-tags">
-                        <span class="tag">PostgreSQL</span>
-                        <span class="tag">Neo4j</span>
-                        <span class="tag">DynamoDB</span>
-                    </div>
-                </div>
-                <div class="skill-row">
-                    <span class="skill-row-label">CLOUD_DEVOPS</span>
-                    <div class="skill-row-tags">
-                        <span class="tag">AWS</span>
-                        <span class="tag">Docker</span>
-                        <span class="tag">CI/CD</span>
-                        <span class="tag">Git</span>
-                        <span class="tag">GitHub</span>
-                        <span class="tag">Google Cloud</span>
-                    </div>
-                </div>
-                <div class="skill-row">
-                    <span class="skill-row-label">KNOWLEDGE_SEMANTIC_AI</span>
-                    <div class="skill-row-tags">
-                        <span class="tag">Knowledge Graphs</span>
-                        <span class="tag">Ontologies</span>
-                        <span class="tag">OWL</span>
-                        <span class="tag">SHACL</span>
-                        <span class="tag">RDF</span>
-                        <span class="tag">NER</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Infinite scrolling tickers -->
-            <div class="skills-ticker">
-                <div class="ticker-row ticker-left">
-                    <div class="ticker-inner">
-                        <span class="ticker-tag">PyTorch</span>
-                        <span class="ticker-tag">Embodied AI</span>
-                        <span class="ticker-tag">CUDA</span>
-                        <span class="ticker-tag">Knowledge Graphs</span>
-                        <span class="ticker-tag">Python</span>
-                        <span class="ticker-tag">Transformers</span>
-                        <span class="ticker-tag">VLAs</span>
-                        <span class="ticker-tag">FastAPI</span>
-                        <span class="ticker-tag">C++</span>
-                        <span class="ticker-tag">NLP</span>
-                        <span class="ticker-tag">LLMs</span>
-                        <span class="ticker-tag">AWS</span>
-                        <span class="ticker-tag">RAG</span>
-                        <span class="ticker-tag">Docker</span>
-                        <span class="ticker-tag">Flask</span>
-                        <span class="ticker-tag">PostgreSQL</span>
-                        <span class="ticker-tag">Neo4j</span>
-                        <span class="ticker-tag">DynamoDB</span>
-                        <!-- duplicate for seamless loop -->
-                        <span class="ticker-tag">PyTorch</span>
-                        <span class="ticker-tag">Embodied AI</span>
-                        <span class="ticker-tag">CUDA</span>
-                        <span class="ticker-tag">Knowledge Graphs</span>
-                        <span class="ticker-tag">Python</span>
-                        <span class="ticker-tag">Transformers</span>
-                        <span class="ticker-tag">VLAs</span>
-                        <span class="ticker-tag">FastAPI</span>
-                        <span class="ticker-tag">C++</span>
-                        <span class="ticker-tag">NLP</span>
-                        <span class="ticker-tag">LLMs</span>
-                        <span class="ticker-tag">AWS</span>
-                        <span class="ticker-tag">RAG</span>
-                        <span class="ticker-tag">Docker</span>
-                        <span class="ticker-tag">Flask</span>
-                        <span class="ticker-tag">PostgreSQL</span>
-                        <span class="ticker-tag">Neo4j</span>
-                        <span class="ticker-tag">DynamoDB</span>
-                    </div>
-                </div>
-                <div class="ticker-row ticker-right">
-                    <div class="ticker-inner ticker-inner-right">
-                        <span class="ticker-tag">Computer Vision</span>
-                        <span class="ticker-tag">Scikit-learn</span>
-                        <span class="ticker-tag">TTS</span>
-                        <span class="ticker-tag">Pandas</span>
-                        <span class="ticker-tag">Ontologies</span>
-                        <span class="ticker-tag">Git</span>
-                        <span class="ticker-tag">TensorFlow</span>
-                        <span class="ticker-tag">CNNs</span>
-                        <span class="ticker-tag">CrewAI</span>
-                        <span class="ticker-tag">LaTeX</span>
-                        <span class="ticker-tag">Google Cloud</span>
-                        <span class="ticker-tag">Ollama</span>
-                        <span class="ticker-tag">Streamlit</span>
-                        <span class="ticker-tag">CI/CD</span>
-                        <span class="ticker-tag">OWL</span>
-                        <span class="ticker-tag">SHACL</span>
-                        <span class="ticker-tag">RDF</span>
-                        <span class="ticker-tag">NER</span>
-                        <!-- duplicate for seamless loop -->
-                        <span class="ticker-tag">Computer Vision</span>
-                        <span class="ticker-tag">Scikit-learn</span>
-                        <span class="ticker-tag">TTS</span>
-                        <span class="ticker-tag">Pandas</span>
-                        <span class="ticker-tag">Ontologies</span>
-                        <span class="ticker-tag">Git</span>
-                        <span class="ticker-tag">TensorFlow</span>
-                        <span class="ticker-tag">CNNs</span>
-                        <span class="ticker-tag">CrewAI</span>
-                        <span class="ticker-tag">LaTeX</span>
-                        <span class="ticker-tag">Google Cloud</span>
-                        <span class="ticker-tag">Ollama</span>
-                        <span class="ticker-tag">Streamlit</span>
-                        <span class="ticker-tag">CI/CD</span>
-                        <span class="ticker-tag">OWL</span>
-                        <span class="ticker-tag">SHACL</span>
-                        <span class="ticker-tag">RDF</span>
-                        <span class="ticker-tag">NER</span>
-                    </div>
+                <div class="news-links">
+                    <span class="btn btn-soon">arXiv · coming soon ⧗</span>
+                    <a href="https://www.eurasip.org/Proceedings/Eusipco/Eusipco2026/pdfs/0000471.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">./read_paper</a>
+                    <a href="https://github.com/hi-paris/CosyVoice2-EU" target="_blank" class="btn btn-secondary">./view_code</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="contact" data-nav-group="contact" class="contact">
         <div class="container">
             <div class="contact-header">
                 <span class="contact-subtitle">Ready to Collaborate?</span>

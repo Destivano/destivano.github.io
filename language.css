@@ -1,6 +1,16 @@
 /* A compact language control, shared by the two static pages. */
 .nav-container { gap: 1rem; }
-.nav-menu { gap: clamp(.6rem, 1.2vw, 1.25rem); }
+.nav-menu { gap: clamp(1.25rem, 2.1vw, 2rem); align-items: center; margin-left: auto; }
+.nav-link { letter-spacing: -.025em; white-space: nowrap; }
+.nav-link.active { color: #0d8578; }
+.nav-contact { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: .6rem 1rem; border-radius: 8px; background: var(--accent-color); color: #04201c; }
+.nav-contact:hover, .nav-contact.active { color: #04201c; background: #5ee2d1; }
+.nav-contact::after { bottom: 5px; left: 15%; max-width: 70%; background: #04201c; box-shadow: none; }
+.nav-link:focus-visible, .hamburger:focus-visible { outline: 2px solid var(--primary-color); outline-offset: 5px; }
+:root { --header-height: 80px; }
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: var(--header-height); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 .hero-availability { margin: 0 auto 1.5rem; max-width: 42rem; font-size: 1rem; line-height: 1.6; color: var(--neon-bright); }
 
 /* An elevated testimonial card that stays in the reading flow. */
@@ -41,11 +51,14 @@
 .language-option:focus-visible { outline: 2px solid var(--primary-color, #0e3a5f); outline-offset: 3px; }
 .language-option img { display: block; flex-shrink: 0; border-radius: 1px; }
 
-/* French labels are longer: switch to the existing mobile menu sooner. */
-@media (max-width: 1100px) {
-  .hamburger { display: flex; }
-  .nav-menu { position: fixed; left: -100%; top: 76px; flex-direction: column; background: var(--surface); width: 100%; text-align: center; transition: .3s; box-shadow: var(--shadow-lg); padding: 1.5rem 0; gap: 1rem; max-height: calc(100dvh - 76px); overflow-y: auto; }
-  .nav-menu.active { left: 0; }
+/* The hidden dropdown is also removed from keyboard navigation. */
+@media (max-width: 899px) {
+  .hamburger { display: flex; justify-content: center; align-items: center; width: 44px; height: 44px; }
+  .nav-controls { margin-left: auto; }
+  .nav-menu { position: fixed; left: 0; top: var(--header-height); flex-direction: column; align-items: stretch; background: var(--surface); width: 100%; text-align: center; transition: opacity .2s ease, transform .2s ease; box-shadow: var(--shadow-lg); padding: 1rem 20px; gap: .4rem; max-height: calc(100dvh - var(--header-height)); overflow-y: auto; visibility: hidden; opacity: 0; transform: translateY(-8px); pointer-events: none; }
+  .nav-menu.active { left: 0; visibility: visible; opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .nav-menu .nav-link { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: .7rem 1rem; }
+  .nav-menu .nav-link::after { bottom: 4px; left: 35%; max-width: 30%; }
   .hamburger.active .bar:nth-child(2) { opacity: 0; }
   .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
   .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
