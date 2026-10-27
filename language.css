@@ -18,6 +18,21 @@
 .recommendation-conclusion { padding-left: 1rem; border-left: 3px solid var(--accent-color); font-weight: 600; }
 @media (hover: hover) and (prefers-reduced-motion: no-preference) { .recommendation-card:hover { transform: translateY(-4px); box-shadow: 0 30px 65px rgba(15, 37, 64, .16); } }
 @media (max-width: 480px) { .recommendation-author { gap: .75rem; padding-right: 0; } .recommendation-avatar { width: 56px; height: 56px; } .recommendation-author h3 { font-size: 1.05rem; } .recommendation-quote-mark { display: none; } }
+/* LinkedIn-inspired presentation of the supplied testimonial. */
+.recommendation-card { max-width: 800px; padding: 0; border: 1px solid #d8dce0; border-radius: 10px; background: #fff; color: #191919; box-shadow: 0 8px 28px rgba(0, 0, 0, .08); overflow: hidden; font-family: Arial, sans-serif; }
+.recommendation-platform { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 14px 24px; background: #f8fafd; border-bottom: 1px solid #e8ebee; color: #666; font-size: .75rem; }
+.recommendation-linkedin { display: inline-flex; align-items: center; gap: 1px; color: #0a66c2; font: bold 23px Arial, sans-serif; letter-spacing: -1px; }
+.recommendation-linkedin span { display: inline-block; padding: 0 2px; border-radius: 2px; color: white; background: #0a66c2; line-height: 24px; }
+.recommendation-author { padding: 24px 24px 0; margin-bottom: 20px; }
+.recommendation-avatar { width: 64px; height: 64px; border: 1px solid #e3e6e8; box-shadow: none; }
+.recommendation-author h3 { font: 600 1.1rem Arial, sans-serif; color: #191919; }
+.recommendation-author p { color: #666; }
+.recommendation-author a { color: #0a66c2; font-weight: 600; text-decoration: none; }
+.recommendation-author a:hover { text-decoration: underline; }
+.recommendation-card blockquote { padding: 0 24px 24px; color: #333; font-size: .96rem; line-height: 1.65; }
+.recommendation-conclusion { padding-left: 0; border-left: 0; font-weight: 400; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) { .recommendation-card:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0, 0, 0, .11); } }
+@media (max-width: 480px) { .recommendation-platform { padding: 12px 16px; gap: .75rem; } .recommendation-platform > span:last-child { text-align: right; font-size: .7rem; } .recommendation-author { padding: 20px 16px 0; } .recommendation-card blockquote { padding: 0 16px 20px; } .recommendation-avatar { width: 56px; height: 56px; } }
 .nav-controls { display: flex; align-items: center; gap: 1rem; flex-shrink: 0; }
 .language-switch { display: flex; align-items: center; gap: .2rem; padding: .2rem; border: 1px solid var(--border-color, #d8e1ea); border-radius: .5rem; }
 .language-option { display: inline-flex; align-items: center; gap: .3rem; min-height: 36px; padding: .3rem .5rem; color: var(--text-color); font: 600 .8rem var(--font-mono); text-decoration: none; border-radius: .3rem; white-space: nowrap; }
