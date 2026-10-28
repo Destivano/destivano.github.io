@@ -1,4 +1,6 @@
 /* A compact language control, shared by the two static pages. */
+.certs-summary { max-width: 48rem; margin: -1rem auto 2rem; padding: .65rem 1rem; text-align: center; color: var(--secondary-color); background: var(--tint-2); border-radius: 8px; font-size: .95rem; line-height: 1.6; }
+.cert-course-count { color: var(--text-muted); font-size: .85rem; margin: -.25rem 0 1rem; }
 .nav-container { gap: 1rem; }
 .nav-menu { gap: clamp(1.25rem, 2.1vw, 2rem); align-items: center; margin-left: auto; }
 .nav-link { letter-spacing: -.025em; white-space: nowrap; }
