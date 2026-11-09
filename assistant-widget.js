@@ -461,8 +461,17 @@
       renderSuggestions();
     }
 
-    // Show the assistant on arrival without opening the mobile keyboard.
-    openPanel(false);
+    // Open one second after page load without opening the mobile keyboard.
+    function scheduleOpening() {
+      window.setTimeout(function () {
+        openPanel(false);
+      }, 1000);
+    }
+    if (document.readyState === "complete") {
+      scheduleOpening();
+    } else {
+      window.addEventListener("load", scheduleOpening, { once: true });
+    }
   }
 
   if (document.readyState === "loading") {
