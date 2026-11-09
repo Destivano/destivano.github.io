@@ -329,7 +329,7 @@
 
     // ------------------------------------------------------------- panel
 
-    function openPanel() {
+    function openPanel(focusInput) {
       panel.hidden = false;
       root.setAttribute("data-state", "open");
       toggle.setAttribute("aria-expanded", "true");
@@ -338,9 +338,11 @@
         renderLog();
         renderSuggestions();
       }
-      window.setTimeout(function () {
-        input.focus();
-      }, 50);
+      if (focusInput !== false) {
+        window.setTimeout(function () {
+          input.focus();
+        }, 50);
+      }
     }
 
     function closePanel() {
@@ -442,6 +444,9 @@
       renderLog();
       renderSuggestions();
     }
+
+    // Show the assistant on arrival without opening the mobile keyboard.
+    openPanel(false);
   }
 
   if (document.readyState === "loading") {
