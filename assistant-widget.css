@@ -115,6 +115,22 @@
     max-height: var(--assistant-available-height, calc(100dvh - 206px));
 }
 
+.ai-assistant[data-state="open"] .ai-assistant-panel {
+    transform-origin: bottom right;
+    animation: ai-assistant-enter 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes ai-assistant-enter {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
 /* Right/bottom stay anchored (see above), so dragging these grow the panel
    to the left / upward - the visitor's own reading-size preference, bounded
    by the min/max above so it can never swallow the whole viewport. Plain
@@ -488,6 +504,9 @@ body.ai-assistant-resizing-y * {
 /* ------------------------------------------------------------- a11y */
 
 @media (prefers-reduced-motion: reduce) {
+    .ai-assistant[data-state="open"] .ai-assistant-panel {
+        animation: none;
+    }
     .ai-assistant-dot,
     .ai-assistant-thinking-dot {
         animation: none;
