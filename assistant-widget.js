@@ -379,7 +379,7 @@
         var rect = panel.getBoundingClientRect();
         var startWidth = rect.width;
         var startHeight = rect.height;
-        var maxWidth = Math.min(720, window.innerWidth - 48);
+        var maxWidth = Math.min(900, window.innerWidth - 24);
         var maxHeight = Math.min(860, window.innerHeight - 40);
         handle.classList.add("is-active");
         document.body.classList.add(cssClass);
