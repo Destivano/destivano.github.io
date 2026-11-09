@@ -129,6 +129,22 @@
     var resizeX = document.getElementById("ai-assistant-resize-x");
     var resizeY = document.getElementById("ai-assistant-resize-y");
 
+    // Keep the panel below the navigation, including after manual resizing.
+    function updatePanelBounds() {
+      var navbar = document.getElementById("navbar");
+      var navBottom = navbar ? Math.max(0, navbar.getBoundingClientRect().bottom) : 0;
+      var bottomOffset = window.innerWidth <= 540 ? 84 : 106;
+      var available = Math.max(0, window.innerHeight - navBottom - 16 - bottomOffset);
+      root.style.setProperty("--assistant-available-height", available + "px");
+      return available;
+    }
+    updatePanelBounds();
+    window.addEventListener("resize", updatePanelBounds);
+    var navbar = document.getElementById("navbar");
+    if (navbar && window.ResizeObserver) {
+      new ResizeObserver(updatePanelBounds).observe(navbar);
+    }
+
     var restored = loadSession();
     var state = {
       sessionId: (restored && restored.sessionId) || createSessionId(),
@@ -380,7 +396,7 @@
         var startWidth = rect.width;
         var startHeight = rect.height;
         var maxWidth = Math.min(900, window.innerWidth - 24);
-        var maxHeight = Math.min(860, window.innerHeight - 40);
+        var maxHeight = updatePanelBounds();
         handle.classList.add("is-active");
         document.body.classList.add(cssClass);
 
@@ -390,7 +406,7 @@
             panel.style.width = clamp(startWidth + deltaX, 320, maxWidth) + "px";
           } else {
             var deltaY = startY - moveEvent.clientY; // dragging up grows it
-            panel.style.height = clamp(startHeight + deltaY, 420, maxHeight) + "px";
+            panel.style.height = clamp(startHeight + deltaY, Math.min(420, maxHeight), maxHeight) + "px";
           }
         }
 
