@@ -227,25 +227,7 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     });
 });
 
-// ========== Reveal-on-Scroll ==========
-const revealTargets = document.querySelectorAll(
-    '.about-content, .contact-content, .ach-card, .cert-card, .timeline-item, .skill-row'
-);
-
-if (prefersReducedMotion.matches || !('IntersectionObserver' in window)) {
-    revealTargets.forEach((el) => el.classList.add('fade-in'));
-} else {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
-
-    revealTargets.forEach((el) => observer.observe(el));
-}
+// Section content stays visible on first scroll; no opacity-reset animation.
 
 // ========== Scroll to Top ==========
 if (scrollTopBtn) {
