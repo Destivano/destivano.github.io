@@ -1,0 +1,17 @@
+/* Real organisation marks alongside the relevant portfolio entries. */
+.entry-brand-row{display:flex;align-items:center;flex-wrap:wrap;gap:18px;margin:0 0 16px}
+.entry-brand{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;flex:none}
+.entry-brand img{display:block;width:96px;height:60px;object-fit:contain;background:#fff;border:1px solid var(--border-color,#dce3eb);border-radius:8px;padding:7px;box-sizing:border-box}
+.entry-brand>span{max-width:130px;color:var(--text-light,#64748b);font-size:.68rem;line-height:1.35;text-align:center}
+.certification-brand-row{gap:12px;margin-bottom:18px}
+.certification-brand-row .entry-brand img{width:86px;height:50px;padding:8px}
+.ach-icon.ach-brand-icon{width:100px;height:auto;min-height:64px;flex:0 0 100px;background:transparent;border:0;border-radius:0}
+.ach-brand-icon .entry-brand img{width:100px;height:64px;padding:5px}
+.education-brand-line{display:flex;align-items:center;flex-wrap:wrap;gap:12px}
+.education-brand-line>img{width:76px;height:56px;object-fit:contain;background:#fff;border:1px solid var(--border-color,#dce3eb);border-radius:6px;padding:4px;flex:none}
+@media(max-width:540px){
+ .entry-brand-row{gap:12px}
+ .entry-brand img{width:84px;height:56px}
+ .ach-icon.ach-brand-icon{width:76px;flex-basis:76px}
+ .ach-brand-icon .entry-brand img{width:76px;height:56px}
+}
